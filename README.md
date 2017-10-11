@@ -61,7 +61,7 @@ $ git add .
 $ git commit -am "{작업내용}"
 $ git push origin {작업브랜치명}
 ```
-4. [Angel-Study/webProject](https://github.com/Angel-Study/webProject/pulls)에서 "pull Request" 를 생성한다.
+4. [GoTogether](git@github.com:gahu/GoTogether/pulls)에서 "pull Request" 를 생성한다.
 - pull Request 의 commit message 를 통해 어떤 이슈에대한 내용을 해결했는지에 대한 태깅을 해준다. ex) resolve #{이슈번호} {커밋내용} 
 5. 프로젝트 owner 가 request 를 확인해 push 한 내용을 머지해준다.
 6. Merge request 이후 머지된 브랜치는 가능한 삭제하고, 새로운 브랜치를 따서 새로운 작업을 진행할 수 있도록 한다.
@@ -78,29 +78,6 @@ $ git fetch -p
 ```
 
 ## coding convention
-- 개발 tool 은 brackets2 를 사용한다.
-- beautify 플러그인을 설치해 코드 포맷을 맞춘다.(메뉴 > 편집 > beautify 선택) 
-
-## local server config (예 bitnami)
-- bitnami 를 설치하고 설치된 경로(installdir)에 존재하는 bitnami.conf 파일을 연다.
-```
-$ vi installdir/apache2/conf/bitnami/bitnami.conf
-```
-- bitnami.conf 파일에서 아래의 내용을 수정한다.
-  - port 변경 (8080 -> 9999) (Host 설정 관련 내용을 모두 9999 로 변경)
-  - DocumentRoot 로 시작하는 부분에 있는 경로를 개발중인 디렉토리의 경로로 변경
-  - Directory 로 시작하는 부분에 있는 경로를 개발중인 디렉토리의 경로로 변경
-```
-  변경전 : NameVirtualHost *:8080
-  변경후 : NameVirtualHost *:9999
- 
-  변경전 : DocumentRoot "/Applications/mampstack-7.0.23-0/apache2/htdocs"
-  변경후 : DocumentRoot "/Users/song/Desktop/song/workspace/webProject"
-
-  변경전 : <Directory "/Applications/mampstack-7.0.23-0/apache2/htdocs">
-  변경후 : <Directory "/Users/song/Desktop/song/workspace/webProject"> 
-```
-- http://localhost:9999 로 접속했을때 개발중인 index.html 페이지가 나오면 정상
- 
+- 개발 tool 은 Android Studio를 사용한다.
 
 
