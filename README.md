@@ -79,5 +79,6 @@ $ git fetch -p
 
 ## coding convention
 - 개발 tool 은 Android Studio를 사용한다.
-
+- 모든 작업은 pull request로 올리고, 작업한 내용을 상세하게 적는다.
+- pull request전에는 항상 작업한 내용을 백업해두고, push 정책에 따라 실행한다.
 
