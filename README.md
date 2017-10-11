@@ -2,7 +2,7 @@
 # 서울둘레길 앱을 위한 git 정책
 - 프로젝트에 contribute 하기위해서 project owner 가 contributor 로 추가해줘야한다.
 - 추가하려는 email 은 개인 profile > setting 에서 email 을 공개해줘야한다.
-- contributor 가 되기 위해서 Angel-Study/webProject repository 를 fork 해야한다.
+- contributor 가 되기 위해서 gahu/GoTogether repository 를 fork 해야한다.
 
 
 ## git config
@@ -21,21 +21,21 @@ $ git config --global user.email {email}
 ```
 4. 프로젝트 clone
 ```
-$ git clone git@github.com:Angel-Study/webProject.git
+$ git clone git@github.com:gahu/GoTogether.git
 ```
 5. 프로젝트의 push url 설정 
-- 프로젝트 push 는 fork 된 프로젝트로 (ex) eunjeongsong/webProject
-- merge request 는 본 프로젝트로 (ex) Angel-study/webProject
+- 프로젝트 push 는 fork 된 프로젝트로 (ex) xxx/GoTogether
+- merge request 는 본 프로젝트로 (ex) gahu/GoTogether
 ```
-$ git remote set-url --push origin git@github.com:eunjeongsong/webProject.git
+$ git remote set-url --push origin git@github.com:xxx/GoTogether.git
 ```
 5. remote 경로가 다음과 같으면 정상적으로 remote 가 설정된 것
 - push url 은 fork 된 프로젝트
 - fetch(pull) url 은 본 프로젝트
 ```
 $ git remote -v
-origin	git@github.com:Angel-Study/webProject.git (fetch)
-origin	git@github.com:eunjeongsong/webProject.git (push)
+origin	git@github.com:gahu/GoTogether.git (fetch)
+origin	git@github.com:xxx/GoTogether.git (push)
 ```
 6. 다운받은 프로젝트 폴더로 이동
 ```
@@ -61,7 +61,7 @@ $ git add .
 $ git commit -am "{작업내용}"
 $ git push origin {작업브랜치명}
 ```
-4. [GoTogether](git@github.com:gahu/GoTogether/pulls)에서 "pull Request" 를 생성한다.
+4. [GoTogether](https://github.com/gahu/GoTogether/pulls)에서 "pull Request" 를 생성한다.
 - pull Request 의 commit message 를 통해 어떤 이슈에대한 내용을 해결했는지에 대한 태깅을 해준다. ex) resolve #{이슈번호} {커밋내용} 
 5. 프로젝트 owner 가 request 를 확인해 push 한 내용을 머지해준다.
 6. Merge request 이후 머지된 브랜치는 가능한 삭제하고, 새로운 브랜치를 따서 새로운 작업을 진행할 수 있도록 한다.
