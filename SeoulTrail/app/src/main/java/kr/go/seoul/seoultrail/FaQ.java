@@ -11,6 +11,7 @@ import android.widget.TextView;
 /**
  * Created by ntsys on 2017-02-14.
  */
+
 public class FaQ extends BaseActivity {
 
     private ImageView btnClose;

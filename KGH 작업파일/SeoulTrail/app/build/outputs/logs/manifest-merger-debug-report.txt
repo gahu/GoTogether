@@ -1,0 +1,173 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:2:1-56:12
+	package
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:3:5-37
+		INJECTED from C:\SeoulTrail\app\src\main\AndroidManifest.xml
+		INJECTED from C:\SeoulTrail\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\SeoulTrail\app\src\main\AndroidManifest.xml
+		INJECTED from C:\SeoulTrail\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\SeoulTrail\app\src\main\AndroidManifest.xml
+		INJECTED from C:\SeoulTrail\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:5:5-66
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:6:5-78
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:6:22-76
+application
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:8:5-54:19
+MERGED from [com.android.support:appcompat-v7:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\07c843b109e0d8e1bc434d7cde7dc2a883cf7aa5\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\0c91ad5da7b19d53052ba707d7c44b5ebf56d951\output\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\4b66e612a58cf629c2f206e1bf4e97a5bb7a29f6\output\AndroidManifest.xml:23:5-20
+MERGED from [com.naver.maps.open:naver-map-api:2.1.2] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\00d3b909dcc6f00522d6d8bb7810414e9f3f9ba6\output\AndroidManifest.xml:11:5-14:19
+MERGED from [com.jpardogo.materialtabstrip:library:1.1.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\2ddc3c540cee7337211ad2511e4863529b2ba2f7\output\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-v4:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\22f3bddc660d68bd11234b4389ad33b1ddd14c71\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\3dc43ca36d43bdab7390f3e46e553d2f47b5a8f7\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\7e3ae27a69ee2e0d628f9e5d06d7e2ec86af4178\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\a3efe4f9da67065ab7bf611aeb020b3dd2e936c3\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\b9d32568d8bf0bf3f924c648aa2052d7af90581e\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\d98f231cf734ee0ee99fa110db302c4c61b9a9c5\output\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\b8cfbb463ce443c99d7f90ba8d6b60e29aa84c32\output\AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:11:9-41
+	android:supportsRtl
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:12:9-35
+	android:hardwareAccelerated
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:15:9-44
+	android:allowBackup
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:9:9-35
+	android:icon
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:10:9-43
+	android:largeHeap
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:14:9-33
+	android:theme
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:13:9-65
+activity#kr.go.seoul.seoultrail.IntroActivity
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:16:9-23:20
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:17:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:16:19-70
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:18:13-22:29
+action#android.intent.action.MAIN
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:19:17-69
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:19:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:21:17-77
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:21:27-74
+activity#kr.go.seoul.seoultrail.MainActivity
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:25:9-26:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:26:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:25:19-69
+activity#kr.go.seoul.seoultrail.Course
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:27:9-28:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:28:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:27:19-63
+activity#kr.go.seoul.seoultrail.ImageViewPopup
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:29:9-30:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:30:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:29:19-71
+activity#kr.go.seoul.seoultrail.MenuActivity
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:31:9-32:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:32:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:31:19-69
+activity#kr.go.seoul.seoultrail.Information
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:33:9-34:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:34:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:33:19-68
+activity#kr.go.seoul.seoultrail.Event
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:35:9-36:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:36:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:35:19-62
+activity#kr.go.seoul.seoultrail.Cafe
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:37:9-38:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:38:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:37:19-61
+activity#kr.go.seoul.seoultrail.Camera
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:39:9-40:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:40:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:39:19-63
+activity#kr.go.seoul.seoultrail.GuideActivity
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:41:9-42:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:42:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:41:19-70
+activity#kr.go.seoul.seoultrail.Video
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:43:9-44:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:44:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:43:19-62
+activity#kr.go.seoul.seoultrail.Community
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:45:9-46:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:46:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:45:19-66
+activity#kr.go.seoul.seoultrail.SeoulTrail
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:47:9-48:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:48:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:47:19-67
+activity#kr.go.seoul.seoultrail.NMap.NMapViewer
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:49:9-50:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:50:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:49:19-72
+activity#kr.go.seoul.seoultrail.CourseInfo.CoursePointListActivity
+ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:51:9-52:51
+	android:screenOrientation
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:52:13-49
+	android:name
+		ADDED from C:\SeoulTrail\app\src\main\AndroidManifest.xml:51:19-91
+uses-sdk
+INJECTED from C:\SeoulTrail\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\07c843b109e0d8e1bc434d7cde7dc2a883cf7aa5\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\0c91ad5da7b19d53052ba707d7c44b5ebf56d951\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\4b66e612a58cf629c2f206e1bf4e97a5bb7a29f6\output\AndroidManifest.xml:21:5-43
+MERGED from [com.naver.maps.open:naver-map-api:2.1.2] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\00d3b909dcc6f00522d6d8bb7810414e9f3f9ba6\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.jpardogo.materialtabstrip:library:1.1.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\2ddc3c540cee7337211ad2511e4863529b2ba2f7\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\22f3bddc660d68bd11234b4389ad33b1ddd14c71\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\3dc43ca36d43bdab7390f3e46e553d2f47b5a8f7\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-utils:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\7e3ae27a69ee2e0d628f9e5d06d7e2ec86af4178\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-media-compat:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\a3efe4f9da67065ab7bf611aeb020b3dd2e936c3\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\b9d32568d8bf0bf3f924c648aa2052d7af90581e\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\d98f231cf734ee0ee99fa110db302c4c61b9a9c5\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\b8cfbb463ce443c99d7f90ba8d6b60e29aa84c32\output\AndroidManifest.xml:5:5-7:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:24.2.0] C:\Users\±è°üÇö.LAPTOP-05CEFHTJ\.android\build-cache\07c843b109e0d8e1bc434d7cde7dc2a883cf7aa5\output\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from C:\SeoulTrail\app\src\main\AndroidManifest.xml
+		INJECTED from C:\SeoulTrail\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\SeoulTrail\app\src\main\AndroidManifest.xml
+		INJECTED from C:\SeoulTrail\app\src\main\AndroidManifest.xml

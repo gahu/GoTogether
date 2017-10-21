@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/stamp_23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/stamp23_on"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_check" />
+
+            <TextView
+                android:id="@+id/stamp_23_count"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:includeFontPadding="false"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/stamp_24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/stamp24_on"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_check" />
+
+            <TextView
+                android:id="@+id/stamp_24_count"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:includeFontPadding="false"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/stamp_25"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/stamp25_on"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_check" />
+
+            <TextView
+                android:id="@+id/stamp_25_count"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:includeFontPadding="false"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/stamp_26"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/stamp26_on"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_check" />
+
+            <TextView
+                android:id="@+id/stamp_26_count"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:includeFontPadding="false"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/stamp_27"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/stamp27_on"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_check" />
+
+            <TextView
+                android:id="@+id/stamp_27_count"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:includeFontPadding="false"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/stamp_28"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/stamp28_on"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_check" />
+
+            <TextView
+                android:id="@+id/stamp_28_count"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:includeFontPadding="false"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>
