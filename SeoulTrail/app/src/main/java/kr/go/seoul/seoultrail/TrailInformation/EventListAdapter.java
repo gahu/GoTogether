@@ -18,6 +18,10 @@ import kr.go.seoul.seoultrail.R;
 /**
  * Created by ntsys on 2016-08-16.
  */
+/**
+* Modified by bgg89 2017-10-11 오후 7:17
+* version 1.0.1
+*/
 public class EventListAdapter extends ArrayAdapter<EventInfo> {
 
     private ViewHolder viewHolder = null;

@@ -59,21 +59,24 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
 
     private View[] stampView = new View[8];
     private View[] stampImgView = new View[28];
-    private int[] stampImgViewID = new int[]{R.id.stamp_01, R.id.stamp_02, R.id.stamp_03, R.id.stamp_04
+    private int[] stampImgViewID = new int[]{
+            R.id.stamp_01, R.id.stamp_02, R.id.stamp_03, R.id.stamp_04
             , R.id.stamp_05, R.id.stamp_06, R.id.stamp_07, R.id.stamp_08
             , R.id.stamp_09, R.id.stamp_10, R.id.stamp_11, R.id.stamp_12
             , R.id.stamp_13, R.id.stamp_14, R.id.stamp_15, R.id.stamp_16
             , R.id.stamp_17, R.id.stamp_18, R.id.stamp_19, R.id.stamp_20
             , R.id.stamp_21, R.id.stamp_22, R.id.stamp_23, R.id.stamp_24
             , R.id.stamp_25, R.id.stamp_26, R.id.stamp_27, R.id.stamp_28};
-    private int[] stampImgOffID = new int[]{R.drawable.stamp01_off, R.drawable.stamp02_off, R.drawable.stamp03_off, R.drawable.stamp04_off
+    private int[] stampImgOffID = new int[]{
+            R.drawable.stamp01_off, R.drawable.stamp02_off, R.drawable.stamp03_off, R.drawable.stamp04_off
             , R.drawable.stamp05_off, R.drawable.stamp06_off, R.drawable.stamp07_off, R.drawable.stamp08_off
             , R.drawable.stamp09_off, R.drawable.stamp10_off, R.drawable.stamp11_off, R.drawable.stamp12_off
             , R.drawable.stamp13_off, R.drawable.stamp14_off, R.drawable.stamp15_off, R.drawable.stamp16_off
             , R.drawable.stamp17_off, R.drawable.stamp18_off, R.drawable.stamp19_off, R.drawable.stamp20_off
             , R.drawable.stamp21_off, R.drawable.stamp22_off, R.drawable.stamp23_off, R.drawable.stamp24_off
             , R.drawable.stamp25_off, R.drawable.stamp26_off, R.drawable.stamp27_off, R.drawable.stamp28_off};
-    private int[] stampImgOnID = new int[]{R.drawable.stamp01_on, R.drawable.stamp02_on, R.drawable.stamp03_on, R.drawable.stamp04_on
+    private int[] stampImgOnID = new int[]{
+            R.drawable.stamp01_on, R.drawable.stamp02_on, R.drawable.stamp03_on, R.drawable.stamp04_on
             , R.drawable.stamp05_on, R.drawable.stamp06_on, R.drawable.stamp07_on, R.drawable.stamp08_on
             , R.drawable.stamp09_on, R.drawable.stamp10_on, R.drawable.stamp11_on, R.drawable.stamp12_on
             , R.drawable.stamp13_on, R.drawable.stamp14_on, R.drawable.stamp15_on, R.drawable.stamp16_on
@@ -81,7 +84,8 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
             , R.drawable.stamp21_on, R.drawable.stamp22_on, R.drawable.stamp23_on, R.drawable.stamp24_on
             , R.drawable.stamp25_on, R.drawable.stamp26_on, R.drawable.stamp27_on, R.drawable.stamp28_on};
     private View[] stampCountView = new View[28];
-    private int[] stampCountViewID = new int[]{R.id.stamp_01_count, R.id.stamp_02_count, R.id.stamp_03_count, R.id.stamp_04_count
+    private int[] stampCountViewID = new int[]{
+            R.id.stamp_01_count, R.id.stamp_02_count, R.id.stamp_03_count, R.id.stamp_04_count
             , R.id.stamp_05_count, R.id.stamp_06_count, R.id.stamp_07_count, R.id.stamp_08_count
             , R.id.stamp_09_count, R.id.stamp_10_count, R.id.stamp_11_count, R.id.stamp_12_count
             , R.id.stamp_13_count, R.id.stamp_14_count, R.id.stamp_15_count, R.id.stamp_16_count
@@ -170,6 +174,7 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
         stampImgView[26] = stampView[7].findViewById(stampImgViewID[26]);
         stampImgView[27] = stampView[7].findViewById(stampImgViewID[27]);
 
+/*----------------------------------------------------------------------------------------------------------------*/
 
         stampCountView[0] = stampView[0].findViewById(stampCountViewID[0]);
         stampCountView[1] = stampView[0].findViewById(stampCountViewID[1]);
