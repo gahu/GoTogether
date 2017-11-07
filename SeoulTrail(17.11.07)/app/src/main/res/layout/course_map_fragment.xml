@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.nhn.android.maps.NMapView
+        android:id="@+id/naver_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <CheckBox
+        android:id="@+id/btn_current_my_location"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/selector_check_current"
+        android:button="@null"
+        android:onClick="setCurrentLocation" />
+
+    <CheckBox
+        android:id="@+id/btn_stamp_location"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/selector_check_stamp"
+        android:button="@null"
+        android:onClick="showStamp"/>
+
+    <CheckBox
+        android:id="@+id/btn_point_location"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/btn_stamp_location"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/selector_check_point"
+        android:button="@null"
+        android:onClick="showPoint"/>
+
+    <CheckBox
+        android:id="@+id/btn_route_location"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/btn_point_location"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/selector_check_route"
+        android:button="@null"
+        android:onClick="showRoute"/>
+
+    <CheckBox
+        android:id="@+id/btn_safe_location"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/btn_route_location"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/selector_check_safe"
+        android:button="@null"
+        android:onClick="showSafePoint"/>
+</RelativeLayout>
