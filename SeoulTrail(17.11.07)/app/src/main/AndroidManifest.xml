@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kr.go.seoul.seoultrail">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:largeHeap="true"
+        android:hardwareAccelerated="false">
+        <activity android:name="kr.go.seoul.seoultrail.IntroActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="kr.go.seoul.seoultrail.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.Course"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.ImageViewPopup"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.MenuActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.Information"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.Event"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.Cafe"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.Camera"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.GuideActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.Video"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.Community"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.SeoulTrail"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.NMap.NMapViewer"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.CourseInfo.CoursePointListActivity"
+        android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.Menu_Connection"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.MenuBase"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.FAQ"
+            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.Stamp"
+            android:screenOrientation="portrait"/>
+
+
+
+
+
+
+
+    </application>
+
+</manifest>
