@@ -9,6 +9,8 @@ import android.widget.Button;
 import com.astuetz.PagerSlidingTabStrip;
 
 import kr.go.seoul.seoultrail.Common.PublicDefine;
+import kr.go.seoul.seoultrail.CourseInfo.CoursePageBaseFragment;
+import kr.go.seoul.seoultrail.CourseStamp.CourseStampFragment;
 
 /**
  * Created by ntsys on 2016-08-09.
@@ -82,7 +84,7 @@ public class MenuActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MenuActivity.this, Stamp.class);
+                Intent intent = new Intent(MenuActivity.this, CourseStampFragment.class);
                 view = Menu_Connection.FirstTabHGroup.getLocalActivityManager()
                         .startActivity("FirstTab_3", intent
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();

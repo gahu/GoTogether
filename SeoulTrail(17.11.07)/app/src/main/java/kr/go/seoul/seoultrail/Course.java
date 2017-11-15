@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.astuetz.PagerSlidingTabStrip;
 
 import kr.go.seoul.seoultrail.Common.PublicDefine;
+import kr.go.seoul.seoultrail.CourseInfo.CourseListAdapter;
+import kr.go.seoul.seoultrail.CourseInfo.CoursePageBaseFragment;
 
 /**
  * Created by ntsys on 2016-08-09.

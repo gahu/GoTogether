@@ -45,12 +45,12 @@ public class Course extends BaseActivity {
         tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         // Attach the view pager to the tab strip
         tabsStrip.setViewPager(viewPager);
-        Typeface type = Typeface.createFromAsset(getAssets(), "NotoSansCJKkr-DemiLight.otf");
-        LinearLayout view = (LinearLayout) tabsStrip.getChildAt(0);
-        int tabCount = view.getChildCount();
-        for (int i = 0; i < tabCount; i++) {
-            TextView textView = (TextView) view.getChildAt(i);
-            textView.setTypeface(type);
+            Typeface type = Typeface.createFromAsset(getAssets(), "NotoSansCJKkr-DemiLight.otf");
+            LinearLayout view = (LinearLayout) tabsStrip.getChildAt(0);
+            int tabCount = view.getChildCount();
+            for (int i = 0; i < tabCount; i++) {
+                TextView textView = (TextView) view.getChildAt(i);
+                textView.setTypeface(type);
             textView.setIncludeFontPadding(false);
         }
 
