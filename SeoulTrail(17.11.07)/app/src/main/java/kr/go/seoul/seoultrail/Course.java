@@ -46,7 +46,7 @@ public class Course extends BaseActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new CoursePagerFragmentAdapter(getSupportFragmentManager()));
         // Give the PagerSlidingTabStrip the ViewPager
-        tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+        /*tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         // Attach the view pager to the tab strip
         tabsStrip.setViewPager(viewPager);
 
@@ -58,7 +58,7 @@ public class Course extends BaseActivity {
             TextView textView = (TextView) view.getChildAt(i);
             textView.setTypeface(type);
             textView.setIncludeFontPadding(false);
-        }
+        }*/
 
     }
 

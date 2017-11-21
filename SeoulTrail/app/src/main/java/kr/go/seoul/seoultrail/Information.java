@@ -23,7 +23,7 @@ public class Information extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(R.layout.fragment_activity);
+        setContentView(R.layout.fragment_activity_info);
         PublicDefine.information = this;
         initView();
     }

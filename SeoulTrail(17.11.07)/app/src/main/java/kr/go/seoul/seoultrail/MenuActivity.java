@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.astuetz.PagerSlidingTabStrip;
 
 import kr.go.seoul.seoultrail.Common.PublicDefine;
+import kr.go.seoul.seoultrail.CourseInfo.CourseListFragment;
 import kr.go.seoul.seoultrail.CourseInfo.CoursePageBaseFragment;
 import kr.go.seoul.seoultrail.CourseStamp.CourseStampFragment;
 

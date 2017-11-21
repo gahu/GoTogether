@@ -7,6 +7,7 @@ import kr.go.seoul.seoultrail.CourseStamp.CourseStampFragment;
 import kr.go.seoul.seoultrail.Information;
 import kr.go.seoul.seoultrail.MainActivity;
 import kr.go.seoul.seoultrail.TrailInformation.TourInfoFragment;
+import kr.go.seoul.seoultrail.Stamp;
 
 /**
  * Created by ntsys on 2016-09-05.
@@ -30,4 +31,5 @@ public class PublicDefine {
     public static String appKey = "app.A030.gil.seoul.go.kr";
     public static String appLoggingActionKey = "http://app.A030.gil.seoul.go.kr/";
     public static String appLoggingUrl = "http://weblog.eseoul.go.kr/wlo/Logging";
+    public static Stamp stamp;
 }

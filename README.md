@@ -56,6 +56,10 @@ $ git pull
 $ git checkout {작업브랜치명}
 $ git rebase master
 ```
+- pull이 오류가 나면 기존에 작업하던 내용이 있어서이다. git add . -> git commit -m "{작업내용}" 후에 pull을 받아놓고 push를 해라
+- commit -> pull -> push
+(내컴퓨터에 올려놓는다 -> 깃의 새 내용을 내려받는다 -> 내 가상 공간의 내용을 깃에 올린다.(나의 브랜치에) -> pull request를 통해서 허가를 받는다.)
+
 3. remote 프로젝트로 push 한다. (remote 프로젝트의 master 브랜치가 아닌 다른 브랜치로 push)
 ```
 $ git add .
