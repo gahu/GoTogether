@@ -74,6 +74,7 @@ public class MainActivity extends TabActivity {
     final static String VIDEO = "3";
     final static String DAUMCAFE = "4";
     final static String SEOULTRAIL = "5";
+    final static String STAMP = "6";
 
     private String lastTabTag = "1";
 
@@ -245,6 +246,7 @@ public class MainActivity extends TabActivity {
         setupTab(VIDEO);
         setupTab(DAUMCAFE);
         setupTab(SEOULTRAIL);
+        setupTab(STAMP);
         tabHost.setCurrentTab(1);
         btnGuide.setVisibility(View.VISIBLE);
 
@@ -281,6 +283,10 @@ public class MainActivity extends TabActivity {
                     headerTitle.setText("서울 둘레길");
                     lastTabTag = SEOULTRAIL;
                     loggingAction = "SEOULTRAIL";
+                } else if (tag.equals(STAMP)) {
+                    headerTitle.setText("스탬프");
+                    lastTabTag = STAMP;
+                    loggingAction = "STAMP";
                 }
 
                 try {
@@ -483,10 +489,12 @@ public class MainActivity extends TabActivity {
             setContent.setContent(new Intent(this, Information.class));
         else if (tag.equals(VIDEO))
             setContent.setContent(new Intent(this, Video.class));
-        else if (tag.equals(DAUMCAFE)) {
+        else if (tag.equals(DAUMCAFE))
             setContent.setContent(new Intent(this, DaumCafe.class));
-        } else if (tag.equals(SEOULTRAIL)) {
+        else if (tag.equals(SEOULTRAIL))
             setContent.setContent(new Intent(this, SeoulTrail.class));
+        else if (tag.equals(STAMP)) {
+            setContent.setContent(new Intent(this, Stamp.class));
         }
         tabHost.addTab(setContent);
 
@@ -508,6 +516,8 @@ public class MainActivity extends TabActivity {
             img.setImageResource(R.drawable.selector_bar_icon04);
         } else if (text.equals(SEOULTRAIL)) {
             img.setImageResource(R.drawable.selector_bar_icon05);
+        } else if (text.equals(STAMP)) {
+            img.setImageResource(R.drawable.selector_bar_icon01);
         }
         return view;
     }
