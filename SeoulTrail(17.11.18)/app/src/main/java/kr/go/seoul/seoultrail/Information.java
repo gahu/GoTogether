@@ -25,8 +25,7 @@ public class Information extends BaseActivity {
 
 /*
 # 수정
-information 이미지 슬라이더 모두 지워버렸음
-슬라이더가 아닌 각자 실행되도록 수정 요망
+정보 이미지 슬라이더 모두 지워버렸음
 
 
     private void initView() {

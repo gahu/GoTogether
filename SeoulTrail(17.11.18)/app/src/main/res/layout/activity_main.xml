@@ -44,7 +44,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:background="@drawable/bg01_main"
+                        android:background="@drawable/bg_nav"
                         >
                     </TabWidget>
 
@@ -79,7 +79,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="128dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/bg01_main"
+                        android:src="@drawable/bg_main"
                         android:visibility="visible" />
                 </LinearLayout>
 

@@ -48,23 +48,6 @@ public class Course extends BaseActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new CoursePagerFragmentAdapter(getSupportFragmentManager()));
 
-<<<<<<< HEAD:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/Course.java
-        // Course와 Stamp의 선택 탭부분 삭제
-        // Give the PagerSlidingTabStrip the ViewPager
-        /*tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-        // Attach the view pager to the tab strip
-        tabsStrip.setViewPager(viewPager);
-
-
-        Typeface type = Typeface.createFromAsset(getAssets(), "arita_bold.ttf");
-        LinearLayout view = (LinearLayout) tabsStrip.getChildAt(0);
-        int tabCount = view.getChildCount();
-        for (int i = 0; i < tabCount; i++) {
-            TextView textView = (TextView) view.getChildAt(i);
-            textView.setTypeface(type);
-            textView.setIncludeFontPadding(false);
-        }*/
-=======
         // Course.class에서 탭으로 분류하던 부분을 제거
     }
 
@@ -80,7 +63,6 @@ public class Course extends BaseActivity {
         public int getCount() {
             return PAGE_COUNT;
         }
->>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/Course.java
 
         // 해당하는 page의 fragment를 생성
         @Override

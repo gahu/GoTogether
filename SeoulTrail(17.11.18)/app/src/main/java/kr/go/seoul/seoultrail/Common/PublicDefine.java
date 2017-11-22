@@ -9,10 +9,7 @@ import kr.go.seoul.seoultrail.Event;
 import kr.go.seoul.seoultrail.Information;
 import kr.go.seoul.seoultrail.MainActivity;
 import kr.go.seoul.seoultrail.MenuActivity;
-<<<<<<< HEAD:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/Common/PublicDefine.java
-=======
 import kr.go.seoul.seoultrail.Stamp;
->>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/Common/PublicDefine.java
 import kr.go.seoul.seoultrail.Video;
 
 /**

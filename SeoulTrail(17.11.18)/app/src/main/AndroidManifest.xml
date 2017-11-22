@@ -60,22 +60,10 @@
         android:screenOrientation="portrait"/>
         <activity android:name="kr.go.seoul.seoultrail.Menu_Connection"
             android:screenOrientation="portrait"/>
-<<<<<<< HEAD:SeoulTrail(17.11.18)/app/src/main/AndroidManifest.xml
-        <activity android:name="kr.go.seoul.seoultrail.MenuBase"
-            android:screenOrientation="portrait"/>
-=======
->>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b:SeoulTrail(17.11.18)/app/src/main/AndroidManifest.xml
         <activity android:name="kr.go.seoul.seoultrail.FAQ"
             android:screenOrientation="portrait"/>
         <activity android:name="kr.go.seoul.seoultrail.Stamp"
             android:screenOrientation="portrait"/>
-<<<<<<< HEAD:SeoulTrail(17.11.18)/app/src/main/AndroidManifest.xml
-
-
-
-
-
-=======
         <activity android:name="kr.go.seoul.seoultrail.Cafe"
             android:screenOrientation="portrait"/>
 
@@ -88,7 +76,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
         </provider>
->>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b:SeoulTrail(17.11.18)/app/src/main/AndroidManifest.xml
 
 
     </application>
