@@ -12,8 +12,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+<<<<<<< HEAD
 /**
  * Created by 김관현 on 2017-10-10.
+=======
+import kr.go.seoul.seoultrail.FAQInfo.FAQ_Depth1ExpandableAdapter;
+import kr.go.seoul.seoultrail.FAQInfo.FAQ_ExpandableListDataPump;
+
+/**
+ * Created by 임지호 on 2017-10-10.
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b
  */
 
 public class FAQ extends BaseActivity {

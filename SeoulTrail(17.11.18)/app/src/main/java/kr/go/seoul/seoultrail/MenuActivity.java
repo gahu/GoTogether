@@ -20,12 +20,18 @@ import kr.go.seoul.seoultrail.Common.PublicDefine;
  * Created by ntsys on 2016-08-09.
  * */
 public class MenuActivity extends BaseActivity {
+<<<<<<< HEAD
 
     private PagerSlidingTabStrip tabsStrip;
     private ViewPager viewPager;
 
 
 
+=======
+    private PagerSlidingTabStrip tabsStrip;
+    private ViewPager viewPager;
+
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -40,6 +46,7 @@ public class MenuActivity extends BaseActivity {
         btn_course.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD
                 // modify 여기 메인에서 넘어 갈때 이미지 없애려고 추가했는데 잘안넘어오는데 왜 그럴까
                 //ViewGroup.LayoutParams mParams = view.getLayoutParams(); // View의 Parent 설정 속성인 (LayoutParams) 을 얻어옴
                 //view1.setLayoutParams(mParams); // View에 새로운 속성을 적용
@@ -47,14 +54,19 @@ public class MenuActivity extends BaseActivity {
 
                 //view1.setVisibility(View.GONE);
                 //view1.invalidate();
+=======
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b
                 Intent intent = new Intent(MenuActivity.this, Course.class);
                 view = Menu_Connection.FirstTabHGroup.getLocalActivityManager()
                         .startActivity("FirstTab_3", intent
                                 .addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)).getDecorView();
                 Menu_Connection.FirstTabHGroup.replaceView(view);
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b
                 if(view1 != null){
                     view1.setVisibility(view.GONE);
 
@@ -132,7 +144,16 @@ public class MenuActivity extends BaseActivity {
         btn_cafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD
            Init();
+=======
+                Intent intent = new Intent(MenuActivity.this, Cafe.class);
+                view = Menu_Connection.FirstTabHGroup.getLocalActivityManager()
+                        .startActivity("FirstTab_3", intent
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
+                Menu_Connection.FirstTabHGroup.replaceView(view);
+                //Init();
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b
             }
         });
 
@@ -174,8 +195,11 @@ public class MenuActivity extends BaseActivity {
     }
 */
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b
     public void Init() {
 
         CustomSchemeURL csurl = new CustomSchemeURL(MenuActivity.this);

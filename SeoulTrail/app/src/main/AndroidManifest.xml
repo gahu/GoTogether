@@ -40,6 +40,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name="kr.go.seoul.seoultrail.SeoulTrail"
             android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.Stamp"
+            android:screenOrientation="portrait"/>
         <activity android:name="kr.go.seoul.seoultrail.NMap.NMapViewer"
             android:screenOrientation="portrait"/>
         <activity android:name="kr.go.seoul.seoultrail.CourseInfo.CoursePointListActivity"

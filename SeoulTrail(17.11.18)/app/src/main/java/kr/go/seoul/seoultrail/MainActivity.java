@@ -67,6 +67,7 @@ public class MainActivity extends TabActivity {
 
     private TabHost tabHost;
     private ImageView header_image;
+<<<<<<< HEAD:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
 
     final static String MAIN = "1";
     final static String COURSE = "2";
@@ -75,6 +76,15 @@ public class MainActivity extends TabActivity {
 
     private String lastTabTag = "1";     // 카페 커뮤니티 넘어 가는 부분 현재 참조 X
 
+=======
+
+    final static String MAIN = "1";
+    final static String COURSE = "2";
+    final static String COMMUNITY = "3";
+    final static String CAMERA = "4";
+
+    private String lastTabTag = "1";     // 카페 커뮤니티 넘어 가는 부분 현재 참조 X
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
 
     private WebView notiWebView;
     private ArrayList<String> notiList = new ArrayList<>();
@@ -227,7 +237,10 @@ public class MainActivity extends TabActivity {
     private void initView() {
         header_image = (ImageView) findViewById(R.id.header_image);
 
+<<<<<<< HEAD:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
 
+=======
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
         setupTabHost();
 
         tabHost.getTabWidget().setDividerDrawable(null);
@@ -238,7 +251,10 @@ public class MainActivity extends TabActivity {
         tabHost.setCurrentTab(0);           // MAIN 부분이 첫번째로 들어가기위함
         // 혹시나 setCurrentTab을 다른 탭으로 설정해버리면 제대로 된 값이 이벤트가 발생하지 않는다.
 
+<<<<<<< HEAD:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
 
+=======
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
@@ -247,11 +263,16 @@ public class MainActivity extends TabActivity {
                 String loggingAction = "";
 
                 if (tag.equals(MAIN)) {
+<<<<<<< HEAD:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
                     header_image.setImageResource(R.drawable.bg01_main);
+=======
+                    //header_image.setImageResource(R.drawable.bg01_main);
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
                     lastTabTag = MAIN;
                     loggingAction = "MAIN";
                     increaseHeaderImage();
                 } else if (tag.equals(COURSE)) {
+<<<<<<< HEAD:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
                     header_image.setImageResource(R.drawable.bg01_course);
                     lastTabTag = COURSE;
                     loggingAction = "COURSE";
@@ -274,6 +295,21 @@ public class MainActivity extends TabActivity {
                    */
                     loggingAction = "CAMERA";
                     //tabHost.setCurrentTab(Integer.parseInt(lastTabTag) - 1);
+=======
+                    //header_image.setImageResource(R.drawable.bg01_course);
+                    lastTabTag = COURSE;
+                    loggingAction = "COURSE";
+                    increaseHeaderImage();
+                } else if (tag.equals(COMMUNITY)) {
+                    //header_image.setImageResource(R.drawable.bg01_community);
+                    lastTabTag = COMMUNITY;
+                    loggingAction = "COMMUNITY";
+                    increaseHeaderImage();
+                } else if (tag.equals(CAMERA)) {
+                    lastTabTag = CAMERA;
+                    loggingAction = "CAMERA";
+                    increaseHeaderImage();
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
                 }
 
                 try {
@@ -332,10 +368,15 @@ public class MainActivity extends TabActivity {
         // 여기부분은탭 눌렀을경우 어떻게 동작할지 결정하는 부분이다. 그래서 MenuAcitivy로 넣어주었다.
         if (tag.equals(MAIN)) {
             setContent.setContent(new Intent(this, Menu_Connection.class));
+<<<<<<< HEAD:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
 
         }
         else if (tag.equals(COURSE)) {
 
+=======
+        }
+        else if (tag.equals(COURSE)) {
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
             setContent.setContent(new Intent(this, Course.class));
         }
         else if (tag.equals(COMMUNITY)) {
@@ -350,7 +391,7 @@ public class MainActivity extends TabActivity {
 
 
     private static View createTabView(final Context context, final String text) {
-        // layoutinflater를 이용해 xml 리소스를 읽어옴
+        // layoutinflater를 이용해 xml 리소스를 읽어와 tabview를 생성
         View view = LayoutInflater.from(context).inflate(R.layout.tab_widget_footer_custom, null);
         ImageView img;
 
@@ -380,7 +421,6 @@ public class MainActivity extends TabActivity {
                         tabHost.setCurrentTab(1);
                         //PublicDefine.information.setPager(1);
                         // #2 인포메이션부분 띄우지 않기 위해서 주석처리함.
-
 
 
                     }

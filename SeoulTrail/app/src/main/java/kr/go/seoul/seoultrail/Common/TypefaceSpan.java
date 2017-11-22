@@ -12,6 +12,7 @@ public class TypefaceSpan extends MetricAffectingSpan {
 
     private final Typeface typeface;
 
+    //actionbar title의 font를 바꾸는 클래스
     public TypefaceSpan(Typeface typeface) {
         this.typeface = typeface;
     }

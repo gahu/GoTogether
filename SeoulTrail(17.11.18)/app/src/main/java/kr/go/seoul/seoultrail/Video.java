@@ -34,6 +34,7 @@ import kr.go.seoul.seoultrail.TrailVideo.VideoListAdapter;
 
 /**
  * Created by ntsys on 2016-08-09.
+ * Modified by gahusb on 2017-11-02
  */
 public class Video extends BaseActivity {
     private ListView videoListView;

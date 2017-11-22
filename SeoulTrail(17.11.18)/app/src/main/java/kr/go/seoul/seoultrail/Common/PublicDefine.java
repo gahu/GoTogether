@@ -4,14 +4,20 @@ import kr.go.seoul.seoultrail.Course;
 import kr.go.seoul.seoultrail.CourseInfo.CourseListFragment;
 import kr.go.seoul.seoultrail.CourseInfo.CourseMapFragment;
 import kr.go.seoul.seoultrail.CourseStamp.CourseStampFragment;
+import kr.go.seoul.seoultrail.Cafe;
 import kr.go.seoul.seoultrail.Event;
 import kr.go.seoul.seoultrail.Information;
 import kr.go.seoul.seoultrail.MainActivity;
 import kr.go.seoul.seoultrail.MenuActivity;
+<<<<<<< HEAD:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/Common/PublicDefine.java
+=======
+import kr.go.seoul.seoultrail.Stamp;
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b:SeoulTrail(17.11.18)/app/src/main/java/kr/go/seoul/seoultrail/Common/PublicDefine.java
 import kr.go.seoul.seoultrail.Video;
 
 /**
  * Created by ntsys on 2016-09-05.
+ * Modified by 김관현 on 2017-10-30
  */
 public class PublicDefine {
     public static Video video;
@@ -23,6 +29,8 @@ public class PublicDefine {
     public static MenuActivity menuActivty;        // 메뉴 엑티비티 추가함
     public static CourseStampFragment courseStampFragment;
     public static Event event;
+    public static Stamp stamp;
+    public static Cafe cafe;
     //public static TourInfoFragment tourInfoFragment;
 
     public static String serviceSmgisKey = "a2e67e834d624f09aa68f1a1bdfa5fa5";
