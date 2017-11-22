@@ -1,0 +1,7 @@
+#Tue Nov 07 16:30:42 KST 2017
+base.0=C\:\\dev\\SeoulTrail(17.11.07)\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_8c1a82cd7653149e0b9cc8f089192a6584ae63df
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\dev\\SeoulTrail(17.11.07)\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_0e988f765dccb6129f619b8da73f31ce151e8499\\classes.dex
+base.1=C\:\\dev\\SeoulTrail(17.11.07)\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_0e988f765dccb6129f619b8da73f31ce151e8499
+file.0=C\:\\dev\\SeoulTrail(17.11.07)\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_8c1a82cd7653149e0b9cc8f089192a6584ae63df\\classes.dex
