@@ -64,7 +64,9 @@ public class Video extends BaseActivity {
             }
         });
 
+        // ListView를 생성
         videoListView.setAdapter(new VideoListAdapter(this, R.layout.video_list_item, videoInfoArrayList));
+        // 클릭시 링크를 parse로 만들어 뿌려준다.
         videoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {

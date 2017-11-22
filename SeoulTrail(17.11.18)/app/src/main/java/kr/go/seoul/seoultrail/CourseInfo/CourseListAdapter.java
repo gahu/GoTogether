@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -86,7 +87,7 @@ public class CourseListAdapter extends BaseExpandableListAdapter {
             viewHolder.courseLevelImg = (ImageView) v.findViewById(R.id.course_level_img);
             viewHolder.courseLocation = (TextView) v.findViewById(R.id.course_location);
             viewHolder.courseWalkTime = (TextView) v.findViewById(R.id.course_walk_time);
-            viewHolder.viewMap = (LinearLayout) v.findViewById(R.id.view_map);
+            viewHolder.viewMap = (RelativeLayout) v.findViewById(R.id.view_map);
             v.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) v.getTag();
@@ -184,7 +185,7 @@ public class CourseListAdapter extends BaseExpandableListAdapter {
         public ImageView courseLevelImg;
         public TextView courseLocation;
         public TextView courseWalkTime;
-        public LinearLayout viewMap;
+        public RelativeLayout viewMap;
 
         public ImageView courseInfo01;
         public ImageView courseInfo02;

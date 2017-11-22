@@ -15,10 +15,8 @@ public class Menu_Connection extends ActivityGroup {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         history = new ArrayList<View>();
         FirstTabHGroup = this;
-
 
         Intent intent = new Intent(Menu_Connection.this, MenuActivity.class);
         View view = getLocalActivityManager().startActivity("FirstTab_1", intent

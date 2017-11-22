@@ -49,7 +49,6 @@ public class MenuActivity extends BaseActivity {
                 }else{
                     final ImageView view2 = (ImageView) findViewById(R.id.header_image); // View를 얻오옴
                     //view2.setVisibility(view.GONE);
-
                 }
             }
         });
