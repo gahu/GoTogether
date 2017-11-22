@@ -65,7 +65,7 @@ public class Camera extends BaseActivity{
             }
         });
 
-        checkPermission();
+        //checkPermission();
     }
 
     // 경로 저장
