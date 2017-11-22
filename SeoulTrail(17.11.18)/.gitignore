@@ -1,8 +1,13 @@
 *.iml
-.gradle
+*.iws
+*.ipr
+.idea/
+.gradle/
 /local.properties
-/.idea/workspace.xml
-/.idea/libraries
 .DS_Store
-/build
+
+*/build
 /captures
+
+*~
+~.swp

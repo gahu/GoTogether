@@ -82,7 +82,7 @@ public class MainActivity extends TabActivity {
 
     // 여기서부터는 17.10.24 수정 부분
 //    private CheckBox btnMore;
-    //    private LinearLayout gpsBtnLayout;
+//    private LinearLayout gpsBtnLayout;
 //    private TextView checkMyLocation;
 //    private TextView checkNMapMyLocation;
 

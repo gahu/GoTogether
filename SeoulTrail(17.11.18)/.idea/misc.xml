@@ -99,7 +99,10 @@
     </entry>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+<<<<<<< HEAD:SeoulTrail(17.11.18)/.idea/misc.xml
+=======
 >>>>>>> ed6f1b27abcd0cf6d140bc437d4f8083f01c8ec3
+>>>>>>> 9719a4e066a5af9d015b30b2ba06ee80ad9d034b:SeoulTrail(17.11.18)/.idea/misc.xml
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
