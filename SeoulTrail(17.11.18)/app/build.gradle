@@ -21,13 +21,13 @@ android {
     }
 }
 dependencies {
-
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile 'com.naver.maps.open:naver-map-api:2.1.2@aar'
     compile 'com.jpardogo.materialtabstrip:library:1.1.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
     compile files('libs/WLAppLogging-1.2.3-1.7.jar')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

@@ -222,14 +222,14 @@
                 android:textSize="20sp"
                 android:text="문의안내"/>
             <Button
-                android:id="@+id/btn_etc"
+                android:id="@+id/btn_weather"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/border"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp"
-                android:text="기타"/>
+                android:text="날씨"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
