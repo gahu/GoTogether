@@ -155,6 +155,20 @@ public class MenuActivity extends BaseActivity {
                 Menu_Connection.FirstTabHGroup.replaceView(view);
             }
         });
+
+        // 9. 날씨정보
+
+        final Button btn_weather = (Button) findViewById(R.id.btn_weather);
+        btn_weather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, Weather.class);
+                view = Menu_Connection.FirstTabHGroup.getLocalActivityManager()
+                        .startActivity("FirstTab_3", intent
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
+                Menu_Connection.FirstTabHGroup.replaceView(view);
+            }
+        });
     }
 
 

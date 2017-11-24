@@ -11,6 +11,8 @@ import kr.go.seoul.seoultrail.MainActivity;
 import kr.go.seoul.seoultrail.MenuActivity;
 import kr.go.seoul.seoultrail.Stamp;
 import kr.go.seoul.seoultrail.Video;
+import kr.go.seoul.seoultrail.Weather;
+import kr.go.seoul.seoultrail.WeatherInfo.WeatherFragment;
 
 /**
  * Created by ntsys on 2016-09-05.
@@ -28,6 +30,8 @@ public class PublicDefine {
     public static Event event;
     public static Stamp stamp;
     public static Cafe cafe;
+    public static Weather weather;
+    public static WeatherFragment weatherFragment;
     //public static TourInfoFragment tourInfoFragment;
 
     public static String serviceSmgisKey = "a2e67e834d624f09aa68f1a1bdfa5fa5";
