@@ -70,9 +70,9 @@ public class Course extends BaseActivity {
             return CoursePageBaseFragment.newInstance(position + 1);
         }
 
-        public void setStampCourse(int course) {
+        /*public void setStampCourse(int course) {
             CourseStampFragment.newInstance(2).setCourseNo(course);
-        }
+        }*/
     }
 
     @Override
@@ -104,10 +104,10 @@ public class Course extends BaseActivity {
 
     }
 
-    public void setPagerToStamp(final int courseNo) {
+/*    public void setPagerToStamp(final int courseNo) {
         viewPager.setCurrentItem(1);
         ((CoursePagerFragmentAdapter) viewPager.getAdapter()).setStampCourse(courseNo);
-    }
+    }*/
 
     public void dismissPointListActivity(int potions) {
         SharedPreferences pref = getSharedPreferences("SYSTEM", 0);
