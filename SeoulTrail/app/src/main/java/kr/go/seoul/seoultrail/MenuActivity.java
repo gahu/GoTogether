@@ -111,11 +111,11 @@ public class MenuActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MenuActivity.this, Stamp.class);
+               /* Intent intent = new Intent(MenuActivity.this, Stamp.class);
                 view = Menu_Connection.FirstTabHGroup.getLocalActivityManager()
                         .startActivity("FirstTab_3", intent
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
-                Menu_Connection.FirstTabHGroup.replaceView(view);
+                Menu_Connection.FirstTabHGroup.replaceView(view);*/
                 Init();
             }
 
@@ -133,7 +133,6 @@ public class MenuActivity extends BaseActivity {
                         .startActivity("FirstTab_3", intent
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
                 Menu_Connection.FirstTabHGroup.replaceView(view);
-
             }
         });
 

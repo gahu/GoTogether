@@ -628,7 +628,7 @@ public class MainActivity extends TabActivity {
             setContent.setContent(new Intent(this, Community.class));
         }
         else if (tag.equals(CAMERA)) {
-            setContent.setContent(new Intent(this, Camera.class));
+            setContent.setContent(new Intent(this, CameraActivity.class));
         }
         tabHost.addTab(setContent);
 
