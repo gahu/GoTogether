@@ -117,14 +117,15 @@ public class MainActivity extends TabActivity {
         TextView mid_text = (TextView) findViewById(R.id.main_text_image2);
         TextView bottom_text = (TextView) findViewById(R.id.main_text_image3);
         ImageView im = (ImageView) findViewById(R.id.header_image);
+        LinearLayout li_text = (LinearLayout) findViewById(R.id.nav);
 
         this.value = value;
 
         switch (value) {
             // modify 1. 도우미 부분
-
             case 1:
-                im.setImageResource(R.drawable.bg_course_noname);
+                li_text.setBackgroundResource(R.drawable.bg05_nav);
+                im.setImageResource(R.drawable.bg05_header);
                 top_text.setVisibility(View.GONE);
                 top_text.setText("도움이 필요하세요?");
                 top_text.setVisibility(View.VISIBLE);
@@ -132,7 +133,7 @@ public class MainActivity extends TabActivity {
                 top_text.setPadding(0, 30, 0, 0);
 
                 mid_text.setVisibility(View.GONE);
-                mid_text.setText("'둘레길 도우미'");
+                mid_text.setText("\"둘레길 도우미\"");
                 mid_text.setVisibility(View.VISIBLE);
                 mid_text.setGravity(Gravity.CENTER | LEFT);
 
@@ -143,15 +144,14 @@ public class MainActivity extends TabActivity {
                 bottom_text.setTextSize(15);
                 bottom_text.setPadding(0, 0, 0, 60);
 
-
                 break;
+
             // modify 둘레길이란? 부분
-
             case 2:
-
-                im.setImageResource(R.drawable.bg_community_noname);
+                li_text.setBackgroundResource(R.drawable.bg06_nav);
+                im.setImageResource(R.drawable.bg06_header);
                 top_text.setVisibility(View.GONE);
-                top_text.setText("천천히 알아가세요.");
+                top_text.setText("\"천천히 알아가세요\"");
                 top_text.setVisibility(View.VISIBLE);
                 top_text.setGravity(Gravity.TOP | LEFT);
                 top_text.setPadding(0, 30, 0, 0);
@@ -167,29 +167,34 @@ public class MainActivity extends TabActivity {
                 bottom_text.setGravity(Gravity.BOTTOM | LEFT);
                 bottom_text.setTextSize(15);
                 bottom_text.setPadding(0, 0, 0, 60);
+
                 break;
+
             //modify 영상 부분
             case 3:
-                im.setImageResource(R.drawable.bg_community_noname);
+                li_text.setBackgroundResource(R.drawable.bg07_nav);
+                im.setImageResource(R.drawable.bg07_header);
                 top_text.setVisibility(View.GONE);
-                top_text.setText("둘러보세요");
+                top_text.setText("\"둘러보세요\"");
                 top_text.setVisibility(View.VISIBLE);
                 top_text.setGravity(Gravity.LEFT|CENTER);
                 top_text.setPadding(0, 0, 0, 0);
 
                 mid_text.setVisibility(View.GONE);
-                mid_text.setText("'둘레길 동영상'");
+                mid_text.setText("\"둘레길 동영상\"");
                 mid_text.setVisibility(View.VISIBLE);
                 mid_text.setGravity(Gravity.LEFT | BOTTOM);
                 mid_text.setPadding(0, 0, 0, 30);
                 bottom_text.setVisibility(View.GONE);
+
                 break;
+
             // 3번째 카메라 탭 처리
             case 4:
-
-                im.setImageResource(R.drawable.bg_community_noname);
+                li_text.setBackgroundResource(R.drawable.bg08_nav);
+                im.setImageResource(R.drawable.bg08_header);
                 top_text.setVisibility(View.GONE);
-                top_text.setText("발자취를 남기세요.");
+                top_text.setText("\"발자취를 남기세요\"");
                 top_text.setVisibility(View.VISIBLE);
                 top_text.setGravity(Gravity.TOP | LEFT);
                 top_text.setPadding(0, 30, 0, 0);
@@ -207,14 +212,15 @@ public class MainActivity extends TabActivity {
                 bottom_text.setPadding(0, 0, 0, 30);
 
                 break;
-            //카페부분은 필요없을것같다
 
+            //카페부분은 필요없을것같다
             case 5:
                 break;
 
-
+            //날씨부분
             case 6:
-                im.setImageResource(R.drawable.bg_community_noname);
+                li_text.setBackgroundResource(R.drawable.bg09_nav);
+                im.setImageResource(R.drawable.bg09_header);
                 top_text.setVisibility(View.GONE);
                 top_text.setText("등산하기전 확인하세요.");
                 top_text.setVisibility(View.VISIBLE);
@@ -222,7 +228,7 @@ public class MainActivity extends TabActivity {
                 top_text.setPadding(0, 30, 0, 0);
 
                 mid_text.setVisibility(View.GONE);
-                mid_text.setText("'둘레길 날씨'");
+                mid_text.setText("\"둘레길 날씨\"");
                 mid_text.setVisibility(View.VISIBLE);
                 mid_text.setGravity(Gravity.CENTER | LEFT);
 
@@ -234,8 +240,11 @@ public class MainActivity extends TabActivity {
                 bottom_text.setPadding(0, 0, 0, 60);
 
                 break;
+
+            //행사안내
             case 7:
-                im.setImageResource(R.drawable.bg_community_noname);
+                li_text.setBackgroundResource(R.drawable.bg10_nav);
+                im.setImageResource(R.drawable.bg10_header);
                 top_text.setVisibility(View.GONE);
                 top_text.setText("같이 즐기세요");
                 top_text.setVisibility(View.VISIBLE);
@@ -243,7 +252,7 @@ public class MainActivity extends TabActivity {
                 top_text.setPadding(0, 30, 0, 0);
 
                 mid_text.setVisibility(View.GONE);
-                mid_text.setText("'둘레길 행사'");
+                mid_text.setText("\"둘레길 행사\"");
                 mid_text.setVisibility(View.VISIBLE);
                 mid_text.setGravity(Gravity.CENTER | LEFT);
 
@@ -255,8 +264,11 @@ public class MainActivity extends TabActivity {
                 bottom_text.setPadding(0, 0, 0, 60);
 
                 break;
+
+            //FAQ
             case 8:
-                im.setImageResource(R.drawable.bg_community_noname);
+                li_text.setBackgroundResource(R.drawable.bg11_nav);
+                im.setImageResource(R.drawable.bg11_header);
                 top_text.setVisibility(View.GONE);
                 top_text.setText("무엇이든");
                 top_text.setVisibility(View.VISIBLE);
@@ -264,7 +276,7 @@ public class MainActivity extends TabActivity {
                 top_text.setPadding(0, 30, 0, 0);
 
                 mid_text.setVisibility(View.GONE);
-                mid_text.setText("'질문 하세요'");
+                mid_text.setText("\"질문 하세요\"");
                 mid_text.setVisibility(View.VISIBLE);
                 mid_text.setGravity(Gravity.CENTER | LEFT);
 
@@ -274,13 +286,15 @@ public class MainActivity extends TabActivity {
                 bottom_text.setGravity(Gravity.BOTTOM | LEFT);
                 bottom_text.setTextSize(15);
                 bottom_text.setPadding(0, 0, 0, 60);
+
                 break;
+
+            //기타 개발 내역
             case 9:
                 break;
-
-
         }
     }
+
     public void settingTab(int value) {
 
         TextView top_text = (TextView) findViewById(R.id.main_text_image1);
@@ -294,7 +308,6 @@ public class MainActivity extends TabActivity {
             // modify 메인 부분 텍스트 변경( case0~ 3번까지 탭부분 이벤트처리)
             //  1번째 탭 메인 처리
             case 1:
-
                 //header_back.setImageResource(R.drawable.bg);
 
                 li_tab.setBackgroundResource(R.drawable.bg01_nav);
@@ -320,6 +333,7 @@ public class MainActivity extends TabActivity {
                 bottom_text.setVisibility(View.GONE);
 
                 break;
+
             // modify 코스 부분 텍스트 변경
             //2번째 코스정보 탭 처리
             case 2:
@@ -345,6 +359,7 @@ public class MainActivity extends TabActivity {
                 bottom_text.setTextSize(15);
                 bottom_text.setPadding(0, 0, 0, 30);
                 break;
+
             // 3번째 커뮤니티 탭 처리
             case 3:
                 li_tab.setBackgroundResource(R.drawable.bg03_nav);
@@ -367,9 +382,11 @@ public class MainActivity extends TabActivity {
                 bottom_text.setTextSize(15);
                 bottom_text.setPadding(0, 0, 0, 30);
                 break;
+
             // 4번째 카메라 탭 처리
             case 4:
                 break;
+
             default:
                 break;
         }
@@ -511,14 +528,12 @@ public class MainActivity extends TabActivity {
         tabHost.setCurrentTab(0);           // MAIN 부분이 첫번째로 들어가기위함
         // 혹시나 setCurrentTab을 다른 탭으로 설정해버리면 제대로 된 값이 이벤트가 발생하지 않는다.
 
-
-
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tag) {
 
                 String loggingAction = "";
-// modify 탭부분 들어가는 글자 이미지 변경
+                // modify 탭부분 들어가는 글자 이미지 변경
                 if (tag.equals(MAIN)) {
                     //header_image.setImageResource(R.drawable.bg01_main);
                     lastTabTag = MAIN;
@@ -594,6 +609,7 @@ public class MainActivity extends TabActivity {
         tabHost.clearAllTabs();
         initView();
     }
+
     private void setupTab(final String tag) {
         View tabview = createTabView(tabHost.getContext(), tag);
 
@@ -617,7 +633,6 @@ public class MainActivity extends TabActivity {
         tabHost.addTab(setContent);
 
     }
-
 
     private static View createTabView(final Context context, final String text) {
         // layoutinflater를 이용해 xml 리소스를 읽어와 tabview를 생성
@@ -772,7 +787,6 @@ public class MainActivity extends TabActivity {
     public void showDetailInfo(NMapPOIitem item) {
         new ProcessNetworkPointDetailThread().execute(item.getTag().toString(), null, null);
     }
-
 
     public class ProcessNetworkImportantNoticeList extends AsyncTask<Void, Void, String> {
         protected String doInBackground(Void... arg0) {
@@ -937,7 +951,6 @@ public class MainActivity extends TabActivity {
                 return "";
             }
         }
-
     }
 
     // TODO 네트워크 세부적인 쓰레드 과정 구현 부분
@@ -1040,11 +1053,10 @@ public class MainActivity extends TabActivity {
         startActivity(intent);
 
     }
+
     public void showMain(View view) {
         tabHost.setCurrentTab(1);
         //PublicDefine.information.setPager(0);
         // # 인포메이션 부분 없애기 위해서 주석 처리 하였음
     }
-
-
 }
