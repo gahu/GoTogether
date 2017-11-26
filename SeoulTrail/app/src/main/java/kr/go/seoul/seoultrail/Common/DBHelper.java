@@ -30,10 +30,13 @@ public class DBHelper extends SQLiteOpenHelper {
     // Database Name
     private static final String DATABASE_NAME = "STAMP";
 
+
     // Contacts table name
     private static final String TABLE_LOCATION = "stamp_location";
     private static final String TABLE_HISTORY = "stamp_history";
     private SQLiteDatabase db;
+
+
 
     // Contacts Table Columns names
     private static final String KEY_ID = "id";
@@ -92,17 +95,21 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        // 위치 정보 테이블 생성
         String CREATE_LOCATION_TABLE = "CREATE TABLE " + TABLE_LOCATION + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_COURSE_ID + " TEXT," + KEY_COURSE_NO + " INTEGER,"
                 + KEY_STAMP_NO + " INTEGER," + KEY_LAT + " TEXT," + KEY_LNG + " TEXT," + KEY_STAMP_NAME + " TEXT,"
                 + KEY_LAST_UPDATE_DATE + " INTEGER," + KEY_COMPLETE_COUNT + " INTEGER" + ")";
         db.execSQL(CREATE_LOCATION_TABLE);
 
+        // 히스토리 테이블 생성
         String CREATE_HISTORY_TABLE = "CREATE TABLE " + TABLE_HISTORY + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_COURSE_ID + " TEXT," + KEY_COURSE_NO + " INTEGER,"
                 + KEY_STAMP_NO + " INTEGER," + KEY_UPDATE_DATE + " TEXT" + ")";
+
         db.execSQL(CREATE_HISTORY_TABLE);
 
+        // 제이슨 형식으로 값을 가져오기 위함.
         try {
             JSONObject jsonMain = new JSONObject(ORG_STAMP.toString());
             JSONArray jsonlist = jsonMain.getJSONArray("list");
@@ -129,6 +136,8 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    // db 존재 유무 확인
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOCATION);
@@ -137,13 +146,14 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // ArrayList형태의 리스트 스탬프 위치 가져 오기 위함.
     public ArrayList<StampLocation> getStampLocationList(int course) {
         ArrayList<StampLocation> stampLocationList = new ArrayList<StampLocation>();
         StampLocation location;
         SQLiteDatabase db = this.getWritableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_LOCATION + " WHERE " + KEY_COURSE_NO + " = " + course;
-
         Cursor cursor = db.rawQuery(selectQuery, null);
+
         if (cursor.moveToFirst()) {
             do {
                 location = new StampLocation(cursor.getString(cursor.getColumnIndex(KEY_COURSE_ID))
@@ -161,6 +171,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return stampLocationList;
     }
+    // ArrayList형태의 스탬프 개수 확인하는 부분
 
     public ArrayList<StampLocation> getCompleteStampCount() {
         ArrayList<StampLocation> stampLocationList = new ArrayList<StampLocation>();
@@ -187,6 +198,8 @@ public class DBHelper extends SQLiteOpenHelper {
         return stampLocationList;
     }
 
+    // 스탬프 기록 확인 하는 부분
+
     public ArrayList<StampHistory> getCompleteStampHistory(int stampNum) {
         ArrayList<StampHistory> stampHistoryList = new ArrayList<StampHistory>();
         StampHistory history;
@@ -207,6 +220,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return stampHistoryList;
     }
 
+    // ArrayLsit형태의 스탬프 위치
     public ArrayList<StampLocation> getNoCompleteStampLocation() {
         ArrayList<StampLocation> stampLocationList = new ArrayList<StampLocation>();
         StampLocation location;
@@ -232,6 +246,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return stampLocationList;
     }
 
+    // 스탬프 세팅 부분
     public void setCompleteStamp(StampLocation location) {
         SQLiteDatabase db = this.getWritableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_LOCATION + " WHERE " + KEY_STAMP_NO + " = " + location.getStampNo();
@@ -245,6 +260,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
             db.close();
 
+            // 스탬프 추가 했을 경우?
             addHistory(location);
         } else {
             if (db.isOpen()) {
@@ -253,7 +269,7 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.e("NTsys", "no data setCompleteStamp location");
         }
     }
-
+    // 모든 코스 정보 가져 오기 위한 메소드
     public boolean getCompleteAllCourse(StampLocation location) {
         SQLiteDatabase db = this.getWritableDatabase();
         String selectQuery = "SELECT " + KEY_COMPLETE_COUNT + " FROM " + TABLE_LOCATION + " WHERE " + KEY_STAMP_NO + " = " + location.getStampNo();
@@ -296,6 +312,8 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    // 위치 업데이트 하기 위함.
+
     public void updateLocation(StampLocation location) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -312,6 +330,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    // 위치 추가
     public void addLocation(StampLocation location) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -330,6 +349,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    // 위치 기록 부분
     public void addHistory(StampLocation location) {
         SQLiteDatabase db = this.getWritableDatabase();
         SimpleDateFormat historyFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -346,6 +366,8 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    // 스탬프 Sort부분
+
     public void sortAndUpdateStampNo() {
         int i = 0;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -356,7 +378,6 @@ public class DBHelper extends SQLiteOpenHelper {
             do {
                 ContentValues values = new ContentValues();
                 values.put(KEY_STAMP_NO, i++);
-
                 db.update(TABLE_LOCATION, values, KEY_COURSE_ID + " = ?", new String[]{cursor.getString(cursor.getColumnIndex(KEY_COURSE_ID))});
             } while (cursor.moveToNext());
         } else {
@@ -364,6 +385,8 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         db.close();
     }
+
+    // 스탬프 없을 경우
 
     private void setDefaultStamp(StampLocation location, SQLiteDatabase db) {
         ContentValues values = new ContentValues();
@@ -379,6 +402,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.insert(TABLE_LOCATION, null, values);
     }
+
+    // 스탬프 번호 정렬
 
     public void setDefaultsortAndUpdateStampNo(SQLiteDatabase db) {
         int i = 0;

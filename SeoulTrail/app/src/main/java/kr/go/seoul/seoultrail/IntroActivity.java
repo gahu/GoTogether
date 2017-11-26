@@ -2,16 +2,13 @@ package kr.go.seoul.seoultrail;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -49,7 +46,7 @@ import kr.go.seoul.seoultrail.Common.StampLocation;
 /**
  * Created by ntsys on 2016-10-04.
  */
-public class IntroActivity extends Activity {
+public class IntroActivity extends BaseActivity {
 
     private CustomProgressDialog loading;
 
@@ -148,7 +145,7 @@ public class IntroActivity extends Activity {
                     }
                 });
                 final AlertDialog alert = builder.create();
-                final Typeface mTypeface = Typeface.createFromAsset(this.getAssets(), "NotoSansCJKkr-DemiLight.otf");
+                final Typeface mTypeface = Typeface.createFromAsset(this.getAssets(), "arita_bold.ttf");
                 alert.setOnShowListener(new DialogInterface.OnShowListener() {
                     @Override
                     public void onShow(DialogInterface dialogInterface) {
@@ -216,7 +213,7 @@ public class IntroActivity extends Activity {
                     }
                 });
         final AlertDialog dialog = ad.create();    // 알림창 객체 생성
-        final Typeface mTypeface = Typeface.createFromAsset(this.getAssets(), "NotoSansCJKkr-DemiLight.otf");
+        final Typeface mTypeface = Typeface.createFromAsset(this.getAssets(), "arita_bold.ttf");
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -251,10 +248,18 @@ public class IntroActivity extends Activity {
             HttpConnectionParams.setSoTimeout(params, 5000);
 
             HttpGet httpGet = new HttpGet("http://map.seoul.go.kr/smgis/apps/theme.do?cmd=getContentsList&page_no=1&page_size=999&key=" + PublicDefine.serviceSmgisKey + "&coord_x=127.0245909&coord_y=37.5669845&distance=200000&search_type=0&search_name=&theme_id=100211&subcate_id=100211,17");
+
             try {
                 response = client.execute(httpGet);
                 String resultJson = EntityUtils.toString(response.getEntity(), "UTF-8");
+                // insert 여기 부분 추가함
+                Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+
                 return resultJson;
+
             } catch (ClientProtocolException e) {
                 Log.e("NTsys", "연결 예외 상황 발생");
                 return "";
@@ -293,10 +298,14 @@ public class IntroActivity extends Activity {
         } catch (Exception e) {
         } finally {
             Message msg = new Message();
-            appStartHandle.sendMessageDelayed(msg, 0);
+            // modify 여기부분도 주석 처리 해버렸음.
+
+            //appStartHandle.sendMessageDelayed(msg, 0);
         }
     }
+    // modify 여기 부분 수정함 처음 진입시 퍼미션 허용 안하기2 위해서 ! 여기부분이 위치허용할까 여부 물어본다.
 
+    /*
     public Handler appStartHandle = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -321,7 +330,7 @@ public class IntroActivity extends Activity {
                     }
                 });
                 final AlertDialog alertDialog = alertDialogBuilder.create();
-                final Typeface mTypeface = Typeface.createFromAsset(IntroActivity.this.getAssets(), "NotoSansCJKkr-DemiLight.otf");
+                final Typeface mTypeface = Typeface.createFromAsset(IntroActivity.this.getAssets(), "arita_bold.ttf");
                 alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
                     @Override
                     public void onShow(DialogInterface dialogInterface) {
@@ -338,4 +347,5 @@ public class IntroActivity extends Activity {
             }
         }
     };
+    */
 }

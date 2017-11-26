@@ -1,4 +1,10 @@
 이미지 필요한거
-1. 공통부분 레이아웃
+ - 공통부분 레이아웃
     - 상단탭 메뉴 on, off(55dp, 원래 아이콘 너비 상관없이 높이 60px인데 시안은 배경색까지 바꿔야해서 다르게해야할듯)
     - 각 액티비티별 소개이미지(맞춰봐야할듯? 일단 메인의 큰이미지 210dp)
+ - 11/22
+    - icon_images : mipmap-hdpi / mipmap-ldpi / mipmap-mdpi / mipmap-xhdpi / mipmap-xxhdpi
+      크기 :          5.29KB        2.03KB        3.03KB         7.78KB         12.9KB
+      디스크 할당 :   8.00KB        4.00KB        4.00KB         8.00KB         16.0KB
+    - stamp_off
+    - Menu_image

@@ -1,17 +1,25 @@
-/* 
+/*
  * NMapViewer.java $version 2010. 1. 1
- * 
- * Copyright 2010 NHN Corp. All rights Reserved. 
- * NHN PROPRIETARY/CONFIDENTIAL. Use is subject to license terms. 
+ *
+ * Copyright 2010 NHN Corp. All rights Reserved.
+ * NHN PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 
 package kr.go.seoul.seoultrail.NMap;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -65,8 +73,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import kr.go.seoul.seoultrail.Common.DBHelper;
+import kr.go.seoul.seoultrail.Common.FontUtils;
 import kr.go.seoul.seoultrail.Common.PublicDefine;
 import kr.go.seoul.seoultrail.Common.StampLocation;
+import kr.go.seoul.seoultrail.GPS.GPSProvider;
 import kr.go.seoul.seoultrail.R;
 
 /**
@@ -136,14 +146,121 @@ public class NMapViewer extends NMapActivity {
     public static int getCourse() {
         return course;
     }
+    private GPSProvider gps;
+    LocationListener mlocListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
 
+        }
+
+        @Override
+        public void onStatusChanged(String s, int i, Bundle bundle) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String s) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String s) {
+
+        } // 위치와 관련된 디바이스의 다양한 Event에 따른 리스너를 정의해주어야 한다.
+    };
+    private void initGPS() {
+        LocationManager mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        gps = new GPSProvider(NMapViewer.this, mlocManager); //오브젝트 생성
+        gps.setMlocListener(mlocListener);
+    }
+
+    private void turnGPSOn(){
+        String provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+
+        if(!provider.contains("gps")){ //if gps is disabled
+            final Intent poke = new Intent();
+            poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
+            poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+            poke.setData(Uri.parse("3"));
+            sendBroadcast(poke);
+            Toast.makeText(this, "GPS TEST 호출 됨",Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+    private void turnGPSOff(){
+        String provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+
+        if(provider.contains("gps")){ //if gps is enabled
+            final Intent poke = new Intent();
+            poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
+            poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+            poke.setData(Uri.parse("3"));
+            sendBroadcast(poke);
+            Toast.makeText(this, "GPS off 호출 됨",Toast.LENGTH_LONG).show();
+        }
+    }
     /**
      * Called when the activity is first created.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Handler appStartHandle = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(NMapViewer.this);
+                    alertDialogBuilder.setMessage(FontUtils.getInstance(NMapViewer.this).typeface("GPS가 중단된 상태 입니다.\n환경설정에서 활성화 하시겠습니까?"));
+                    alertDialogBuilder.setPositiveButton("취소", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(NMapViewer.this, NMapViewer.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+                    alertDialogBuilder.setNegativeButton("설정", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                            startActivity(intent);
+                            dialog.dismiss();
+                            finish();
+                        }
+                    });
+                    final AlertDialog alertDialog = alertDialogBuilder.create();
+                    final Typeface mTypeface = Typeface.createFromAsset(NMapViewer.this.getAssets(), "arita_bold.ttf");
+                    alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                        @Override
+                        public void onShow(DialogInterface dialogInterface) {
+                            alertDialog.getButton(Dialog.BUTTON_POSITIVE).setTypeface(mTypeface);
+                            alertDialog.getButton(Dialog.BUTTON_NEGATIVE).setTypeface(mTypeface);
+                        }
+                    });
+                    alertDialog.show();
+                } else {
+                    Intent intent = new Intent(NMapViewer.this, NMapViewer.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };
 
+
+
+
+
+
+
+
+
+
+
+
+
+        //initGPS();
         setContentView(R.layout.course_map_fragment);
 
         mMapView = (NMapView) findViewById(R.id.naver_map);
@@ -205,7 +322,9 @@ public class NMapViewer extends NMapActivity {
 
     @Override
     protected void onStart() {
+        //turnGPSOn();
         super.onStart();
+
     }
 
     @Override
@@ -230,7 +349,7 @@ public class NMapViewer extends NMapActivity {
         stopMyLocation();
         // save map view state such as map center position and zoom level.
         saveInstanceState();
-
+        //turnGPSOff();
         super.onDestroy();
     }
 
@@ -253,7 +372,9 @@ public class NMapViewer extends NMapActivity {
             } else {
                 boolean isMyLocationEnabled = mMapLocationManager.enableMyLocation(true);
                 if (!isMyLocationEnabled) {
-                    Toast.makeText(NMapViewer.this, "Please enable a My Location source in system settings",
+                    // modify 여기 부분 현재위치 사용할때 설정으로 이동하기 위함
+
+                    Toast.makeText(NMapViewer.this, "위치 정보를 사용하시려면 GPS 허용을 해주십시오.",
                             Toast.LENGTH_LONG).show();
 
                     Intent goToSettings = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);

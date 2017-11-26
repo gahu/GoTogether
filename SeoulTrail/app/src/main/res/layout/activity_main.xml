@@ -1,74 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/test"
+        >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="#398a87"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/header_logo_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:clickable="true"
-                android:onClick="showMain"
-                android:src="@drawable/top_logo" />
-
-            <TextView
-                android:id="@+id/header_title"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:includeFontPadding="false"
-                android:text="둘레길 코스"
-                android:textColor="#ffffff"
-                android:textSize="22sp" />
-
-            <ImageView
-                android:id="@+id/btn_guide"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="12dp"
-                android:clickable="true"
-                android:src="@drawable/btn_guide"
-                android:visibility="gone" />
-        </RelativeLayout>
 
         <TabHost
             android:id="@android:id/tabhost"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+
+
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+
+
+                >
+
+
+                <!-- TODO - main의 image 크기 안맞아서 일부러 맞춤 -->
+
+                <LinearLayout
+                    android:id="@+id/nav"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:orientation="vertical">
+                    <TabWidget
+                        android:id="@android:id/tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        >
+                    </TabWidget>
+                    <!--<LinearLayout-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center">-->
+
+                    <!--<CheckBox-->
+                    <!--android:id="@+id/btn_more"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="25dp"-->
+                    <!--android:layout_marginBottom="-4dp"-->
+                    <!--android:background="@android:color/transparent"-->
+                    <!--android:button="@drawable/selector_bar_icon05" />-->
+                    <!--</LinearLayout>-->
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/header_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/header_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="128dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bg_main_noname"
+                        android:visibility="visible" />
+                    //정렬을 상하좌우 이미지뷰에 맞춘다.
+
+
+                    <TextView
+                        android:id="@+id/main_text_image1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/header_image"
+                        android:layout_alignLeft="@id/header_image"
+                        android:layout_alignRight="@id/header_image"
+                        android:layout_alignTop="@id/header_image"
+
+                        android:textColor="@color/white"
+
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/main_text_image2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/header_image"
+                        android:layout_alignLeft="@id/header_image"
+                        android:layout_alignRight="@id/header_image"
+                        android:layout_alignTop="@id/header_image"
+
+                        android:textColor="@color/white"
+
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/main_text_image3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/header_image"
+                        android:layout_alignLeft="@id/header_image"
+                        android:layout_alignRight="@id/header_image"
+                        android:layout_alignTop="@id/header_image"
+                        android:gravity="center|bottom"
+
+                        android:textColor="@color/white"
+
+                        android:visibility="invisible" />
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginBottom="-2dp"
                     android:layout_weight="1">
 
                     <FrameLayout
                         android:id="@android:id/tabcontent"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true">
 
                         <!--<LinearLayout-->
                         <!--android:id="@+id/tab1"-->
@@ -129,50 +192,30 @@
                     <!--android:text="test" />-->
                 </RelativeLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:background="@drawable/bg_bar_1px"
-                    android:orientation="horizontal">
 
-                    <TabWidget
-                        android:id="@android:id/tabs"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
-                    <!--<LinearLayout-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:gravity="center">-->
-
-                    <!--<CheckBox-->
-                    <!--android:id="@+id/btn_more"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="25dp"-->
-                    <!--android:layout_marginBottom="-4dp"-->
-                    <!--android:background="@android:color/transparent"-->
-                    <!--android:button="@drawable/selector_bar_icon05" />-->
-                    <!--</LinearLayout>-->
-                </LinearLayout>
             </LinearLayout>
         </TabHost>
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/noti_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:background="#70000000"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="20dp"
+        android:visibility="visible">
 
         <WebView
             android:id="@+id/webview"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="348dp"
+            android:layout_weight="1.65">
+
+        </WebView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -183,7 +226,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#398a87"
+                android:background="@android:color/holo_green_dark"
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="notiDetail"
@@ -201,7 +244,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#398a87"
+                android:background="@android:color/holo_green_dark"
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="notiConfirm"

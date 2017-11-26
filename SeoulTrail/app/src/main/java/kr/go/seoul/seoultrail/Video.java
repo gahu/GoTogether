@@ -34,6 +34,7 @@ import kr.go.seoul.seoultrail.TrailVideo.VideoListAdapter;
 
 /**
  * Created by ntsys on 2016-08-09.
+ * Modified by gahusb on 2017-11-02
  */
 public class Video extends BaseActivity {
     private ListView videoListView;
@@ -44,7 +45,7 @@ public class Video extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.video_activity);
-
+        PublicDefine.video=this;
         initView();
     }
 

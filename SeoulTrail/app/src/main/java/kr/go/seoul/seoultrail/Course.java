@@ -1,27 +1,39 @@
 package kr.go.seoul.seoultrail;
 
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.astuetz.PagerSlidingTabStrip;
 
 import kr.go.seoul.seoultrail.Common.PublicDefine;
+import kr.go.seoul.seoultrail.CourseInfo.CoursePageBaseFragment;
+import kr.go.seoul.seoultrail.CourseStamp.CourseStampFragment;
 
 /**
  * Created by ntsys on 2016-08-09.
+ * Modified by JO on 2017-10-29
  */
-public class Course extends BaseActivity {
 
-    private PagerSlidingTabStrip tabsStrip;
+public class Course extends BaseActivity {
     private ViewPager viewPager;
+
     public boolean isMap = false;
     public boolean isPOINTLIST = false;
+    @Override
+    public void onBackPressed() {
 
+        //Intent intent = new Intent(Course.this, MainActivity.class);
+        //startActivity(intent);
+        PublicDefine.mainActivity.Main_Move();
+
+
+
+       // PublicDefine.mainActivity.settingTab(1);
+
+    }
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -41,19 +53,32 @@ public class Course extends BaseActivity {
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new CoursePagerFragmentAdapter(getSupportFragmentManager()));
-        // Give the PagerSlidingTabStrip the ViewPager
-        tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-        // Attach the view pager to the tab strip
-        tabsStrip.setViewPager(viewPager);
-        Typeface type = Typeface.createFromAsset(getAssets(), "NotoSansCJKkr-DemiLight.otf");
-        LinearLayout view = (LinearLayout) tabsStrip.getChildAt(0);
-        int tabCount = view.getChildCount();
-        for (int i = 0; i < tabCount; i++) {
-            TextView textView = (TextView) view.getChildAt(i);
-            textView.setTypeface(type);
-            textView.setIncludeFontPadding(false);
+
+        // Course.class에서 탭으로 분류하던 부분을 제거
+    }
+
+    // Adapter를 해당 page class에 작성
+    private class CoursePagerFragmentAdapter extends FragmentPagerAdapter {
+        final int PAGE_COUNT = 1;
+
+        public CoursePagerFragmentAdapter(FragmentManager fm) {
+            super(fm);
         }
 
+        @Override
+        public int getCount() {
+            return PAGE_COUNT;
+        }
+
+        // 해당하는 page의 fragment를 생성
+        @Override
+        public Fragment getItem(int position) {
+            return CoursePageBaseFragment.newInstance(position + 1);
+        }
+
+        public void setStampCourse(int course) {
+            CourseStampFragment.newInstance(2).setCourseNo(course);
+        }
     }
 
     @Override

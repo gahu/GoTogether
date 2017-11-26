@@ -8,7 +8,6 @@ import android.app.TabActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.location.Location;
 import android.location.LocationListener;
@@ -21,12 +20,14 @@ import android.support.v4.app.NotificationCompat;
 import android.text.Html;
 import android.text.SpannableString;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
@@ -56,7 +57,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import kr.go.seoul.seoultrail.Common.CustomProgressDialog;
 import kr.go.seoul.seoultrail.Common.DBHelper;
@@ -65,26 +65,36 @@ import kr.go.seoul.seoultrail.Common.PublicDefine;
 import kr.go.seoul.seoultrail.Common.StampLocation;
 import kr.go.seoul.seoultrail.GPS.GPSProvider;
 
+import static android.view.Gravity.BOTTOM;
+import static android.view.Gravity.CENTER;
+import static android.view.Gravity.LEFT;
+
 public class MainActivity extends TabActivity {
 
     private TabHost tabHost;
+    private ImageView header_image;
+    private ImageView tab_1;
+    private ImageView tab_2;
+    private ImageView tab_3;
+    private ImageView tab_4;
 
-    final static String COURSE = "1";
-    final static String INFO = "2";
-    final static String VIDEO = "3";
-    final static String DAUMCAFE = "4";
-    final static String SEOULTRAIL = "5";
+    final static String MAIN = "1";
+    final static String COURSE = "2";
+    final static String COMMUNITY = "3";
+    final static String CAMERA = "4";
 
-    private String lastTabTag = "1";
+    private String lastTabTag = "1";     // 카페 커뮤니티 넘어 가는 부분 현재 참조 X
 
     private WebView notiWebView;
     private ArrayList<String> notiList = new ArrayList<>();
     private int notiIDX = -1;
+    int cnt = 0;
 
-    private TextView headerTitle;
-    private ImageView btnGuide;
+    boolean tf = false;
+
+    // 여기서부터는 17.10.24 수정 부분
 //    private CheckBox btnMore;
-    //    private LinearLayout gpsBtnLayout;
+//    private LinearLayout gpsBtnLayout;
 //    private TextView checkMyLocation;
 //    private TextView checkNMapMyLocation;
 
@@ -97,12 +107,301 @@ public class MainActivity extends TabActivity {
     private CustomProgressDialog dialogLoading;
     private AlertDialog alert = null;
 
+    private int value;
+    // modify 여기 부분이 메뉴부분에서 상태 확인해서 글자 바꾸는부분
+
+
+    public void settingText(int value) {
+
+        TextView top_text = (TextView) findViewById(R.id.main_text_image1);
+        TextView mid_text = (TextView) findViewById(R.id.main_text_image2);
+        TextView bottom_text = (TextView) findViewById(R.id.main_text_image3);
+        ImageView im = (ImageView) findViewById(R.id.header_image);
+        LinearLayout li_text = (LinearLayout) findViewById(R.id.nav);
+
+        this.value = value;
+
+        switch (value) {
+            // modify 1. 도우미 부분
+            case 1:
+                li_text.setBackgroundResource(R.drawable.bg05_nav);
+                im.setImageResource(R.drawable.bg05_header);
+                top_text.setVisibility(View.GONE);
+                top_text.setText("도움이 필요하세요?");
+                top_text.setVisibility(View.VISIBLE);
+                top_text.setGravity(Gravity.TOP | LEFT);
+                top_text.setPadding(0, 30, 0, 0);
+
+                mid_text.setVisibility(View.GONE);
+                mid_text.setText("\"둘레길 도우미\"");
+                mid_text.setVisibility(View.VISIBLE);
+                mid_text.setGravity(Gravity.CENTER | LEFT);
+
+                bottom_text.setVisibility(View.GONE);
+                bottom_text.setText("도우미에게 둘레길에 필요한 정보를 얻어가세요. ");
+                bottom_text.setVisibility(View.VISIBLE);
+                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
+                bottom_text.setTextSize(15);
+                bottom_text.setPadding(0, 0, 0, 60);
+
+                break;
+
+            // modify 둘레길이란? 부분
+            case 2:
+                li_text.setBackgroundResource(R.drawable.bg06_nav);
+                im.setImageResource(R.drawable.bg06_header);
+                top_text.setVisibility(View.GONE);
+                top_text.setText("\"천천히 알아가세요\"");
+                top_text.setVisibility(View.VISIBLE);
+                top_text.setGravity(Gravity.TOP | LEFT);
+                top_text.setPadding(0, 30, 0, 0);
+
+                mid_text.setVisibility(View.GONE);
+                mid_text.setText("'서울 둘레길'");
+                mid_text.setVisibility(View.VISIBLE);
+                mid_text.setGravity(Gravity.CENTER | LEFT);
+
+                bottom_text.setVisibility(View.GONE);
+                bottom_text.setText("서울의 자연과 사람이 함께 공존하는 이 곳");
+                bottom_text.setVisibility(View.VISIBLE);
+                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
+                bottom_text.setTextSize(15);
+                bottom_text.setPadding(0, 0, 0, 60);
+
+                break;
+
+            //modify 영상 부분
+            case 3:
+                li_text.setBackgroundResource(R.drawable.bg07_nav);
+                im.setImageResource(R.drawable.bg07_header);
+                top_text.setVisibility(View.GONE);
+                top_text.setText("\"둘러보세요\"");
+                top_text.setVisibility(View.VISIBLE);
+                top_text.setGravity(Gravity.LEFT|CENTER);
+                top_text.setPadding(0, 0, 0, 0);
+
+                mid_text.setVisibility(View.GONE);
+                mid_text.setText("\"둘레길 동영상\"");
+                mid_text.setVisibility(View.VISIBLE);
+                mid_text.setGravity(Gravity.LEFT | BOTTOM);
+                mid_text.setPadding(0, 0, 0, 30);
+                bottom_text.setVisibility(View.GONE);
+
+                break;
+
+            // 3번째 카메라 탭 처리
+            case 4:
+                li_text.setBackgroundResource(R.drawable.bg08_nav);
+                im.setImageResource(R.drawable.bg08_header);
+                top_text.setVisibility(View.GONE);
+                top_text.setText("\"발자취를 남기세요\"");
+                top_text.setVisibility(View.VISIBLE);
+                top_text.setGravity(Gravity.TOP | LEFT);
+                top_text.setPadding(0, 30, 0, 0);
+
+                mid_text.setVisibility(View.GONE);
+                mid_text.setText("'둘레길 스탬프'");
+                mid_text.setVisibility(View.VISIBLE);
+                mid_text.setGravity(Gravity.CENTER | LEFT);
+
+                bottom_text.setVisibility(View.GONE);
+                bottom_text.setText("스탬프를 통해 추억을 간직하고 서울의 이야기를 떠올리세요.");
+                bottom_text.setVisibility(View.VISIBLE);
+                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
+                bottom_text.setTextSize(15);
+                bottom_text.setPadding(0, 0, 0, 30);
+
+                break;
+
+            //카페부분은 필요없을것같다
+            case 5:
+                break;
+
+            //날씨부분
+            case 6:
+                li_text.setBackgroundResource(R.drawable.bg09_nav);
+                im.setImageResource(R.drawable.bg09_header);
+                top_text.setVisibility(View.GONE);
+                top_text.setText("등산하기전 확인하세요.");
+                top_text.setVisibility(View.VISIBLE);
+                top_text.setGravity(Gravity.TOP | LEFT);
+                top_text.setPadding(0, 30, 0, 0);
+
+                mid_text.setVisibility(View.GONE);
+                mid_text.setText("\"둘레길 날씨\"");
+                mid_text.setVisibility(View.VISIBLE);
+                mid_text.setGravity(Gravity.CENTER | LEFT);
+
+                bottom_text.setVisibility(View.GONE);
+                bottom_text.setText("맑은날에 둘레길 등산으로 건강해지세요.");
+                bottom_text.setVisibility(View.VISIBLE);
+                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
+                bottom_text.setTextSize(15);
+                bottom_text.setPadding(0, 0, 0, 60);
+
+                break;
+
+            //행사안내
+            case 7:
+                li_text.setBackgroundResource(R.drawable.bg10_nav);
+                im.setImageResource(R.drawable.bg10_header);
+                top_text.setVisibility(View.GONE);
+                top_text.setText("같이 즐기세요");
+                top_text.setVisibility(View.VISIBLE);
+                top_text.setGravity(Gravity.TOP | LEFT);
+                top_text.setPadding(0, 30, 0, 0);
+
+                mid_text.setVisibility(View.GONE);
+                mid_text.setText("\"둘레길 행사\"");
+                mid_text.setVisibility(View.VISIBLE);
+                mid_text.setGravity(Gravity.CENTER | LEFT);
+
+                bottom_text.setVisibility(View.GONE);
+                bottom_text.setText("지금 둘레길에서 행사를 하고 있어요. 같이 참여 해요.");
+                bottom_text.setVisibility(View.VISIBLE);
+                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
+                bottom_text.setTextSize(15);
+                bottom_text.setPadding(0, 0, 0, 60);
+
+                break;
+
+            //FAQ
+            case 8:
+                li_text.setBackgroundResource(R.drawable.bg11_nav);
+                im.setImageResource(R.drawable.bg11_header);
+                top_text.setVisibility(View.GONE);
+                top_text.setText("무엇이든");
+                top_text.setVisibility(View.VISIBLE);
+                top_text.setGravity(Gravity.TOP | LEFT);
+                top_text.setPadding(0, 30, 0, 0);
+
+                mid_text.setVisibility(View.GONE);
+                mid_text.setText("\"질문 하세요\"");
+                mid_text.setVisibility(View.VISIBLE);
+                mid_text.setGravity(Gravity.CENTER | LEFT);
+
+                bottom_text.setVisibility(View.GONE);
+                bottom_text.setText("둘레길에 대한 궁금증을 도움말,질문을 통해 해결 하세요");
+                bottom_text.setVisibility(View.VISIBLE);
+                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
+                bottom_text.setTextSize(15);
+                bottom_text.setPadding(0, 0, 0, 60);
+
+                break;
+
+            //기타 개발 내역
+            case 9:
+                break;
+        }
+    }
+
+    public void settingTab(int value) {
+
+        TextView top_text = (TextView) findViewById(R.id.main_text_image1);
+        TextView mid_text = (TextView) findViewById(R.id.main_text_image2);
+        TextView bottom_text = (TextView) findViewById(R.id.main_text_image3);
+        ImageView im = (ImageView) findViewById(R.id.header_image);
+        LinearLayout li_tab = (LinearLayout) findViewById(R.id.nav);
+        this.value = value;
+
+        switch (value) {
+            // modify 메인 부분 텍스트 변경( case0~ 3번까지 탭부분 이벤트처리)
+            //  1번째 탭 메인 처리
+            case 1:
+                //header_back.setImageResource(R.drawable.bg);
+
+                li_tab.setBackgroundResource(R.drawable.bg01_nav);
+                im.setImageResource(R.drawable.bg01_header);
+                top_text.setVisibility(View.GONE);
+                top_text.setText("사람과 자연이 함께 하는");
+                top_text.setVisibility(View.VISIBLE);
+                top_text.setGravity(Gravity.CENTER);
+                Typeface face1 = Typeface.createFromAsset(getAssets(), "arita_bold.ttf");
+                top_text.setTypeface(face1);
+                top_text.setTextSize(17);
+                top_text.setPadding(0, 0, 0, 40);
+
+                //modify 서울둘레길 텍스트 부분
+
+                Typeface face = Typeface.createFromAsset(getAssets(), "arita_bold.ttf");
+                mid_text.setGravity(Gravity.CENTER | BOTTOM);
+                mid_text.setTypeface(face);
+                mid_text.setTextSize(40);
+                mid_text.setPadding(0, 0, 0, 40);
+                mid_text.setText("'서울 둘레길'");
+
+                bottom_text.setVisibility(View.GONE);
+
+                break;
+
+            // modify 코스 부분 텍스트 변경
+            //2번째 코스정보 탭 처리
+            case 2:
+
+
+                li_tab.setBackgroundResource(R.drawable.bg02_nav);
+                im.setImageResource(R.drawable.bg02_header);
+                top_text.setVisibility(View.GONE);
+                top_text.setText("8개의 코스");
+                top_text.setVisibility(View.VISIBLE);
+                top_text.setGravity(Gravity.TOP | LEFT);
+                top_text.setPadding(0, 30, 0, 0);
+
+                mid_text.setVisibility(View.GONE);
+                mid_text.setText("'서울 둘레길'");
+                mid_text.setVisibility(View.VISIBLE);
+                mid_text.setGravity(Gravity.CENTER | LEFT);
+
+                bottom_text.setVisibility(View.GONE);
+                bottom_text.setText("서울을 걸어서 크게 한바퀴 돌 수 있는 총 157km의 서울 둘레길");
+                bottom_text.setVisibility(View.VISIBLE);
+                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
+                bottom_text.setTextSize(15);
+                bottom_text.setPadding(0, 0, 0, 30);
+                break;
+
+            // 3번째 커뮤니티 탭 처리
+            case 3:
+                li_tab.setBackgroundResource(R.drawable.bg03_nav);
+                im.setImageResource(R.drawable.bg03_header);
+                top_text.setVisibility(View.GONE);
+                top_text.setText("공유하세요");
+                top_text.setVisibility(View.VISIBLE);
+                top_text.setGravity(Gravity.TOP | LEFT);
+                top_text.setPadding(0, 30, 0, 0);
+
+                mid_text.setVisibility(View.GONE);
+                mid_text.setText("'서울 둘레길 소식'");
+                mid_text.setVisibility(View.VISIBLE);
+                mid_text.setGravity(Gravity.CENTER | LEFT);
+
+                bottom_text.setVisibility(View.GONE);
+                bottom_text.setText("페이스북,블로그 등의 SNS를 통해 둘레길에 대해 이야기 해요");
+                bottom_text.setVisibility(View.VISIBLE);
+                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
+                bottom_text.setTextSize(15);
+                bottom_text.setPadding(0, 0, 0, 30);
+                break;
+
+            // 4번째 카메라 탭 처리
+            case 4:
+                break;
+
+            default:
+                break;
+        }
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         PublicDefine.mainActivity = this;
         initView();
+        /*modify 여기 부분을 initGPS() 주석 처리하니까 처음실행될때 위치 정보를 가져오지 않는다
+        modify 지도에서 접근하였을 시에 GPS가 처리 되는것을 알 수 있다. 자기 정보를 눌렀을 경우
+        */
         initGPS();
     }
 
@@ -125,11 +424,14 @@ public class MainActivity extends TabActivity {
     @Override
     protected void onPause() {
         super.onPause();
+
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
     }
 
     @Override
     protected void onDestroy() {
+
         if (gps != null) {
             gps.removeUpdate();
         }
@@ -198,7 +500,6 @@ public class MainActivity extends TabActivity {
         PendingIntent contentIntent = PendingIntent.getActivity(this, id,
                 new Intent(this, IntroActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP),
                 PendingIntent.FLAG_UPDATE_CURRENT);
-
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
@@ -207,80 +508,55 @@ public class MainActivity extends TabActivity {
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(contentIntent);
-
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(id, notificationBuilder.build());
     }
-
     public void setCheckNMapMyLocation(NGeoPoint myLocation) {
         checkLocation(myLocation.getLatitude(), myLocation.getLongitude());
     }
-
-    private void initView() {
-
-        headerTitle = (TextView) findViewById(R.id.header_title);
-        btnGuide = (ImageView) findViewById(R.id.btn_guide);
-
-//        btnGuide.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, FaQ.class);
-//                startActivity(intent);
-//            }
-//        });
-        btnGuide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, FaQ.class);
-                startActivity(intent);
-            }
-        });
+    public void initView() {
+        settingTab(1);            // 메인 글자 셋팅
+        header_image = (ImageView) findViewById(R.id.header_image);
         setupTabHost();
-
         tabHost.getTabWidget().setDividerDrawable(null);
+        setupTab(MAIN);
         setupTab(COURSE);
-        setupTab(INFO);
-        setupTab(VIDEO);
-        setupTab(DAUMCAFE);
-        setupTab(SEOULTRAIL);
-        tabHost.setCurrentTab(1);
-        btnGuide.setVisibility(View.VISIBLE);
+        setupTab(COMMUNITY);
+        setupTab(CAMERA);
+        tabHost.setCurrentTab(0);           // MAIN 부분이 첫번째로 들어가기위함
+        // 혹시나 setCurrentTab을 다른 탭으로 설정해버리면 제대로 된 값이 이벤트가 발생하지 않는다.
 
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tag) {
 
                 String loggingAction = "";
-                btnGuide.setVisibility(View.GONE);
-                if (tag.equals(COURSE)) {
-                    headerTitle.setText("둘레길 코스");
+                // modify 탭부분 들어가는 글자 이미지 변경
+                if (tag.equals(MAIN)) {
+                    //header_image.setImageResource(R.drawable.bg01_main);
+                    lastTabTag = MAIN;
+                    loggingAction = "MAIN";
+                    //increaseHeaderImage();
+                    settingTab(1);
+                } else if (tag.equals(COURSE)) {
+                    settingTab(2);
+                    //header_image.setImageResource(R.drawable.bg01_course);
                     lastTabTag = COURSE;
                     loggingAction = "COURSE";
-                } else if (tag.equals(INFO)) {
-                    headerTitle.setText("둘레길 안내");
-                    lastTabTag = INFO;
-                    loggingAction = "INFO";
-                    btnGuide.setVisibility(View.VISIBLE);
-                } else if (tag.equals(VIDEO)) {
-                    headerTitle.setText("둘레길 영상");
-                    lastTabTag = VIDEO;
-                    loggingAction = "VIDEO";
-                } else if (tag.equals(DAUMCAFE)) {
-                    headerTitle.setText("둘레길 카페");
-                    CustomSchemeURL csurl = new CustomSchemeURL(MainActivity.this);
-                    if (csurl.canOpenCafeAppURL()) {
-                        startActivity(csurl.getIntent());
-                    } else {
-                        csurl.openCafeAppDownloadPage(MainActivity.this);
-                    }
-                    loggingAction = "DAUMCAFE";
-                    tabHost.setCurrentTab(Integer.parseInt(lastTabTag) - 1);
-                } else if (tag.equals(SEOULTRAIL)) {
-                    headerTitle.setText("서울 둘레길");
-                    lastTabTag = SEOULTRAIL;
-                    loggingAction = "SEOULTRAIL";
+                    //reduceHeaderImage();
+                } else if (tag.equals(COMMUNITY)) {
+                    settingTab(3);
+                    //header_image.setImageResource(R.drawable.bg01_community);
+                    lastTabTag = COMMUNITY;
+                    loggingAction = "COMMUNITY";
+                    //reduceHeaderImage();
+                } else if (tag.equals(CAMERA)) {
+                    settingTab(4);
+                    lastTabTag = CAMERA;
+                    loggingAction = "CAMERA";
+                    increaseHeaderImage();
                 }
 
                 try {
@@ -300,6 +576,216 @@ public class MainActivity extends TabActivity {
             notiList = new ArrayList<>();
         }
         new ProcessNetworkImportantNoticeList().execute(null, null, null);
+    }
+
+    private void reduceHeaderImage() {
+        int temp;
+        int big_image_size = 450;
+        int small_image_size = 300;
+
+        header_image.getLayoutParams().height = small_image_size;
+        header_image.requestLayout();
+    }
+
+    private void increaseHeaderImage() {
+        int temp;
+        int big_image_size = 500;
+        int small_image_size = 300;
+
+        temp = header_image.getLayoutParams().height;
+        if(temp == small_image_size) {
+            header_image.getLayoutParams().height = big_image_size;
+            header_image.requestLayout();
+        }
+    }
+
+    private void setupTabHost() {
+        // xml resource에서 TabHost를 받아왔다면 setup()을 수행해주어야함.
+        tabHost = (TabHost) findViewById(android.R.id.tabhost);
+        tabHost.setup();
+    }
+
+    public void Main_Move(){
+        tabHost.clearAllTabs();
+        initView();
+    }
+
+    private void setupTab(final String tag) {
+        View tabview = createTabView(tabHost.getContext(), tag);
+
+        // TabSpec은 공개된 생성자가 없으므로 직접 생성할 수 없으며, TabHost의 newTabSpec메서드로 생성
+        TabSpec setContent = tabHost.newTabSpec(tag).setIndicator(tabview);
+
+        // 여기부분은탭 눌렀을경우 어떻게 동작할지 결정하는 부분이다. 그래서 MenuAcitivy로 넣어주었다.
+        if (tag.equals(MAIN)) {
+            setContent.setContent(new Intent(this, Menu_Connection.class));
+        }
+        else if (tag.equals(COURSE)) {
+
+            setContent.setContent(new Intent(this, Course.class));
+        }
+        else if (tag.equals(COMMUNITY)) {
+            setContent.setContent(new Intent(this, Community.class));
+        }
+        else if (tag.equals(CAMERA)) {
+            setContent.setContent(new Intent(this, Camera.class));
+        }
+        tabHost.addTab(setContent);
+
+    }
+
+    private static View createTabView(final Context context, final String text) {
+        // layoutinflater를 이용해 xml 리소스를 읽어와 tabview를 생성
+        View view = LayoutInflater.from(context).inflate(R.layout.tab_widget_footer_custom, null);
+        ImageView img;
+
+        img = (ImageView) view.findViewById(R.id.tabs_image);
+
+        if (text.equals(MAIN)) {
+            img.setImageResource(R.drawable.selector_main);
+        } else if (text.equals(COURSE)) {
+            img.setImageResource(R.drawable.selector_course);
+        } else if (text.equals(COMMUNITY)) {
+            img.setImageResource(R.drawable.selector_comunity);
+        } else if (text.equals(CAMERA)) {
+            img.setImageResource(R.drawable.selector_camera);
+        }
+        return view;
+    }
+
+    public void setInformationTourInfo() {
+        if (alert != null && alert.isShowing()) {
+            alert.cancel();
+            alert = null;
+        }
+        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(this);
+        alert_confirm.setMessage(FontUtils.getInstance(this).typeface("모든코스를 완주하셨습니다.\n완주 인증서 발급내용을 확인하시려면 확인 버튼을 선택해주세요.")).setCancelable(false).setPositiveButton("확인",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        tabHost.setCurrentTab(1);
+                        //PublicDefine.information.setPager(1);
+                        // #2 인포메이션부분 띄우지 않기 위해서 주석처리함.
+
+
+                    }
+                }).setNegativeButton("취소",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alert = alert_confirm.create();
+        final Typeface mTypeface = Typeface.createFromAsset(this.getAssets(), "arita_bold.ttf");
+        alert.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                alert.getButton(Dialog.BUTTON_POSITIVE).setTypeface(mTypeface);
+                alert.getButton(Dialog.BUTTON_NEGATIVE).setTypeface(mTypeface);
+            }
+        });
+        alert.show();
+
+    }
+
+    public void setPagerToCompleteStamp(final int courseNo) {
+        if (alert != null && alert.isShowing()) {
+            alert.cancel();
+            alert = null;
+        }
+        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(this);
+        alert_confirm.setMessage(FontUtils.getInstance(this).typeface("스탬프를 획득 하셨습니다.\n스탬프 획득내용을 확인하시려면 확인 버튼을 선택해주세요.")).setCancelable(false).setPositiveButton("확인",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        tabHost.setCurrentTab(0);
+                        PublicDefine.course.setPagerToStamp(courseNo);
+                    }
+                }).setNegativeButton("취소",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alert = alert_confirm.create();
+        final Typeface mTypeface = Typeface.createFromAsset(this.getAssets(), "arita_bold.ttf");
+        alert.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                alert.getButton(Dialog.BUTTON_POSITIVE).setTypeface(mTypeface);
+                alert.getButton(Dialog.BUTTON_NEGATIVE).setTypeface(mTypeface);
+            }
+        });
+        alert.show();
+    }
+
+    public void showProgressDialog() {
+        if (dialogLoading == null) {
+            dialogLoading = CustomProgressDialog.show(this, "", "");
+            dialogLoading.setCancelable(false);
+        }
+        if (dialogLoading != null && dialogLoading.isShowing() == false) {
+            dialogLoading.show();
+        }
+    }
+
+    public void cancelProgressDialog() {
+        if (dialogLoading != null && dialogLoading.isShowing() == true) {
+            dialogLoading.cancel();
+        }
+    }
+
+    public void showPointListItem(final ArrayList<String[]> cotCoordList, final View view) {
+        if (alert != null && alert.isShowing()) {
+            alert.cancel();
+            alert = null;
+        }
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setItems(new SpannableString[]{FontUtils.getInstance(this).typeface("지도에서 보기"), FontUtils.getInstance(this).typeface("리스트 보기")}, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == 1) {
+                    PublicDefine.courseMapFragment.showPointList(cotCoordList);
+                }
+                PublicDefine.courseMapFragment.setShowPointPin();
+                dialog.dismiss();
+            }
+        }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                dialog.dismiss();
+                ((CheckBox) view).setChecked(false);
+            }
+        });
+        builder.setCancelable(false);
+        alert = builder.create();
+        final Typeface mTypeface = Typeface.createFromAsset(this.getAssets(), "arita_bold.ttf");
+        alert.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                alert.getButton(Dialog.BUTTON_POSITIVE).setTypeface(mTypeface);
+                alert.getButton(Dialog.BUTTON_NEGATIVE).setTypeface(mTypeface);
+            }
+        });
+        alert.show();
+    }
+
+    public void notiConfirm(View view) {
+        findViewById(R.id.noti_webview).setVisibility(View.GONE);
+    }
+
+    public void notiDetail(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Uri uri = Uri.parse("http://gil.seoul.go.kr/m/sub/introduce/notice_view.jsp?" + notiList.get(notiIDX));
+        intent.setData(uri);
+        startActivity(intent);
+    }
+
+
+    public void showDetailInfo(NMapPOIitem item) {
+        new ProcessNetworkPointDetailThread().execute(item.getTag().toString(), null, null);
     }
 
     public class ProcessNetworkImportantNoticeList extends AsyncTask<Void, Void, String> {
@@ -353,6 +839,8 @@ public class MainActivity extends TabActivity {
             }
         }
     }
+
+    // TODO 여기 부분 네트워크 알림 리스트 가져오는 부분인데 어떻게 처리해볼까나
 
     public class ProcessNetworkNoticeList extends AsyncTask<Void, Void, String> {
         protected String doInBackground(Void... arg0) {
@@ -411,6 +899,7 @@ public class MainActivity extends TabActivity {
         }
     }
 
+    //TODO 네트워크 알림 쓰레드 부분 구현
     public class ProcessNetworkNotiThread extends AsyncTask<String, Void, String> {
 
         @Override
@@ -462,186 +951,9 @@ public class MainActivity extends TabActivity {
                 return "";
             }
         }
-
     }
 
-    private void setupTabHost() {
-        // xml resource에서 TabHost를 받아왔다면 setup()을 수행해주어야함.
-        tabHost = (TabHost) findViewById(android.R.id.tabhost);
-        tabHost.setup();
-    }
-
-    private void setupTab(final String tag) {
-        View tabview = createTabView(tabHost.getContext(), tag);
-
-        // TabSpec은 공개된 생성자가 없으므로 직접 생성할 수 없으며, TabHost의 newTabSpec메서드로 생성
-        TabSpec setContent = tabHost.newTabSpec(tag).setIndicator(tabview);
-
-        if (tag.equals(COURSE))
-            setContent.setContent(new Intent(this, Course.class));
-        else if (tag.equals(INFO))
-            setContent.setContent(new Intent(this, Information.class));
-        else if (tag.equals(VIDEO))
-            setContent.setContent(new Intent(this, Video.class));
-        else if (tag.equals(DAUMCAFE)) {
-            setContent.setContent(new Intent(this, DaumCafe.class));
-        } else if (tag.equals(SEOULTRAIL)) {
-            setContent.setContent(new Intent(this, SeoulTrail.class));
-        }
-        tabHost.addTab(setContent);
-
-    }
-
-    private static View createTabView(final Context context, final String text) {
-        // layoutinflater를 이용해 xml 리소스를 읽어옴
-        View view = LayoutInflater.from(context).inflate(R.layout.tab_widget_footer_custom, null);
-        ImageView img;
-
-        img = (ImageView) view.findViewById(R.id.tabs_image);
-        if (text.equals(COURSE)) {
-            img.setImageResource(R.drawable.selector_bar_icon01);
-        } else if (text.equals(INFO)) {
-            img.setImageResource(R.drawable.selector_bar_icon02);
-        } else if (text.equals(VIDEO)) {
-            img.setImageResource(R.drawable.selector_bar_icon03);
-        } else if (text.equals(DAUMCAFE)) {
-            img.setImageResource(R.drawable.selector_bar_icon04);
-        } else if (text.equals(SEOULTRAIL)) {
-            img.setImageResource(R.drawable.selector_bar_icon05);
-        }
-        return view;
-    }
-
-    public void setInformationTourInfo() {
-        if (alert != null && alert.isShowing()) {
-            alert.cancel();
-            alert = null;
-        }
-        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(this);
-        alert_confirm.setMessage(FontUtils.getInstance(this).typeface("모든코스를 완주하셨습니다.\n완주 인증서 발급내용을 확인하시려면 확인 버튼을 선택해주세요.")).setCancelable(false).setPositiveButton("확인",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        tabHost.setCurrentTab(1);
-                        PublicDefine.information.setPager(1);
-                    }
-                }).setNegativeButton("취소",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alert = alert_confirm.create();
-        final Typeface mTypeface = Typeface.createFromAsset(this.getAssets(), "NotoSansCJKkr-DemiLight.otf");
-        alert.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialogInterface) {
-                alert.getButton(Dialog.BUTTON_POSITIVE).setTypeface(mTypeface);
-                alert.getButton(Dialog.BUTTON_NEGATIVE).setTypeface(mTypeface);
-            }
-        });
-        alert.show();
-
-    }
-
-    public void setPagerToCompleteStamp(final int courseNo) {
-        if (alert != null && alert.isShowing()) {
-            alert.cancel();
-            alert = null;
-        }
-        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(this);
-        alert_confirm.setMessage(FontUtils.getInstance(this).typeface("스탬프를 획득 하셨습니다.\n스탬프 획득내용을 확인하시려면 확인 버튼을 선택해주세요.")).setCancelable(false).setPositiveButton("확인",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        tabHost.setCurrentTab(0);
-                        PublicDefine.course.setPagerToStamp(courseNo);
-                    }
-                }).setNegativeButton("취소",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alert = alert_confirm.create();
-        final Typeface mTypeface = Typeface.createFromAsset(this.getAssets(), "NotoSansCJKkr-DemiLight.otf");
-        alert.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialogInterface) {
-                alert.getButton(Dialog.BUTTON_POSITIVE).setTypeface(mTypeface);
-                alert.getButton(Dialog.BUTTON_NEGATIVE).setTypeface(mTypeface);
-            }
-        });
-        alert.show();
-    }
-
-    public void showProgressDialog() {
-        if (dialogLoading == null) {
-            dialogLoading = CustomProgressDialog.show(this, "", "");
-            dialogLoading.setCancelable(false);
-        }
-        if (dialogLoading != null && dialogLoading.isShowing() == false) {
-            dialogLoading.show();
-        }
-    }
-
-    public void cancelProgressDialog() {
-        if (dialogLoading != null && dialogLoading.isShowing() == true) {
-            dialogLoading.cancel();
-        }
-    }
-
-    public void showPointListItem(final ArrayList<String[]> cotCoordList, final View view) {
-        if (alert != null && alert.isShowing()) {
-            alert.cancel();
-            alert = null;
-        }
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setItems(new SpannableString[]{FontUtils.getInstance(this).typeface("지도에서 보기"), FontUtils.getInstance(this).typeface("리스트 보기")}, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (which == 1) {
-                    PublicDefine.courseMapFragment.showPointList(cotCoordList);
-                }
-                PublicDefine.courseMapFragment.setShowPointPin();
-                dialog.dismiss();
-            }
-        }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                dialog.dismiss();
-                ((CheckBox) view).setChecked(false);
-            }
-        });
-        builder.setCancelable(false);
-        alert = builder.create();
-        final Typeface mTypeface = Typeface.createFromAsset(this.getAssets(), "NotoSansCJKkr-DemiLight.otf");
-        alert.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialogInterface) {
-                alert.getButton(Dialog.BUTTON_POSITIVE).setTypeface(mTypeface);
-                alert.getButton(Dialog.BUTTON_NEGATIVE).setTypeface(mTypeface);
-            }
-        });
-        alert.show();
-    }
-
-    public void notiConfirm(View view) {
-        findViewById(R.id.noti_webview).setVisibility(View.GONE);
-    }
-
-    public void notiDetail(View view) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        Uri uri = Uri.parse("http://gil.seoul.go.kr/m/sub/introduce/notice_view.jsp?" + notiList.get(notiIDX));
-        intent.setData(uri);
-        startActivity(intent);
-    }
-
-    public void showDetailInfo(NMapPOIitem item) {
-        new ProcessNetworkPointDetailThread().execute(item.getTag().toString(), null, null);
-    }
+    // TODO 네트워크 세부적인 쓰레드 과정 구현 부분
 
     public class ProcessNetworkPointDetailThread extends AsyncTask<String, Void, String> {
 
@@ -719,7 +1031,7 @@ public class MainActivity extends TabActivity {
                 });
                 builder.setCancelable(false);
                 alert = builder.create();
-                final Typeface mTypeface = Typeface.createFromAsset(this.getAssets(), "NotoSansCJKkr-DemiLight.otf");
+                final Typeface mTypeface = Typeface.createFromAsset(this.getAssets(), "arita_bold.ttf");
                 alert.setOnShowListener(new DialogInterface.OnShowListener() {
                     @Override
                     public void onShow(DialogInterface dialogInterface) {
@@ -739,59 +1051,12 @@ public class MainActivity extends TabActivity {
         Uri uri = Uri.parse("http://gil.seoul.go.kr/m/course/dulae_gil_list.jsp?course=2000");
         intent.setData(uri);
         startActivity(intent);
+
     }
 
     public void showMain(View view) {
         tabHost.setCurrentTab(1);
-        PublicDefine.information.setPager(0);
-    }
-
-    public class CustomSchemeURL {
-        public static final String DAUMCAFEAPP_PACKAGE_NAME = "net.daum.android.cafe";
-        public static final String DAUMCAFEAPP_DOWNLOAD_PAGE = "market://details?id=net.daum.android.cafe";
-        public Intent cafe;
-        public Context mContext;
-
-        public CustomSchemeURL(MainActivity mainActivity) {
-            this.mContext = mainActivity;
-        }
-
-        /**
-         * myp scheme을 처리할 수 있는 어플리케이션이 존재하는지 검사
-         *
-         * @return 사용가능할 경우 true
-         */
-        public boolean canOpenCafeAppURL() {
-            PackageManager pm = mContext.getPackageManager();
-            List infos = pm.queryIntentActivities(getIntent(), PackageManager.MATCH_DEFAULT_ONLY);
-
-            return infos != null && infos.size() > 0;
-        }
-
-        public boolean existCafeApp() {
-            PackageManager pm = mContext.getPackageManager();
-
-            try {
-                return (pm.getPackageInfo(DAUMCAFEAPP_PACKAGE_NAME, PackageManager.GET_SIGNATURES) != null);
-            } catch (PackageManager.NameNotFoundException e) {
-                return false;
-            }
-        }
-
-        public void openCafeAppDownloadPage(Context context) {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            Uri iurl = Uri.parse(DAUMCAFEAPP_DOWNLOAD_PAGE);
-            intent.setData(iurl);
-            context.startActivity(intent);
-        }
-
-        public Intent getIntent() {
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_VIEW);
-            intent.addCategory(Intent.CATEGORY_BROWSABLE);
-            intent.addCategory(Intent.CATEGORY_DEFAULT);
-            intent.setData(Uri.parse("daumcafe://cafehome?grpcode=seoultrail157"));
-            return intent;
-        }
+        //PublicDefine.information.setPager(0);
+        // # 인포메이션 부분 없애기 위해서 주석 처리 하였음
     }
 }

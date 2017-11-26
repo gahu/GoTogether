@@ -55,12 +55,18 @@ $ git pull
 $ git checkout {작업브랜치명}
 $ git rebase master
 ```
+- pull이 오류가 나면 기존에 작업하던 내용이 있어서이다. git add . -> git commit -m "{작업내용}" 후에 pull을 받아놓고 push를 해라
+- commit -> pull -> push
+(내컴퓨터에 올려놓는다 -> 깃의 새 내용을 내려받는다 -> 내 가상 공간의 내용을 깃에 올린다.(나의 브랜치에) -> pull request를 통해서 허가를 받는다.)
+
 3. remote 프로젝트로 push 한다. (remote 프로젝트의 master 브랜치가 아닌 다른 브랜치로 push)
 ```
 $ git add .
 $ git commit -am "{작업내용}"
 $ git push origin {작업브랜치명}
 ```
+git commit -a-m "{작업내용}" 은 staging area를 거치지 않고 바로 커밋해준다.
+
 4. [GoTogether](https://github.com/gahu/GoTogether/pulls)에서 "pull Request" 를 생성한다.
 - pull Request 의 commit message 를 통해 어떤 이슈에대한 내용을 해결했는지에 대한 태깅을 해준다. ex) resolve #{이슈번호} {커밋내용} 
 5. 프로젝트 owner 가 request 를 확인해 push 한 내용을 머지해준다.
@@ -81,4 +87,3 @@ $ git fetch -p
 - 개발 tool 은 Android Studio를 사용한다.
 - 모든 작업은 pull request로 올리고, 작업한 내용을 상세하게 적는다.
 - pull request전에는 항상 작업한 내용을 백업해두고, push 정책에 따라 실행한다.
-

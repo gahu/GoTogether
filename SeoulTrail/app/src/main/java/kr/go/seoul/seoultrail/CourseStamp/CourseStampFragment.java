@@ -273,7 +273,7 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
             }
         });
         final AlertDialog alert = alert_confirm.create();
-        final Typeface mTypeface = Typeface.createFromAsset(getContext().getAssets(), "NotoSansCJKkr-DemiLight.otf");
+        final Typeface mTypeface = Typeface.createFromAsset(getContext().getAssets(), "arita_bold.ttf");
         alert.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {

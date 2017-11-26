@@ -26,10 +26,11 @@ public class FontUtils {
             fontUtils = new FontUtils(context);
         }
         if (mTypeface == null) {
-            mTypeface = Typeface.createFromAsset(context.getAssets(), "NotoSansCJKkr-DemiLight.otf"); // 외부폰트 사용
+            mTypeface = Typeface.createFromAsset(context.getAssets(), "arita_bold.ttf"); // 외부폰트 사용
         }
         return fontUtils;
     }
+
 
     public SpannableString typeface(CharSequence string) {
         SpannableString s = new SpannableString(string);

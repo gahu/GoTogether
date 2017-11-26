@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
-import kr.go.seoul.seoultrail.Common.PublicDefine;
 import kr.go.seoul.seoultrail.R;
 
 /**
@@ -27,7 +26,7 @@ public class TourInfoFragment extends Fragment {
         args.putInt(ARG_PAGE, page);
         fragment = new TourInfoFragment();
         fragment.setArguments(args);
-        PublicDefine.tourInfoFragment = fragment;
+        //PublicDefine.tourInfoFragment = fragment;
         return fragment;
     }
 

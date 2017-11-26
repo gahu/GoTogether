@@ -12,7 +12,7 @@ import android.support.v4.app.ActivityCompat;
 /**
  * Created by ntsys on 2016-06-22.
  */
-public class GPSProvider {
+public class GPSProvider{
     private Context context;
     private LocationManager mlocManager;
     private LocationListener mlocListener;
