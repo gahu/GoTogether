@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector  xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<item android:state_activated="true" android:drawable="@color/stamp_list_selected" /> -->
+    <item android:drawable="@color/white" />
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="line">
+            <stroke
+                android:color="#ffc5c746"
+                android:width="30px"
+                android:dashWidth="30px"
+                android:dashGap="15px"/>
+        </shape>
+    </item>
+</selector>
