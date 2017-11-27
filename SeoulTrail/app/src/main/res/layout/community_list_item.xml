@@ -38,21 +38,21 @@
                 <TextView
                     android:id="@+id/post_writeTime"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textSize="10dp"/>
             </LinearLayout>
         </LinearLayout>
 
         <TextView
             android:id="@+id/post_body"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp" />
+            android:layout_height="wrap_content"/>
 
         <ImageView
             android:id="@+id/post_picture"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:padding="5dp"
+            android:padding="2dp"
             android:scaleType="fitXY" />
     </LinearLayout>
 
