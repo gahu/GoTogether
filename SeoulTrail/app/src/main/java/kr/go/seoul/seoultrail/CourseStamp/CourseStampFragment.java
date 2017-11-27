@@ -248,7 +248,7 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
         courseStampListAdapter.notifyDataSetChanged();
         for (int i = 0; i < stampImgView.length; i++) {
             if (view.getId() == stampImgView[i].getId()) {
-                ArrayList<StampHistory> arraylistStampHistoyList = DBHelper.getInstance(getContext()).getCompleteStampHistory(i);
+                ArrayList<StampHistory> arraylistStampHistoyList = DBHelper.getInstance(getActivity()).getCompleteStampHistory(i);
                 showHistoryList(arraylistStampHistoyList);
             }
         }
@@ -256,14 +256,14 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
 
     private void showHistoryList(ArrayList<StampHistory> arraylistStampHistoyList) {
         SpannableString[] histoyList;
-        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(getActivity());
         if (arraylistStampHistoyList.size() > 0) {
             histoyList = new SpannableString[arraylistStampHistoyList.size()];
             for (int i = 0; i < arraylistStampHistoyList.size(); i++) {
-                histoyList[i] = FontUtils.getInstance(getContext()).typeface(arraylistStampHistoyList.get(i).getUpdateDate());
+                histoyList[i] = FontUtils.getInstance(getActivity()).typeface(arraylistStampHistoyList.get(i).getUpdateDate());
             }
         } else {
-            histoyList = new SpannableString[]{FontUtils.getInstance(getContext()).typeface("스탬프 이력이 없습니다.")};
+            histoyList = new SpannableString[]{FontUtils.getInstance(getActivity()).typeface("스탬프 이력이 없습니다.")};
         }
         alert_confirm.setItems(histoyList, null);
         alert_confirm.setNegativeButton("확인", new DialogInterface.OnClickListener() {
@@ -272,8 +272,10 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
                 dialogInterface.dismiss();
             }
         });
+        // 이미지를 저장해서 alert_confirm.create()로 생성하고 이것을 메세지 형식으로 Show()해준다.
+        // 오류를 해결하기 위해선, 상위액티비티.this를 적용시키거나 / isFinishing() 검사 / 최상위 액티비티의 context를 static으로 선언해서 사용 허가를 줘야한다.
         final AlertDialog alert = alert_confirm.create();
-        final Typeface mTypeface = Typeface.createFromAsset(getContext().getAssets(), "arita_bold.ttf");
+        final Typeface mTypeface = Typeface.createFromAsset(getActivity().getAssets(), "arita_bold.ttf");
         alert.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
@@ -281,7 +283,9 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
                 alert.getButton(Dialog.BUTTON_NEGATIVE).setTypeface(mTypeface);
             }
         });
+
         alert.show();
+
     }
 
     public void setCourseNo(final int courseNo) {

@@ -251,9 +251,4 @@ public class MenuActivity extends BaseActivity {
         }
     }
 
-
-
-
-
-
 }
