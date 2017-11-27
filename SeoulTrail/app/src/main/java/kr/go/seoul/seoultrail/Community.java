@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -59,7 +60,6 @@ public class Community extends BaseActivity {
     private ImageView uploadPicture = null;
 
     private List<Post> postList = new ArrayList<>();
-    private List<String> postListKeys = new ArrayList<>();
     private CommunityAdapter myAdapter;
     private RecyclerView.LayoutManager myLayoutManager;
 
@@ -72,6 +72,7 @@ public class Community extends BaseActivity {
     private boolean login = false;
     private boolean validity = true;
     private boolean pictureYesOrNo = true;
+    private boolean iconYesOrNo = false;
 
     private static final int SET_ICON_CAMERA = 1;
     private static final int SET_ICON_GALLERY = 2;
@@ -83,9 +84,6 @@ public class Community extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // 닉네임, 비번 정보 getSharedPreferences 통해 저장
-
 
         // 레이아웃, 뷰 설정
         setContentView(R.layout.community_activity);
@@ -117,15 +115,26 @@ public class Community extends BaseActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("업로드 중...");
 
-
-
         updateBodyText();
-
 
         setPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                postPicture(picture);
+                if(login && !writeText.getText().toString().equals("")) {
+                    postPicture(picture);
+                } else if(login && writeText.getText().toString().equals("")) {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Community.this);
+                    dialog.setMessage("본문을 먼저 적어주세요.");
+
+                    dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+                }
             }
         });
 
@@ -141,14 +150,10 @@ public class Community extends BaseActivity {
         } else if(loginPref != null && !id.equals("")){
             login = true;
 
-            // 아이콘 설정
-            String iconURL = loginPref.getString("iconURL", "");
-            Uri uri = Uri.parse(iconURL);
-            userIcon.setImageURI(uri);
-
             // 이름, placeholder, 버튼 설정
             userName.setText(id);
             writeText.setHint(id + "님의 소식을 공유하세요.");
+            setPicture.setImageResource(R.drawable.btn01_upload_off);
             sendBtn.setBackgroundResource(R.drawable.btn02_posting_off);
         }
 
@@ -192,8 +197,9 @@ public class Community extends BaseActivity {
                         }
                     });
                 } else {
+
+
                     writeBodyText();
-                    postedPicture.setVisibility(View.GONE);
                 }
 
             }
@@ -202,8 +208,22 @@ public class Community extends BaseActivity {
         userIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(login == false) {
+                // 닉네임을 먼저 적도록 강제함 => db에 icon 저장시 name활용해야하기 때문
+                if(login == false && !writeText.getText().toString().equals("")) {
+                    System.out.println(writeText.getText().toString() + "이거다~~~~~~~~~~~~~~~~~~");
                     postPicture(icon);
+                } else if (login == false && writeText.getText().toString().equals("")) {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Community.this);
+                    dialog.setMessage("닉네임을 먼저 적어주세요");
+
+                    dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+
+                    dialog.show();
                 }
             }
         });
@@ -213,36 +233,41 @@ public class Community extends BaseActivity {
         // 로그인된 화면으로 전환
         loginPref = getSharedPreferences("login", 0);
         String id = loginPref.getString("id", "");
+
+        // 아이콘 미설정시 기본이미지로 설정
+        if(!iconYesOrNo) {
+            userIcon.setImageResource(R.drawable.image_profile03);
+        }
+
         userName.setText(id);
         writeText.setText("");
-        System.out.println(id + "무엇이냐~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         writeText.setHint(id + "님의 소식을 공유하세요.");
+        setPicture.setImageResource(R.drawable.btn01_upload_off);
         sendBtn.setBackgroundResource(R.drawable.btn02_posting_off);
         login = true;
+
+        Toast.makeText(Community.this, "닉네임이 등록되었습니다", Toast.LENGTH_LONG).show();
     }
 
 
     // 글 입력 메소드
     private void writeBodyText() {
-        loginPref = getSharedPreferences("login", 0);
-        String iconURL = loginPref.getString("iconURL", "");
-        System.out.println(iconURL + "iconURL 너는 무엇이냐~~~~~~~~~~~~~~~~~~~~~~~~");
         long nowTime = new Date().getTime();
         String username = userName.getText().toString();
         String bodyText = writeText.getText().toString();
-
         if(postedPicture.getVisibility() == View.GONE) {
             pictureYesOrNo = false;
         } else {
             pictureYesOrNo = true;
         }
 
-        Post post = new Post(iconURL, username, nowTime, bodyText, pictureYesOrNo);
+        Post post = new Post(iconYesOrNo, username, nowTime, bodyText, pictureYesOrNo);
         post.setWriteTime(post.getWriteTime());
-        System.out.println("post.getWriteTime은~~~~~~~~~~~~~~~~~" + post.getWriteTime());
         databaseReference.child("posts").push().setValue(post);
 
+        // 글쓰기 화면 초기화
         writeText.setText("");
+        postedPicture.setVisibility(View.GONE);
     }
 
     // 글 적용 메소드
@@ -250,8 +275,8 @@ public class Community extends BaseActivity {
         databaseReference.child("posts").orderByChild("writeTime").limitToFirst(100).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChild) {
+                // 최신순 정렬
                 Post post = dataSnapshot.getValue(Post.class);
-                System.out.println("post는~~~~~~~~~~" + post.getBodyText());
                 postList.add(post);
                 Collections.sort(postList, new Comparator<Post>() {
                     @Override
@@ -266,13 +291,6 @@ public class Community extends BaseActivity {
                     }
                 });
                 myAdapter.notifyDataSetChanged();
-//                postList.clear();
-//                for(DataSnapshot children : dataSnapshot.get) {
-//                    Post post = children.getValue(Post.class);
-//                    postList.add(post);
-//                }
-//                Collections.reverse(postList);
-//                myAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -301,23 +319,33 @@ public class Community extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        loginPref = getSharedPreferences("login", 0);
-        final SharedPreferences.Editor editor = loginPref.edit();
-
         if(resultCode != RESULT_OK) return;
 
         switch(requestCode) {
             case SET_ICON_CAMERA: {
                 if(resultCode == RESULT_OK) {
                     Uri uri = data.getData();
-                    try {
+
+                    if(uri != null) {
+                        progressDialog.show();
+
+                        // firebase 서버에 업로드
+                        String iconFileName = "icon_" + writeText.getText() + ".jpg";
+                        StorageReference childRef = storageReference.child("icon/" + iconFileName);
+                        UploadTask uploadTask = childRef.putFile(uri);
+
+                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                progressDialog.dismiss();
+                            }
+                        });
+
                         userIcon.setImageURI(uri);
-                    } catch(OutOfMemoryError e) {
-                        Toast.makeText(Community.this, "용량이 부족합니다", Toast.LENGTH_LONG).show();
+
+                        iconYesOrNo = true;
                     }
 
-                    editor.putString("iconURL", uri.toString());
-                    editor.commit();
                 }
                 break;
             }
@@ -325,16 +353,31 @@ public class Community extends BaseActivity {
                 if(resultCode == RESULT_OK) {
                     Uri uri = data.getData();
 
-                    Bitmap bitmap = null;
-                    try {
-                        bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    userIcon.setImageBitmap(bitmap);
+                    if(uri != null) {
+                        progressDialog.show();
 
-                    editor.putString("iconURL", uri.toString());
-                    editor.commit();
+                        // firebase 서버에 업로드
+                        String iconFileName = "icon_" + writeText.getText() + ".jpg";
+                        StorageReference childRef = storageReference.child("icon/" + iconFileName);
+                        UploadTask uploadTask = childRef.putFile(uri);
+
+                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                progressDialog.dismiss();
+                            }
+                        });
+
+                        Bitmap bitmap = null;
+                        try {
+                            bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        userIcon.setImageBitmap(bitmap);
+                        iconYesOrNo = true;
+                    }
                 }
                 break;
             }
@@ -346,8 +389,9 @@ public class Community extends BaseActivity {
                         progressDialog.show();
 
                         // firebase 서버에 업로드
-                        //String fileName = userName.getText() + " - " + new SimpleDateFormat("yy.MM.dd HH:mm").format(new Date().toString());
-                        StorageReference childRef = storageReference.child("image.jpg");
+                        System.out.println("writeTExt는 ~~~~~~~~~~~~~~~~~~" +writeText.getText().toString());
+                        String fileName = userName.getText().toString() + "_" + writeText.getText().toString() + ".jpg";
+                        StorageReference childRef = storageReference.child("image/image_" + fileName);
                         UploadTask uploadTask = childRef.putFile(uri);
 
                         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -373,7 +417,8 @@ public class Community extends BaseActivity {
                         progressDialog.show();
 
                         // firebase 서버에 업로드
-                        StorageReference childRef = storageReference.child("image.jpg");
+                        String fileName = userName.getText().toString() + "_" + writeText.getText().toString() + ".jpg";
+                        StorageReference childRef = storageReference.child("image/image_" + fileName);
                         UploadTask uploadTask = childRef.putFile(uri);
 
                         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

@@ -1,5 +1,6 @@
 package kr.go.seoul.seoultrail.CommunityManager;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -16,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import kr.go.seoul.seoultrail.Community;
 import kr.go.seoul.seoultrail.R;
 
 /**
@@ -24,6 +28,7 @@ import kr.go.seoul.seoultrail.R;
 
 public class CommunityAdapter extends RecyclerView.Adapter<ViewHolder> {
     private List<Post> postList;
+    private Context context;
 
     public CommunityAdapter(List<Post> postList) {
         this.postList = postList;
@@ -31,6 +36,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        context = parent.getContext();
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.community_list_item, parent, false);
         return new ViewHolder(v);
     }
@@ -38,12 +44,13 @@ public class CommunityAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Post item = postList.get(position);
-        if(!item.getIconURL().equals("")) {
-            System.out.println("not null " + item.getIconURL());
-            Uri uri = Uri.parse(item.getIconURL());
-            holder.post_icon.setImageURI(uri);
+        if(item.getIconYesOrNo()) {
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference storageReference = storage.getReference();
+            StorageReference childRef = storageReference.child("icon/icon_" + item.getName() + ".jpg");
+
+            Glide.with(context).using(new FirebaseImageLoader()).load(childRef).into(holder.post_icon);
         } else {
-            System.out.println("null " + item.getIconURL());
             holder.post_icon.setImageResource(R.drawable.image_profile03);
         }
         holder.post_name.setText(item.getName());
@@ -52,16 +59,12 @@ public class CommunityAdapter extends RecyclerView.Adapter<ViewHolder> {
         if(item.getPictureYesOrNo()) {
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storageReference = storage.getReference();
-            StorageReference childRef = storageReference.child("image.jpg");
 
-            childRef.getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                    holder.post_picture.setImageBitmap(bitmap);
-                    holder.post_picture.setVisibility(View.VISIBLE);
-                }
-            });
+            String fileName = item.getName() + "_" + item.getBodyText() + ".jpg";
+            StorageReference childRef = storageReference.child("image/image_" + fileName);
+
+            Glide.with(context).using(new FirebaseImageLoader()).load(childRef).into(holder.post_picture);
+            holder.post_picture.setVisibility(View.VISIBLE);
         } else {
             holder.post_picture.setVisibility(View.GONE);
         }
