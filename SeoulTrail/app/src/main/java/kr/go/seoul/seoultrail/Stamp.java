@@ -36,7 +36,9 @@ public class Stamp extends BaseActivity {
 
     private class StampPagerAdapter extends FragmentPagerAdapter {
 
-        public StampPagerAdapter(FragmentManager fm) { super(fm); }
+        public StampPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
 
         @Override
         public int getCount() {

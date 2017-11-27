@@ -73,10 +73,6 @@ public class MainActivity extends TabActivity {
 
     private TabHost tabHost;
     private ImageView header_image;
-    private ImageView tab_1;
-    private ImageView tab_2;
-    private ImageView tab_3;
-    private ImageView tab_4;
 
     final static String MAIN = "1";
     final static String COURSE = "2";
@@ -104,12 +100,11 @@ public class MainActivity extends TabActivity {
     private Boolean completeAllCourse = false;
     private String lastStampInfo = "";
 
-    private CustomProgressDialog dialogLoading;
-    private AlertDialog alert = null;
+    private static CustomProgressDialog dialogLoading;
+    private static AlertDialog alert = null;
 
     private int value;
     // modify 여기 부분이 메뉴부분에서 상태 확인해서 글자 바꾸는부분
-
 
     public void settingText(int value) {
 
