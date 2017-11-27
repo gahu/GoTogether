@@ -556,7 +556,8 @@ public class MainActivity extends TabActivity {
                     settingTab(4);
                     lastTabTag = CAMERA;
                     loggingAction = "CAMERA";
-                    increaseHeaderImage();
+                    Main_Move();
+//                    increaseHeaderImage();
                 }
 
                 try {
