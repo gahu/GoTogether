@@ -39,6 +39,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+import kr.go.seoul.seoultrail.Common.PublicDefine;
 import kr.go.seoul.seoultrail.CommunityManager.CommunityAdapter;
 import kr.go.seoul.seoultrail.CommunityManager.Post;
 
@@ -80,6 +81,11 @@ public class Community extends BaseActivity {
     private int icon = 1;
     private int picture = 2;
 
+    @Override
+    public void onBackPressed() {
+        PublicDefine.mainActivity.Main_Move();
+        // PublicDefine.mainActivity.settingTab(1);
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
