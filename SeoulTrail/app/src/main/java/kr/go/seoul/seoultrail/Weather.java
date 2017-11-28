@@ -29,8 +29,6 @@ public class Weather extends BaseActivity {
     private void initView() {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new WeatherPagerAdapter(getSupportFragmentManager()));
-        //SharedPreferences pref = getSharedPreferences("SYSTEM", 0);
-        //SharedPreferences.Editor edit = pref.edit();
     }
 
     private class WeatherPagerAdapter extends FragmentPagerAdapter {

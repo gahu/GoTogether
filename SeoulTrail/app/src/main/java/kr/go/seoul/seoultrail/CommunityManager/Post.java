@@ -6,9 +6,8 @@ package kr.go.seoul.seoultrail.CommunityManager;
 
 // 모델 클래스
 public class Post {
-    private String iconURL;
+    private boolean iconYesOrNo;
     private String name;
-    private int order;
     private long writeTime;
     private String bodyText;
     private boolean pictureYesOrNo;
@@ -16,17 +15,17 @@ public class Post {
     // 기본 생성자를 필수로 만들어줘야지 데이터를 가져올 때 Error를 발생시키지 않습니다.
     public Post()  {}
 
-    public Post(String iconURL, String name, long writeTime, String bodyText, boolean pictureYesOrNo) {
-        this.iconURL = iconURL;
+    public Post(boolean iconYesOrNo, String name, long writeTime, String bodyText, boolean pictureYesOrNo) {
+        this.iconYesOrNo = iconYesOrNo;
         this.name = name;
         this.writeTime = writeTime;
         this.bodyText = bodyText;
         this.pictureYesOrNo = pictureYesOrNo;
     }
 
-    public String getIconURL() { return iconURL; }
+    public boolean getIconYesOrNo() { return iconYesOrNo; }
 
-    public void setIconURL(String iconURL) { this.iconURL = iconURL; }
+    public void setIconYesOrNo(boolean iconYesOrNo) { this.iconYesOrNo = iconYesOrNo; }
 
     public String getName() {
         return name;

@@ -1,4 +1,3 @@
-/*
 package kr.go.seoul.seoultrail.TrailInformation;
 
 import android.content.Intent;
@@ -34,13 +33,12 @@ import kr.go.seoul.seoultrail.Common.EndlessScrollListener;
 import kr.go.seoul.seoultrail.Common.PublicDefine;
 import kr.go.seoul.seoultrail.R;
 
-*/
 /**
  * Created by ntsys on 2016-08-09.
- *//*
-
+ */
 public class EventFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
+
     private static EventFragment fragment;
     private int mPage;
     private ListView informationEventListView;
@@ -169,4 +167,4 @@ public class EventFragment extends Fragment {
             informationEventListView.setScrollY(0);
         }
     }
-}*/
+}

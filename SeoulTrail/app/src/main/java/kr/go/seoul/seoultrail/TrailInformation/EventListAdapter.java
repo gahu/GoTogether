@@ -1,8 +1,6 @@
-/*
 package kr.go.seoul.seoultrail.TrailInformation;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +15,10 @@ import java.util.ArrayList;
 import kr.go.seoul.seoultrail.Common.FontUtils;
 import kr.go.seoul.seoultrail.R;
 
-*/
+
 /**
  * Created by ntsys on 2016-08-16.
- *//*
+ */
 
 
 public class EventListAdapter extends ArrayAdapter<EventInfo> {
@@ -30,8 +28,7 @@ public class EventListAdapter extends ArrayAdapter<EventInfo> {
     private ArrayList<EventInfo> infoList = null;
     private Context mContext = null;
 
-    public EventListAdapter(Context c, int ResourceId,
-                            ArrayList<EventInfo> arrays) {
+    public EventListAdapter(Context c, int ResourceId, ArrayList<EventInfo> arrays) {
         super(c, ResourceId, arrays);
         this.inflater = LayoutInflater.from(c);
         this.mContext = c;
@@ -43,8 +40,8 @@ public class EventListAdapter extends ArrayAdapter<EventInfo> {
     }
 
     @Override
-    public Fragment getItem(int position) {
-        return EventFragment.newInstance(position);
+    public EventInfo getItem(int position) {
+        return super.getItem(position);
     }
 
     @Override
@@ -83,4 +80,3 @@ public class EventListAdapter extends ArrayAdapter<EventInfo> {
     }
 
 }
-*/

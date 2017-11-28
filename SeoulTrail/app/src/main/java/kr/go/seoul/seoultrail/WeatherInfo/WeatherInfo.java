@@ -9,14 +9,40 @@ public class WeatherInfo {
     private String wf;
     private String tmn;
     private String tmx;
+    private String wfKor;
+    private String temp;
+    private String day;
+    private String hour;
+
+    public String getHour() {
+        return hour;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getWfKor() { return wfKor; }
+
+    public void setWfKor(String wfKor) { this.wfKor = wfKor; }
+
+    public String getTemp()  { return temp; }
+
+    public void setTemp(String temp) { this.temp = temp; }
 
     public String getTmEf() {
         return tmEf;
     }
 
-    public void setTmEf(String tmEf) {
-        this.tmEf = tmEf;
-    }
+    public void setTmEf(String tmEf) { this.tmEf = tmEf; }
 
     public String getWf() {
         return wf;
