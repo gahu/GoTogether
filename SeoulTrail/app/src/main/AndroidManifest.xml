@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="kr.go.seoul.seoultrail">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -43,8 +45,10 @@
             android:screenOrientation="portrait"/>
         <activity android:name="kr.go.seoul.seoultrail.Event"
             android:screenOrientation="portrait"/>
-        <activity android:name="kr.go.seoul.seoultrail.Camera"
-            android:screenOrientation="portrait"/>
+        <activity android:name="kr.go.seoul.seoultrail.CameraActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:clearTaskOnLaunch="true"/>
         <activity android:name="kr.go.seoul.seoultrail.GuideActivity"
             android:screenOrientation="portrait"/>
         <activity android:name="kr.go.seoul.seoultrail.Video"
@@ -65,13 +69,13 @@
             android:screenOrientation="portrait"/>
         <activity android:name="kr.go.seoul.seoultrail.Cafe"
             android:screenOrientation="portrait"/>
-
         <activity android:name="kr.go.seoul.seoultrail.Weather"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            tools:ignore="DuplicateActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="${applicationId}.provider"
+            android:authorities="kr.go.seoul.seoultrail.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
