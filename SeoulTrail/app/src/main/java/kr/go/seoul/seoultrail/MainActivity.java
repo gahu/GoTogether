@@ -20,14 +20,12 @@ import android.support.v4.app.NotificationCompat;
 import android.text.Html;
 import android.text.SpannableString;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
@@ -65,10 +63,6 @@ import kr.go.seoul.seoultrail.Common.PublicDefine;
 import kr.go.seoul.seoultrail.Common.StampLocation;
 import kr.go.seoul.seoultrail.GPS.GPSProvider;
 
-import static android.view.Gravity.BOTTOM;
-import static android.view.Gravity.CENTER;
-import static android.view.Gravity.LEFT;
-
 public class MainActivity extends TabActivity {
 
     private TabHost tabHost;
@@ -86,8 +80,6 @@ public class MainActivity extends TabActivity {
     private int notiIDX = -1;
     int cnt = 0;
 
-    boolean tf = false;
-
     // 여기서부터는 17.10.24 수정 부분
 //    private CheckBox btnMore;
 //    private LinearLayout gpsBtnLayout;
@@ -100,292 +92,9 @@ public class MainActivity extends TabActivity {
     private Boolean completeAllCourse = false;
     private String lastStampInfo = "";
 
-    private static CustomProgressDialog dialogLoading;
-    private static AlertDialog alert = null;
+    private CustomProgressDialog dialogLoading;
+    private AlertDialog alert = null;
 
-    private int value;
-    // modify 여기 부분이 메뉴부분에서 상태 확인해서 글자 바꾸는부분
-
-    public void settingText(int value) {
-
-        TextView top_text = (TextView) findViewById(R.id.main_text_image1);
-        TextView mid_text = (TextView) findViewById(R.id.main_text_image2);
-        TextView bottom_text = (TextView) findViewById(R.id.main_text_image3);
-        ImageView im = (ImageView) findViewById(R.id.header_image);
-        LinearLayout li_text = (LinearLayout) findViewById(R.id.nav);
-
-        this.value = value;
-
-        switch (value) {
-            // modify 1. 도우미 부분
-            case 1:
-                li_text.setBackgroundResource(R.drawable.bg05_nav);
-                im.setImageResource(R.drawable.bg05_header);
-                top_text.setVisibility(View.GONE);
-                top_text.setText("도움이 필요하세요?");
-                top_text.setVisibility(View.VISIBLE);
-                top_text.setGravity(Gravity.TOP | LEFT);
-                top_text.setPadding(0, 30, 0, 0);
-
-                mid_text.setVisibility(View.GONE);
-                mid_text.setText("\"둘레길 도우미\"");
-                mid_text.setVisibility(View.VISIBLE);
-                mid_text.setGravity(Gravity.CENTER | LEFT);
-
-                bottom_text.setVisibility(View.GONE);
-                bottom_text.setText("도우미에게 둘레길에 필요한 정보를 얻어가세요. ");
-                bottom_text.setVisibility(View.VISIBLE);
-                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
-                bottom_text.setTextSize(15);
-                bottom_text.setPadding(0, 0, 0, 60);
-
-                break;
-
-            // modify 둘레길이란? 부분
-            case 2:
-                li_text.setBackgroundResource(R.drawable.bg06_nav);
-                im.setImageResource(R.drawable.bg06_header);
-                top_text.setVisibility(View.GONE);
-                top_text.setText("\"천천히 알아가세요\"");
-                top_text.setVisibility(View.VISIBLE);
-                top_text.setGravity(Gravity.TOP | LEFT);
-                top_text.setPadding(0, 30, 0, 0);
-
-                mid_text.setVisibility(View.GONE);
-                mid_text.setText("'서울 둘레길'");
-                mid_text.setVisibility(View.VISIBLE);
-                mid_text.setGravity(Gravity.CENTER | LEFT);
-
-                bottom_text.setVisibility(View.GONE);
-                bottom_text.setText("서울의 자연과 사람이 함께 공존하는 이 곳");
-                bottom_text.setVisibility(View.VISIBLE);
-                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
-                bottom_text.setTextSize(15);
-                bottom_text.setPadding(0, 0, 0, 60);
-
-                break;
-
-            //modify 영상 부분
-            case 3:
-                li_text.setBackgroundResource(R.drawable.bg07_nav);
-                im.setImageResource(R.drawable.bg07_header);
-                top_text.setVisibility(View.GONE);
-                top_text.setText("\"둘러보세요\"");
-                top_text.setVisibility(View.VISIBLE);
-                top_text.setGravity(Gravity.LEFT|CENTER);
-                top_text.setPadding(0, 0, 0, 0);
-
-                mid_text.setVisibility(View.GONE);
-                mid_text.setText("\"둘레길 동영상\"");
-                mid_text.setVisibility(View.VISIBLE);
-                mid_text.setGravity(Gravity.LEFT | BOTTOM);
-                mid_text.setPadding(0, 0, 0, 30);
-                bottom_text.setVisibility(View.GONE);
-
-                break;
-
-            // 3번째 카메라 탭 처리
-            case 4:
-                li_text.setBackgroundResource(R.drawable.bg08_nav);
-                im.setImageResource(R.drawable.bg08_header);
-                top_text.setVisibility(View.GONE);
-                top_text.setText("\"발자취를 남기세요\"");
-                top_text.setVisibility(View.VISIBLE);
-                top_text.setGravity(Gravity.TOP | LEFT);
-                top_text.setPadding(0, 30, 0, 0);
-
-                mid_text.setVisibility(View.GONE);
-                mid_text.setText("'둘레길 스탬프'");
-                mid_text.setVisibility(View.VISIBLE);
-                mid_text.setGravity(Gravity.CENTER | LEFT);
-
-                bottom_text.setVisibility(View.GONE);
-                bottom_text.setText("스탬프를 통해 추억을 간직하고 서울의 이야기를 떠올리세요.");
-                bottom_text.setVisibility(View.VISIBLE);
-                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
-                bottom_text.setTextSize(15);
-                bottom_text.setPadding(0, 0, 0, 30);
-
-                break;
-
-            //카페부분은 필요없을것같다
-            case 5:
-                break;
-
-            //날씨부분
-            case 6:
-                li_text.setBackgroundResource(R.drawable.bg09_nav);
-                im.setImageResource(R.drawable.bg09_header);
-                top_text.setVisibility(View.GONE);
-                top_text.setText("등산하기전 확인하세요.");
-                top_text.setVisibility(View.VISIBLE);
-                top_text.setGravity(Gravity.TOP | LEFT);
-                top_text.setPadding(0, 30, 0, 0);
-
-                mid_text.setVisibility(View.GONE);
-                mid_text.setText("\"둘레길 날씨\"");
-                mid_text.setVisibility(View.VISIBLE);
-                mid_text.setGravity(Gravity.CENTER | LEFT);
-
-                bottom_text.setVisibility(View.GONE);
-                bottom_text.setText("맑은날에 둘레길 등산으로 건강해지세요.");
-                bottom_text.setVisibility(View.VISIBLE);
-                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
-                bottom_text.setTextSize(15);
-                bottom_text.setPadding(0, 0, 0, 60);
-
-                break;
-
-            //행사안내
-            case 7:
-                li_text.setBackgroundResource(R.drawable.bg10_nav);
-                im.setImageResource(R.drawable.bg10_header);
-                top_text.setVisibility(View.GONE);
-                top_text.setText("같이 즐기세요");
-                top_text.setVisibility(View.VISIBLE);
-                top_text.setGravity(Gravity.TOP | LEFT);
-                top_text.setPadding(0, 30, 0, 0);
-
-                mid_text.setVisibility(View.GONE);
-                mid_text.setText("\"둘레길 행사\"");
-                mid_text.setVisibility(View.VISIBLE);
-                mid_text.setGravity(Gravity.CENTER | LEFT);
-
-                bottom_text.setVisibility(View.GONE);
-                bottom_text.setText("지금 둘레길에서 행사를 하고 있어요. 같이 참여 해요.");
-                bottom_text.setVisibility(View.VISIBLE);
-                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
-                bottom_text.setTextSize(15);
-                bottom_text.setPadding(0, 0, 0, 60);
-
-                break;
-
-            //FAQ
-            case 8:
-                li_text.setBackgroundResource(R.drawable.bg11_nav);
-                im.setImageResource(R.drawable.bg11_header);
-                top_text.setVisibility(View.GONE);
-                top_text.setText("무엇이든");
-                top_text.setVisibility(View.VISIBLE);
-                top_text.setGravity(Gravity.TOP | LEFT);
-                top_text.setPadding(0, 30, 0, 0);
-
-                mid_text.setVisibility(View.GONE);
-                mid_text.setText("\"질문 하세요\"");
-                mid_text.setVisibility(View.VISIBLE);
-                mid_text.setGravity(Gravity.CENTER | LEFT);
-
-                bottom_text.setVisibility(View.GONE);
-                bottom_text.setText("둘레길에 대한 궁금증을 도움말,질문을 통해 해결 하세요");
-                bottom_text.setVisibility(View.VISIBLE);
-                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
-                bottom_text.setTextSize(15);
-                bottom_text.setPadding(0, 0, 0, 60);
-
-                break;
-
-            //기타 개발 내역
-            case 9:
-                break;
-        }
-    }
-
-    public void settingTab(int value) {
-
-        TextView top_text = (TextView) findViewById(R.id.main_text_image1);
-        TextView mid_text = (TextView) findViewById(R.id.main_text_image2);
-        TextView bottom_text = (TextView) findViewById(R.id.main_text_image3);
-        ImageView im = (ImageView) findViewById(R.id.header_image);
-        LinearLayout li_tab = (LinearLayout) findViewById(R.id.nav);
-        this.value = value;
-
-        switch (value) {
-            // modify 메인 부분 텍스트 변경( case0~ 3번까지 탭부분 이벤트처리)
-            //  1번째 탭 메인 처리
-            case 1:
-                //header_back.setImageResource(R.drawable.bg);
-
-                li_tab.setBackgroundResource(R.drawable.bg01_nav);
-                im.setImageResource(R.drawable.bg01_header);
-                top_text.setVisibility(View.GONE);
-                top_text.setText("사람과 자연이 함께 하는");
-                top_text.setVisibility(View.VISIBLE);
-                top_text.setGravity(Gravity.CENTER);
-                Typeface face1 = Typeface.createFromAsset(getAssets(), "arita_bold.ttf");
-                top_text.setTypeface(face1);
-                top_text.setTextSize(17);
-                top_text.setPadding(0, 0, 0, 40);
-
-                //modify 서울둘레길 텍스트 부분
-
-                Typeface face = Typeface.createFromAsset(getAssets(), "arita_bold.ttf");
-                mid_text.setGravity(Gravity.CENTER | BOTTOM);
-                mid_text.setTypeface(face);
-                mid_text.setTextSize(40);
-                mid_text.setPadding(0, 0, 0, 40);
-                mid_text.setText("'서울 둘레길'");
-
-                bottom_text.setVisibility(View.GONE);
-
-                break;
-
-            // modify 코스 부분 텍스트 변경
-            //2번째 코스정보 탭 처리
-            case 2:
-
-
-                li_tab.setBackgroundResource(R.drawable.bg02_nav);
-                im.setImageResource(R.drawable.bg02_header);
-                top_text.setVisibility(View.GONE);
-                top_text.setText("8개의 코스");
-                top_text.setVisibility(View.VISIBLE);
-                top_text.setGravity(Gravity.TOP | LEFT);
-                top_text.setPadding(0, 30, 0, 0);
-
-                mid_text.setVisibility(View.GONE);
-                mid_text.setText("'서울 둘레길'");
-                mid_text.setVisibility(View.VISIBLE);
-                mid_text.setGravity(Gravity.CENTER | LEFT);
-
-                bottom_text.setVisibility(View.GONE);
-                bottom_text.setText("서울을 걸어서 크게 한바퀴 돌 수 있는 총 157km의 서울 둘레길");
-                bottom_text.setVisibility(View.VISIBLE);
-                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
-                bottom_text.setTextSize(15);
-                bottom_text.setPadding(0, 0, 0, 30);
-                break;
-
-            // 3번째 커뮤니티 탭 처리
-            case 3:
-                li_tab.setBackgroundResource(R.drawable.bg03_nav);
-                im.setImageResource(R.drawable.bg03_header);
-                top_text.setVisibility(View.GONE);
-                top_text.setText("공유하세요");
-                top_text.setVisibility(View.VISIBLE);
-                top_text.setGravity(Gravity.TOP | LEFT);
-                top_text.setPadding(0, 30, 0, 0);
-
-                mid_text.setVisibility(View.GONE);
-                mid_text.setText("'서울 둘레길 소식'");
-                mid_text.setVisibility(View.VISIBLE);
-                mid_text.setGravity(Gravity.CENTER | LEFT);
-
-                bottom_text.setVisibility(View.GONE);
-                bottom_text.setText("페이스북,블로그 등의 SNS를 통해 둘레길에 대해 이야기 해요");
-                bottom_text.setVisibility(View.VISIBLE);
-                bottom_text.setGravity(Gravity.BOTTOM | LEFT);
-                bottom_text.setTextSize(15);
-                bottom_text.setPadding(0, 0, 0, 30);
-                break;
-
-            // 4번째 카메라 탭 처리
-            case 4:
-                break;
-
-            default:
-                break;
-        }
-    }
 
 
     @Override
@@ -395,7 +104,7 @@ public class MainActivity extends TabActivity {
         PublicDefine.mainActivity = this;
         initView();
         /*modify 여기 부분을 initGPS() 주석 처리하니까 처음실행될때 위치 정보를 가져오지 않는다
-        modify 지도에서 접근하였을 시에 GPS가 처리 되는것을 알 수 있다. 자기 정보를 눌렀을 경우
+          modify 지도에서 접근하였을 시에 GPS가 처리 되는것을 알 수 있다. 자기 정보를 눌렀을 경우
         */
         initGPS();
     }
@@ -419,14 +128,11 @@ public class MainActivity extends TabActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
     }
 
     @Override
     protected void onDestroy() {
-
         if (gps != null) {
             gps.removeUpdate();
         }
@@ -495,6 +201,7 @@ public class MainActivity extends TabActivity {
         PendingIntent contentIntent = PendingIntent.getActivity(this, id,
                 new Intent(this, IntroActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP),
                 PendingIntent.FLAG_UPDATE_CURRENT);
+
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
@@ -503,18 +210,22 @@ public class MainActivity extends TabActivity {
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(contentIntent);
+
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(id, notificationBuilder.build());
     }
+
     public void setCheckNMapMyLocation(NGeoPoint myLocation) {
         checkLocation(myLocation.getLatitude(), myLocation.getLongitude());
     }
-    public void initView() {
-        settingTab(1);            // 메인 글자 셋팅
+
+    private void initView() {
         header_image = (ImageView) findViewById(R.id.header_image);
+
         setupTabHost();
+
         tabHost.getTabWidget().setDividerDrawable(null);
         setupTab(MAIN);
         setupTab(COURSE);
@@ -523,35 +234,33 @@ public class MainActivity extends TabActivity {
         tabHost.setCurrentTab(0);           // MAIN 부분이 첫번째로 들어가기위함
         // 혹시나 setCurrentTab을 다른 탭으로 설정해버리면 제대로 된 값이 이벤트가 발생하지 않는다.
 
+
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tag) {
 
                 String loggingAction = "";
-                // modify 탭부분 들어가는 글자 이미지 변경
+
                 if (tag.equals(MAIN)) {
                     //header_image.setImageResource(R.drawable.bg01_main);
                     lastTabTag = MAIN;
                     loggingAction = "MAIN";
-                    //increaseHeaderImage();
-                    settingTab(1);
+//                    increaseHeaderImage();
                 } else if (tag.equals(COURSE)) {
-                    settingTab(2);
                     //header_image.setImageResource(R.drawable.bg01_course);
                     lastTabTag = COURSE;
                     loggingAction = "COURSE";
-                    //reduceHeaderImage();
+//                    increaseHeaderImage();
                 } else if (tag.equals(COMMUNITY)) {
-                    settingTab(3);
                     //header_image.setImageResource(R.drawable.bg01_community);
                     lastTabTag = COMMUNITY;
                     loggingAction = "COMMUNITY";
-                    //reduceHeaderImage();
+//                    increaseHeaderImage();
                 } else if (tag.equals(CAMERA)) {
-                    settingTab(4);
                     lastTabTag = CAMERA;
                     loggingAction = "CAMERA";
-                    Main_Move();
+                    tabHost.clearAllTabs();
+                    initView();
 //                    increaseHeaderImage();
                 }
 
@@ -601,34 +310,32 @@ public class MainActivity extends TabActivity {
         tabHost.setup();
     }
 
-    public void Main_Move(){
-        tabHost.clearAllTabs();
-        initView();
-    }
-
     private void setupTab(final String tag) {
         View tabview = createTabView(tabHost.getContext(), tag);
 
         // TabSpec은 공개된 생성자가 없으므로 직접 생성할 수 없으며, TabHost의 newTabSpec메서드로 생성
         TabSpec setContent = tabHost.newTabSpec(tag).setIndicator(tabview);
 
+
         // 여기부분은탭 눌렀을경우 어떻게 동작할지 결정하는 부분이다. 그래서 MenuAcitivy로 넣어주었다.
         if (tag.equals(MAIN)) {
             setContent.setContent(new Intent(this, Menu_Connection.class));
         }
         else if (tag.equals(COURSE)) {
-
             setContent.setContent(new Intent(this, Course.class));
         }
         else if (tag.equals(COMMUNITY)) {
             setContent.setContent(new Intent(this, Community.class));
         }
         else if (tag.equals(CAMERA)) {
-            setContent.setContent(new Intent(this, CameraActivity.class));
+            Intent intent = new Intent(this, CameraActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+            setContent.setContent(intent);
         }
         tabHost.addTab(setContent);
 
     }
+
 
     private static View createTabView(final Context context, final String text) {
         // layoutinflater를 이용해 xml 리소스를 읽어와 tabview를 생성
@@ -636,15 +343,14 @@ public class MainActivity extends TabActivity {
         ImageView img;
 
         img = (ImageView) view.findViewById(R.id.tabs_image);
-
         if (text.equals(MAIN)) {
-            img.setImageResource(R.drawable.selector_main);
+            img.setImageResource(R.drawable.btn01_main_on);
         } else if (text.equals(COURSE)) {
-            img.setImageResource(R.drawable.selector_course);
+            img.setImageResource(R.drawable.btn02_course_on);
         } else if (text.equals(COMMUNITY)) {
-            img.setImageResource(R.drawable.selector_comunity);
+            img.setImageResource(R.drawable.btn03_community_on);
         } else if (text.equals(CAMERA)) {
-            img.setImageResource(R.drawable.selector_camera);
+            img.setImageResource(R.drawable.btn04_camera_on);
         }
         return view;
     }
@@ -783,6 +489,7 @@ public class MainActivity extends TabActivity {
     public void showDetailInfo(NMapPOIitem item) {
         new ProcessNetworkPointDetailThread().execute(item.getTag().toString(), null, null);
     }
+
 
     public class ProcessNetworkImportantNoticeList extends AsyncTask<Void, Void, String> {
         protected String doInBackground(Void... arg0) {
@@ -947,6 +654,7 @@ public class MainActivity extends TabActivity {
                 return "";
             }
         }
+
     }
 
     // TODO 네트워크 세부적인 쓰레드 과정 구현 부분
@@ -1047,7 +755,6 @@ public class MainActivity extends TabActivity {
         Uri uri = Uri.parse("http://gil.seoul.go.kr/m/course/dulae_gil_list.jsp?course=2000");
         intent.setData(uri);
         startActivity(intent);
-
     }
 
     public void showMain(View view) {
@@ -1055,4 +762,7 @@ public class MainActivity extends TabActivity {
         //PublicDefine.information.setPager(0);
         // # 인포메이션 부분 없애기 위해서 주석 처리 하였음
     }
+
+
+
 }

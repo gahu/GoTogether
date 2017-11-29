@@ -10,6 +10,7 @@ import kr.go.seoul.seoultrail.GuideActivity;
 import kr.go.seoul.seoultrail.Information;
 import kr.go.seoul.seoultrail.MainActivity;
 import kr.go.seoul.seoultrail.MenuActivity;
+import kr.go.seoul.seoultrail.Menu_Connection;
 import kr.go.seoul.seoultrail.Stamp;
 import kr.go.seoul.seoultrail.TrailInformation.TourInfoFragment;
 import kr.go.seoul.seoultrail.Video;
@@ -36,7 +37,7 @@ public class PublicDefine {
     public static WeatherFragment weatherFragment;
     public static GuideActivity guideActivity;
     public static TourInfoFragment tourInfoFragment;
-
+    public static Menu_Connection menu_connection;
     public static String serviceSmgisKey = "a2e67e834d624f09aa68f1a1bdfa5fa5";
     public static String nMapClientId = "lusQzicuKpnMyPi_pLbv";
 

@@ -1,17 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/main_background"
     >
 
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btn_course"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+
+
+    <!--android:text="코스정보"-->
+    <!--android:layout_below="@+id/btn_camera"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_marginTop="11dp" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btn_event"-->
+    <!--android:layout_width="175dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="행사안내"-->
+    <!--android:layout_toLeftOf=""-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_alignParentEnd="true" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btn_video"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+
+
+    <!--android:text="소개영상"-->
+    <!--android:layout_below="@+id/btn_course"-->
+    <!--android:layout_alignLeft="@+id/btn_community"-->
+    <!--android:layout_alignStart="@+id/btn_community"-->
+    <!--android:layout_marginTop="17dp"-->
+    <!--android:layout_toLeftOf="@+id/btn_event"-->
+    <!--android:layout_toStartOf="@+id/btn_event" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btn_stamp"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+
+
+    <!--android:text="스탬프"-->
+    <!--android:layout_marginRight="42dp"-->
+    <!--android:layout_marginEnd="42dp"-->
+    <!--android:layout_below="@+id/btn_event"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_alignParentEnd="true" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btn_community"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+
+    <!--android:text="커뮤니티"-->
+    <!--android:layout_below="@+id/btn_intro"-->
+    <!--android:layout_alignLeft="@+id/btn_course"-->
+    <!--android:layout_alignStart="@+id/btn_course"-->
+    <!--android:layout_toStartOf="@+id/btn_event"-->
+    <!--android:layout_toLeftOf="@+id/btn_event" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btn_cafe"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+
+    <!--android:text="공식카페"-->
+    <!--android:layout_below="@+id/btn_stamp"-->
+    <!--android:layout_alignLeft="@+id/btn_stamp"-->
+    <!--android:layout_alignStart="@+id/btn_stamp" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btn_faq"-->
+    <!--android:layout_width="175dp"-->
+    <!--android:layout_height="wrap_content"-->
+
+
+
+    <!--android:layout_column="0"-->
+    <!--android:layout_row="7"-->
+    <!--android:text="문의안내"-->
+    <!--android:layout_below="@+id/btn_course"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_alignParentEnd="true" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btn_camera"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+
+    <!--android:layout_column="0"-->
+
+    <!--android:layout_row="7"-->
+    <!--android:text="카메라"-->
+    <!--android:layout_below="@+id/btn_community"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_alignParentStart="true"-->
+    <!--android:layout_marginLeft="31dp"-->
+    <!--android:layout_marginStart="31dp"-->
+    <!--android:layout_alignRight="@+id/btn_course"-->
+    <!--android:layout_alignEnd="@+id/btn_course" />-->
+    <!--</RelativeLayout>-->
+
+
+    <!--</LinearLayout>-->
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/main_background">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,12 +146,14 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
+
+                android:background="@drawable/icon01_guide"
                 android:text="도우미"
-                android:textColor="#5e7257"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:visibility="visible"
                 android:singleLine="true"
+
                 />
 
             <Button
@@ -38,9 +161,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
+                android:background="@drawable/icon02_history"
                 android:text="둘레길이란?"
-                android:textColor="#5e7257"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"
                 />
@@ -50,9 +173,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
+                android:background="@drawable/icon03_video"
                 android:text="영상"
-                android:textColor="#5e7257"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"
                 />
@@ -69,9 +192,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
+                android:background="@drawable/icon04_stamp"
                 android:text="스탬프"
-                android:textColor="#5e7257"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"/>
 
@@ -80,9 +203,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
+                android:background="@drawable/icon05_cafe"
                 android:text="카페"
-                android:textColor="#5e7257"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"/>
 
@@ -91,10 +214,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
+                android:background="@drawable/icon06_weather"
                 android:singleLine="true"
+
                 android:text="날씨"
-                android:textColor="#5e7257"
+                android:textColor="#5d897d"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -110,9 +234,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
+                android:background="@drawable/icon07_event"
                 android:text="행사"
-                android:textColor="#5e7257"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"/>
 
@@ -121,9 +245,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
+                android:background="@drawable/icon08_faq"
                 android:text="문의"
-                android:textColor="#5e7257"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"/>
 
@@ -132,11 +256,12 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
+                android:background="@drawable/icon09_etc"
                 android:text="기타"
-                android:textColor="#5e7257"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+    <!-- 인플레이션 필요 -->
