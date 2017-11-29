@@ -13,11 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ScrollView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -81,13 +80,13 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
             , R.drawable.stamp21_on, R.drawable.stamp22_on, R.drawable.stamp23_on, R.drawable.stamp24_on
             , R.drawable.stamp25_on, R.drawable.stamp26_on, R.drawable.stamp27_on, R.drawable.stamp28_on};
     private View[] stampCountView = new View[28];
-    private int[] stampCountViewID = new int[]{R.id.stamp_01_count, R.id.stamp_02_count, R.id.stamp_03_count, R.id.stamp_04_count
+    /*private int[] stampCountViewID = new int[]{R.id.stamp_01_count, R.id.stamp_02_count, R.id.stamp_03_count, R.id.stamp_04_count
             , R.id.stamp_05_count, R.id.stamp_06_count, R.id.stamp_07_count, R.id.stamp_08_count
             , R.id.stamp_09_count, R.id.stamp_10_count, R.id.stamp_11_count, R.id.stamp_12_count
             , R.id.stamp_13_count, R.id.stamp_14_count, R.id.stamp_15_count, R.id.stamp_16_count
             , R.id.stamp_17_count, R.id.stamp_18_count, R.id.stamp_19_count, R.id.stamp_20_count
             , R.id.stamp_21_count, R.id.stamp_22_count, R.id.stamp_23_count, R.id.stamp_24_count
-            , R.id.stamp_25_count, R.id.stamp_26_count, R.id.stamp_27_count, R.id.stamp_28_count};
+            , R.id.stamp_25_count, R.id.stamp_26_count, R.id.stamp_27_count, R.id.stamp_28_count};*/
 
     public static CourseStampFragment newInstance(int page) {
         Bundle args = new Bundle();
@@ -110,11 +109,18 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
     // Set the associated text for the title
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.course_stamp_fragment, container, false);
+        //View view = inflater.inflate(R.layout.course_stamp_fragment, container, false);
+        View view = inflater.inflate(R.layout.course_list_group_stamp_list, container, false);
 //        TextView tvTitle = (TextView) view.findViewById(R.id.tvTitle);
 //        tvTitle.setText("CourseStampFragment #" + mPage);
 
+        //변경하려는 View
         stampScrollView = (ScrollView) view.findViewById(R.id.stamp_scrollview);
+        //setViewStampView();
+
+        /*//scroll을 생성 단순 scroll
+        stampScrollView = (ScrollView) view.findViewById(R.id.stamp_scrollview);
+        //listview를 생성 단순 listview
         courseStampListview = (ListView) view.findViewById(R.id.course_stamp_listview);
         courseStampInfoArrayList = new ArrayList<CourseStampInfo>();
 
@@ -124,15 +130,15 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
                 setViewStampView(i);
                 stampScrollView.setScrollY(0);
             }
-        });
-        stampView[0] = view.findViewById(R.id.course_stamp_1);
-        stampView[1] = view.findViewById(R.id.course_stamp_2);
-        stampView[2] = view.findViewById(R.id.course_stamp_3);
-        stampView[3] = view.findViewById(R.id.course_stamp_4);
-        stampView[4] = view.findViewById(R.id.course_stamp_5);
-        stampView[5] = view.findViewById(R.id.course_stamp_6);
-        stampView[6] = view.findViewById(R.id.course_stamp_7);
-        stampView[7] = view.findViewById(R.id.course_stamp_8);
+        });*/
+        stampView[0] = view.findViewById(R.id.course01_stamp);
+        stampView[1] = view.findViewById(R.id.course02_stamp);
+        stampView[2] = view.findViewById(R.id.course03_stamp);
+        stampView[3] = view.findViewById(R.id.course04_stamp);
+        stampView[4] = view.findViewById(R.id.course05_stamp);
+        stampView[5] = view.findViewById(R.id.course06_stamp);
+        stampView[6] = view.findViewById(R.id.course07_stamp);
+        stampView[7] = view.findViewById(R.id.course08_stamp);
 
         stampImgView[0] = stampView[0].findViewById(stampImgViewID[0]);
         stampImgView[1] = stampView[0].findViewById(stampImgViewID[1]);
@@ -171,7 +177,7 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
         stampImgView[27] = stampView[7].findViewById(stampImgViewID[27]);
 
 
-        stampCountView[0] = stampView[0].findViewById(stampCountViewID[0]);
+        /*stampCountView[0] = stampView[0].findViewById(stampCountViewID[0]);
         stampCountView[1] = stampView[0].findViewById(stampCountViewID[1]);
         stampCountView[2] = stampView[0].findViewById(stampCountViewID[2]);
 
@@ -205,7 +211,9 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
         stampCountView[24] = stampView[7].findViewById(stampCountViewID[24]);
         stampCountView[25] = stampView[7].findViewById(stampCountViewID[25]);
         stampCountView[26] = stampView[7].findViewById(stampCountViewID[26]);
-        stampCountView[27] = stampView[7].findViewById(stampCountViewID[27]);
+        stampCountView[27] = stampView[7].findViewById(stampCountViewID[27]);*/
+
+        //클릭시 보여주기.
         for (int i = 0; i < stampImgView.length; i++) {
             stampImgView[i].setOnClickListener(this);
         }
@@ -223,37 +231,51 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
     public void setVaidateCompleteStampCount() {
         ArrayList<StampLocation> stampLocationList = DBHelper.getInstance(this.getContext()).getCompleteStampCount();
         for (int i = 0; i < stampLocationList.size(); i++) {
-            ((TextView) stampCountView[i]).setText(stampLocationList.get(i).getComplete_count());
+            //텍스트를 뷰에 1로 바꿔준다. 이부분을 완료로 수정
+            //((TextView) stampCountView[i]).setText(stampLocationList.get(i).getComplete_count());
             if (stampLocationList.get(i).getComplete_count().equals("0")) {
                 ((ImageView) stampImgView[i]).setImageResource(stampImgOffID[i]);
             } else {
                 ((ImageView) stampImgView[i]).setImageResource(stampImgOnID[i]);
             }
             stampImgView[i].invalidate();
-            stampCountView[i].invalidate();
+            //카운트 없애주기
+            //stampCountView[i].invalidate();
         }
 
     }
 
-    private void setViewStampView(int courseNum) {
+    private void setViewStampView(/*int courseNum*/) {
         for (int i = 0; i < stampView.length; i++) {
-            stampView[i].setVisibility(View.GONE);
+            //stampView[i].setVisibility(View.GONE);
+            stampView[i].setVisibility(View.VISIBLE);
         }
-
-        stampView[courseNum].setVisibility(View.VISIBLE);
+        //stampView[courseNum].setVisibility(View.VISIBLE);
     }
 
+    //클릭시에 그냥 토스트 메세지 띄우고 해당 사진을 여기서 보여주면 되지 않나?
     @Override
     public void onClick(View view) {
-        courseStampListAdapter.notifyDataSetChanged();
+        //courseStampListAdapter.notifyDataSetChanged();
         for (int i = 0; i < stampImgView.length; i++) {
             if (view.getId() == stampImgView[i].getId()) {
                 ArrayList<StampHistory> arraylistStampHistoyList = DBHelper.getInstance(getActivity()).getCompleteStampHistory(i);
-                showHistoryList(arraylistStampHistoyList);
+                //showHistoryList(arraylistStampHistoyList);
+                SpannableString[] histoyList;
+                if (arraylistStampHistoyList.size() > 0) {
+                    histoyList = new SpannableString[arraylistStampHistoyList.size()];
+                    for (int j = 0; j < arraylistStampHistoyList.size(); j++) {
+                        histoyList[j] = FontUtils.getInstance(getActivity()).typeface(arraylistStampHistoyList.get(j).getUpdateDate());
+                    }
+                } else {
+                    histoyList = new SpannableString[]{FontUtils.getInstance(getActivity()).typeface("스탬프 이력이 없습니다.")};
+                    Toast.makeText(getActivity(), "스탬프 이력이 없습니다", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
 
+    // 이력이 있는지 없는지만을 보여준다. 그냥 이부분을 없앨까??
     private void showHistoryList(ArrayList<StampHistory> arraylistStampHistoyList) {
         SpannableString[] histoyList;
         AlertDialog.Builder alert_confirm = new AlertDialog.Builder(getActivity());
@@ -326,7 +348,7 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
             new Handler().post(new Runnable() {
                 @Override
                 public void run() {
-                    courseStampListview.performItemClick(courseStampListAdapter.getView(0, null, null), 0, courseStampListAdapter.getItemId(0));
+                    //courseStampListview.performItemClick(courseStampListAdapter.getView(0, null, null), 0, courseStampListAdapter.getItemId(0));
                     setVaidateCompleteStampCount();
                 }
             });

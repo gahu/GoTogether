@@ -13,25 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/test"
-        >
-
+        android:id="@+id/test" >
 
         <TabHost
             android:id="@android:id/tabhost"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-
-            >
+            android:layout_height="match_parent" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-
-
-                >
+                android:orientation="vertical" >
 
 
                 <!-- TODO - main의 image 크기 안맞아서 일부러 맞춤 -->
@@ -76,7 +68,7 @@
                         android:scaleType="fitXY"
                         android:src="@drawable/bg_main_noname"
                         android:visibility="visible" />
-                    //정렬을 상하좌우 이미지뷰에 맞춘다.
+                    <!--정렬을 상하좌우 이미지뷰에 맞춘다.-->
 
 
                     <TextView

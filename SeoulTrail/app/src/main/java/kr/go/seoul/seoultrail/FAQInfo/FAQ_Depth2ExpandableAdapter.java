@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import kr.go.seoul.seoultrail.R;
@@ -20,9 +20,9 @@ import kr.go.seoul.seoultrail.R;
 public class FAQ_Depth2ExpandableAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> depth2ExpandableListTitle;
-    private HashMap<String, String> depth2ExpandableListDetail;
+    private LinkedHashMap<String, String> depth2ExpandableListDetail;
 
-    public FAQ_Depth2ExpandableAdapter(Context context, List<String> depth2ExpandableListTitle, HashMap<String, String> depth2ExpandableListDetail) {
+    public FAQ_Depth2ExpandableAdapter(Context context, List<String> depth2ExpandableListTitle, LinkedHashMap<String, String> depth2ExpandableListDetail) {
         this.context = context;
         this.depth2ExpandableListTitle = depth2ExpandableListTitle;
         this.depth2ExpandableListDetail = depth2ExpandableListDetail;

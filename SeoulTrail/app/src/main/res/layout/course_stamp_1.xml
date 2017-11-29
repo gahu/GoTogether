@@ -2,19 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="0px"
+        android:layout_height="130dp"
+        android:layout_weight="1"
+        android:padding="5dip">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/stamp_back" />
 
         <ImageView
             android:id="@+id/stamp_01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/stamp01_on" />
+            android:src="@drawable/stamp01_off" />
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -29,27 +37,35 @@
                 android:id="@+id/stamp_01_count"
                 android:layout_width="35dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_centerInParent="true"
+                android:ellipsize="end"
+                android:gravity="center"
                 android:includeFontPadding="false"
-                android:textSize="20sp"
-                android:textColor="#ffffff"
                 android:maxLines="1"
-                android:ellipsize="end"/>
-        </RelativeLayout>
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </RelativeLayout>-->
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="0px"
+        android:layout_height="130dp"
+        android:layout_weight="1"
+        android:padding="5dip">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/stamp_back" />
 
         <ImageView
             android:id="@+id/stamp_02"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/stamp02_on" />
+            android:src="@drawable/stamp02_off" />
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -71,20 +87,28 @@
                 android:textColor="#ffffff"
                 android:maxLines="1"
                 android:ellipsize="end"/>
-        </RelativeLayout>
+        </RelativeLayout>-->
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="0px"
+        android:layout_height="130dp"
+        android:layout_weight="1"
+        android:padding="5dip">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/stamp_back" />
 
         <ImageView
             android:id="@+id/stamp_03"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/stamp03_on" />
+            android:src="@drawable/stamp03_off" />
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -106,6 +130,6 @@
                 android:textColor="#ffffff"
                 android:maxLines="1"
                 android:ellipsize="end"/>
-        </RelativeLayout>
+        </RelativeLayout>-->
     </RelativeLayout>
 </LinearLayout>

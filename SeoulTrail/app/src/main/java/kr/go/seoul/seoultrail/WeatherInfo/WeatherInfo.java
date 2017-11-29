@@ -11,7 +11,6 @@ public class WeatherInfo {
     private String tmx;
     private String wfKor;
     private String temp;
-    private String day;
     private String hour;
 
     public String getHour() {
@@ -20,14 +19,6 @@ public class WeatherInfo {
 
     public void setHour(String hour) {
         this.hour = hour;
-    }
-
-    public String getDay() {
-        return day;
-    }
-
-    public void setDay(String day) {
-        this.day = day;
     }
 
     public String getWfKor() { return wfKor; }
@@ -56,15 +47,11 @@ public class WeatherInfo {
         return tmn;
     }
 
-    public void setTmn(String tmn) {
-        this.tmn = tmn;
-    }
+    public void setTmn(String tmn) { this.tmn = tmn; }
 
     public String getTmx() {
         return tmx;
     }
 
-    public void setTmx(String tmx) {
-        this.tmx = tmx;
-    }
+    public void setTmx(String tmx) { this.tmx = tmx; }
 }

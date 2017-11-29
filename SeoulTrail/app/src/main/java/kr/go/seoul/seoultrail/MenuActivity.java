@@ -1,17 +1,12 @@
 package kr.go.seoul.seoultrail;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 
 import com.astuetz.PagerSlidingTabStrip;
-
-import java.util.List;
 
 import kr.go.seoul.seoultrail.Common.PublicDefine;
 
@@ -53,8 +48,8 @@ public class MenuActivity extends BaseActivity {
                 PublicDefine.mainActivity.settingText(1);
                 Intent intent = new Intent(MenuActivity.this, GuideActivity.class);
                 view = Menu_Connection.FirstTabHGroup.getLocalActivityManager()
-                         .startActivity("FirstTab_3", intent
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
+                        .startActivity("FirstTab_3", intent
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
                 Menu_Connection.FirstTabHGroup.replaceView(view);
 
             }
@@ -72,6 +67,7 @@ public class MenuActivity extends BaseActivity {
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
 
                 Menu_Connection.FirstTabHGroup.replaceView(view);
+
             }
         });
 
@@ -86,6 +82,7 @@ public class MenuActivity extends BaseActivity {
                         .startActivity("FirstTab_3", intent
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
                 Menu_Connection.FirstTabHGroup.replaceView(view);
+
             }
         });
 
@@ -101,22 +98,22 @@ public class MenuActivity extends BaseActivity {
                         .startActivity("FirstTab_3", intent
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
                 Menu_Connection.FirstTabHGroup.replaceView(view);
+
             }
         });
 
         // modify 5. 공식 카페 부분
-        PublicDefine.mainActivity.settingText(5);
         final Button btn_cafe = (Button) findViewById(R.id.btn_cafe);
         btn_cafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-               /* Intent intent = new Intent(MenuActivity.this, Stamp.class);
+                PublicDefine.mainActivity.settingText(5);
+                Intent intent = new Intent(MenuActivity.this, Cafe.class);
                 view = Menu_Connection.FirstTabHGroup.getLocalActivityManager()
                         .startActivity("FirstTab_3", intent
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
-                Menu_Connection.FirstTabHGroup.replaceView(view);*/
-                Init();
+                Menu_Connection.FirstTabHGroup.replaceView(view);
+
             }
 
         });
@@ -133,6 +130,7 @@ public class MenuActivity extends BaseActivity {
                         .startActivity("FirstTab_3", intent
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
                 Menu_Connection.FirstTabHGroup.replaceView(view);
+
             }
         });
 
@@ -149,6 +147,7 @@ public class MenuActivity extends BaseActivity {
                         .startActivity("FirstTab_3", intent
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
                 Menu_Connection.FirstTabHGroup.replaceView(view);
+
             }
         });
 
@@ -164,6 +163,7 @@ public class MenuActivity extends BaseActivity {
                         .startActivity("FirstTab_3", intent
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
                 Menu_Connection.FirstTabHGroup.replaceView(view);
+
             }
         });
 
@@ -179,10 +179,10 @@ public class MenuActivity extends BaseActivity {
                         .startActivity("FirstTab_3", intent
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
                 Menu_Connection.FirstTabHGroup.replaceView(view);
+
             }
         });
     }
-
 
 /*
     @Override
@@ -191,64 +191,4 @@ public class MenuActivity extends BaseActivity {
         view1.setVisibility(View.GONE);
     }
 */
-
-    public void Init() {
-
-        CustomSchemeURL csurl = new CustomSchemeURL(MenuActivity.this);
-        if (csurl.canOpenCafeAppURL()) {
-            startActivity(csurl.getIntent());
-        } else {
-            csurl.openCafeAppDownloadPage(MenuActivity.this);
-        }
-
-    }
-    public class CustomSchemeURL {
-        public static final String DAUMCAFEAPP_PACKAGE_NAME = "net.daum.android.cafe";
-        public static final String DAUMCAFEAPP_DOWNLOAD_PAGE = "market://details?id=net.daum.android.cafe";
-        public Intent cafe;
-        public Context mContext;
-
-        public CustomSchemeURL(MenuActivity menuActivity) {
-            this.mContext = menuActivity;
-        }
-
-        /**
-         * myp scheme을 처리할 수 있는 어플리케이션이 존재하는지 검사
-         *
-         * @return 사용가능할 경우 true
-         */
-        public boolean canOpenCafeAppURL() {
-            PackageManager pm = mContext.getPackageManager();
-            List infos = pm.queryIntentActivities(getIntent(), PackageManager.MATCH_DEFAULT_ONLY);
-
-            return infos != null && infos.size() > 0;
-        }
-
-        public boolean existCafeApp() {
-            PackageManager pm = mContext.getPackageManager();
-
-            try {
-                return (pm.getPackageInfo(DAUMCAFEAPP_PACKAGE_NAME, PackageManager.GET_SIGNATURES) != null);
-            } catch (PackageManager.NameNotFoundException e) {
-                return false;
-            }
-        }
-
-        public void openCafeAppDownloadPage(Context context) {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            Uri iurl = Uri.parse(DAUMCAFEAPP_DOWNLOAD_PAGE);
-            intent.setData(iurl);
-            context.startActivity(intent);
-        }
-
-        public Intent getIntent() {
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_VIEW);
-            intent.addCategory(Intent.CATEGORY_BROWSABLE);
-            intent.addCategory(Intent.CATEGORY_DEFAULT);
-            intent.setData(Uri.parse("daumcafe://cafehome?grpcode=seoultrail157"));
-            return intent;
-        }
-    }
-
 }

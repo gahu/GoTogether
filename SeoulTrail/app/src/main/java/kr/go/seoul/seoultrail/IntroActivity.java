@@ -261,10 +261,10 @@ public class IntroActivity extends BaseActivity {
                 return resultJson;
 
             } catch (ClientProtocolException e) {
-                Log.e("NTsys", "연결 예외 상황 발생");
+                Log.e("NTsys", "intro1 연결 예외 상황 발생");
                 return "";
             } catch (IOException e) {
-                Log.e("NTsys", "연결 예외 상황 발생");
+                Log.e("NTsys", "intro2 연결 예외 상황 발생");
                 return "";
             }
         }

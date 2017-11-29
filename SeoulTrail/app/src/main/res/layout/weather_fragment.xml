@@ -40,17 +40,16 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="TextView"
+                    android:textSize="20sp"
                     android:textColor="@color/white" />
 
                 <ImageView
                     android:id="@+id/icon_background"
                     android:layout_width="wrap_content"
                     android:layout_height="0px"
-                    android:layout_marginBottom="18dp"
-                    android:layout_marginLeft="36dp"
-                    android:layout_marginRight="36dp"
-                    android:layout_marginTop="18dp"
-                    android:layout_weight="2"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
                     android:src="@drawable/icon_weather_sunny_w" />
 
                 <TextView
@@ -59,6 +58,7 @@
                     android:layout_height="0px"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:textSize="17sp"
                     android:text="TextView"
                     android:textColor="@color/white" />
             </LinearLayout>
@@ -99,7 +99,7 @@
                     android:layout_height="0px"
                     android:layout_weight="1"
                     android:text="TextView"
-                    android:textColor="#a0a0a0" />
+                    android:textColor="#e5e5e5" />
 
                 <TextView
                     android:id="@+id/weather_temp"
@@ -109,7 +109,7 @@
                     android:gravity="fill"
                     android:text="10˚"
                     android:textColor="@color/white"
-                    android:textSize="90sp"
+                    android:textSize="50sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -121,10 +121,10 @@
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="2"
-        android:paddingTop="60dip"
-        android:paddingBottom="70dip"
-        android:paddingLeft="40dip"
-        android:paddingRight="40dip">
+        android:paddingTop="50dip"
+        android:paddingBottom="50dip"
+        android:paddingRight="30dip"
+        android:paddingLeft="30dip">
 
         <LinearLayout
             android:id="@+id/midweather"
@@ -143,7 +143,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0px"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="center_horizontal"
                     android:text="월"
                     android:textStyle="bold"/>
 
@@ -151,7 +151,7 @@
                     android:id="@+id/img_oneday"
                     android:layout_width="match_parent"
                     android:layout_height="0px"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:scaleType="fitCenter"
                     android:padding="4dp"
                     android:src="@drawable/icon_weather_sunny"/>
@@ -167,7 +167,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="0px"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:text="월"
                     android:textStyle="bold"/>
 
@@ -175,7 +174,7 @@
                     android:id="@+id/img_twoday"
                     android:layout_width="match_parent"
                     android:layout_height="0px"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:scaleType="fitCenter"
                     android:padding="4dp"
                     android:src="@drawable/icon_weather_sunny"/>
@@ -191,7 +190,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="0px"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:text="월"
                     android:textStyle="bold"/>
 
@@ -199,7 +197,7 @@
                     android:id="@+id/img_threeday"
                     android:layout_width="match_parent"
                     android:layout_height="0px"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:scaleType="fitCenter"
                     android:padding="4dp"
                     android:src="@drawable/icon_weather_sunny"/>
@@ -215,7 +213,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="0px"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:text="월"
                     android:textStyle="bold"/>
 
@@ -223,7 +220,7 @@
                     android:id="@+id/img_fourday"
                     android:layout_width="match_parent"
                     android:layout_height="0px"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:scaleType="fitCenter"
                     android:padding="4dp"
                     android:src="@drawable/icon_weather_sunny"/>
@@ -239,7 +236,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="0px"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:text="월"
                     android:textStyle="bold"/>
 
@@ -247,7 +243,7 @@
                     android:id="@+id/img_fiveday"
                     android:layout_width="match_parent"
                     android:layout_height="0px"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:scaleType="fitCenter"
                     android:padding="4dp"
                     android:src="@drawable/icon_weather_sunny"/>
@@ -263,7 +259,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="0px"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:text="월"
                     android:textStyle="bold"/>
 
@@ -271,7 +266,7 @@
                     android:id="@+id/img_sixday"
                     android:layout_width="match_parent"
                     android:layout_height="0px"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:scaleType="fitCenter"
                     android:padding="4dp"
                     android:src="@drawable/icon_weather_sunny"/>
@@ -287,7 +282,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="0px"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:text="월"
                     android:textStyle="bold"/>
 
@@ -295,7 +289,7 @@
                     android:id="@+id/img_sevenday"
                     android:layout_width="match_parent"
                     android:layout_height="0px"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:scaleType="fitCenter"
                     android:padding="4dp"
                     android:src="@drawable/icon_weather_sunny"/>

@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="0px"
+        android:layout_height="130dp"
+        android:layout_weight="1"
+        android:padding="3dip">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/stamp_back" />
+
         <ImageView
             android:id="@+id/stamp_07"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/stamp07_on"/>
-        <RelativeLayout
+            android:src="@drawable/stamp07_off" />
+        <!--<RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -33,17 +43,27 @@
                 android:textColor="#ffffff"
                 android:maxLines="1"
                 android:ellipsize="end"/>
-        </RelativeLayout>
+        </RelativeLayout>-->
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="0px"
+        android:layout_height="130dp"
+        android:layout_weight="1"
+        android:padding="3dip">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/stamp_back" />
+
         <ImageView
             android:id="@+id/stamp_08"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/stamp08_on"/>
-        <RelativeLayout
+            android:src="@drawable/stamp08_off" />
+        <!--<RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -65,17 +85,27 @@
                 android:textColor="#ffffff"
                 android:maxLines="1"
                 android:ellipsize="end"/>
-        </RelativeLayout>
+        </RelativeLayout>-->
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="0px"
+        android:layout_height="130dp"
+        android:layout_weight="1"
+        android:padding="3dip">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/stamp_back" />
+
         <ImageView
             android:id="@+id/stamp_09"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/stamp09_on"/>
-        <RelativeLayout
+            android:src="@drawable/stamp09_off" />
+        <!--<RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -97,17 +127,27 @@
                 android:textColor="#ffffff"
                 android:maxLines="1"
                 android:ellipsize="end"/>
-        </RelativeLayout>
+        </RelativeLayout>-->
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="0px"
+        android:layout_height="130dp"
+        android:layout_weight="1"
+        android:padding="3dip">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/stamp_back" />
+
         <ImageView
             android:id="@+id/stamp_10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/stamp10_on"/>
-        <RelativeLayout
+            android:src="@drawable/stamp10_off" />
+        <!--<RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -129,6 +169,6 @@
                 android:textColor="#ffffff"
                 android:maxLines="1"
                 android:ellipsize="end"/>
-        </RelativeLayout>
+        </RelativeLayout>-->
     </RelativeLayout>
 </LinearLayout>

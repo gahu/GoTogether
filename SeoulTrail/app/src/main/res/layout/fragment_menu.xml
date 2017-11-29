@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/main_background">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,12 +25,12 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
-                android:text="도우미"
-                android:textColor="#5e7257"
+                android:background="@drawable/icon01_guide"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:visibility="visible"
                 android:singleLine="true"
+
                 />
 
             <Button
@@ -38,9 +38,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
-                android:text="둘레길이란?"
-                android:textColor="#5e7257"
+                android:background="@drawable/icon02_history"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"
                 />
@@ -50,9 +49,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
-                android:text="영상"
-                android:textColor="#5e7257"
+                android:background="@drawable/icon03_video"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"
                 />
@@ -69,9 +67,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
-                android:text="스탬프"
-                android:textColor="#5e7257"
+                android:background="@drawable/icon04_stamp"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"/>
 
@@ -80,9 +77,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
-                android:text="카페"
-                android:textColor="#5e7257"
+                android:background="@drawable/icon05_cafe"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"/>
 
@@ -91,10 +87,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
+                android:background="@drawable/icon06_weather"
                 android:singleLine="true"
-                android:text="날씨"
-                android:textColor="#5e7257"
+                android:textColor="#5d897d"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -110,9 +105,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
-                android:text="행사"
-                android:textColor="#5e7257"
+                android:background="@drawable/icon07_event"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"/>
 
@@ -121,9 +115,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
-                android:text="문의"
-                android:textColor="#5e7257"
+                android:background="@drawable/icon08_faq"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"/>
 
@@ -132,11 +125,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#00ff0000"
-                android:text="기타"
-                android:textColor="#5e7257"
+                android:background="@drawable/icon09_etc"
+                android:textColor="#5d897d"
                 android:textSize="20sp"
                 android:singleLine="true"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+    <!-- 인플레이션 필요 -->

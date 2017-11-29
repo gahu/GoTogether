@@ -11,6 +11,7 @@ android {
         targetSdkVersion 24
         versionCode 200
         versionName "1.7.3"
+        multiDexEnabled true
 
     }
     buildTypes {
@@ -34,8 +35,8 @@ dependencies {
     compile 'com.google.firebase:firebase-database:11.0.1'
     compile 'com.google.firebase:firebase-storage:11.0.1'
     compile 'com.google.firebase:firebase-auth:11.0.1'
+    compile 'com.android.support:multidex:1.0.2'
     compile 'com.firebaseui:firebase-ui-storage:2.0.1'
-    compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
 apply plugin: 'com.google.gms.google-services'

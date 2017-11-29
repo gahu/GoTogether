@@ -12,7 +12,7 @@
         android:orientation="horizontal"
         android:padding="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@color/stamp_list_selected">
+        android:background="#f0f0f0">
         <ImageView
             android:id="@+id/depth2_description_question_icon"
             android:layout_width="30dp"
@@ -22,6 +22,7 @@
             android:id="@+id/depth2_description_title"
             android:layout_toRightOf="@+id/depth2_description_question_icon"
             android:paddingLeft="5dp"
+            android:textSize="12sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"/>
@@ -30,10 +31,11 @@
         android:id="@+id/depth2_description_answer"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:textSize="12sp"
         android:layout_below="@+id/depth2_description_title_layout"
         android:layout_alignParentRight="true"
         android:padding="10dp"
-        android:background="@color/stamp_list_selected"/>
+        android:background="#f0f0f0"/>
 
 
-    </RelativeLayout>
+</RelativeLayout>

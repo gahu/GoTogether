@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_stamp_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/course01_stamp_title"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/course01_stamp_title" />
+            <include
+                android:id="@+id/course01_stamp"
+                layout="@layout/course_stamp_1"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/course02_stamp_title"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/course02_stamp_title"/>
+            <include
+                android:id="@+id/course02_stamp"
+                layout="@layout/course_stamp_2"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/course03_stamp_title"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/course03_stamp_title"/>
+            <include
+                android:id="@+id/course03_stamp"
+                layout="@layout/course_stamp_3"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/course04_stamp_title"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/course04_stamp_title"/>
+            <include
+                android:id="@+id/course04_stamp"
+                layout="@layout/course_stamp_4"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/course05_stamp_title"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/course05_stamp_title"/>
+            <include
+                android:id="@+id/course05_stamp"
+                layout="@layout/course_stamp_5"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/course06_stamp_title"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/course06_stamp_title"/>
+            <include
+                android:id="@+id/course06_stamp"
+                layout="@layout/course_stamp_6"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/course07_stamp_title"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/course07_stamp_title"/>
+            <include
+                android:id="@+id/course07_stamp"
+                layout="@layout/course_stamp_7"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/course08_stamp_title"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/course08_stamp_title"/>
+            <include
+                android:id="@+id/course08_stamp"
+                layout="@layout/course_stamp_8"
+                android:visibility="visible" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e4e4e4" />
+</LinearLayout>
