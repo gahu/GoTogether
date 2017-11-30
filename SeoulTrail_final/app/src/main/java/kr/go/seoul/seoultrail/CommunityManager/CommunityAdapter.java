@@ -1,7 +1,10 @@
 package kr.go.seoul.seoultrail.CommunityManager;
 
 import android.content.Context;
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/CommunityManager/CommunityAdapter.java
 import android.content.Intent;
+=======
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/CommunityManager/CommunityAdapter.java
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -15,6 +18,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/CommunityManager/CommunityAdapter.java
+=======
+import com.google.android.gms.tasks.OnSuccessListener;
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/CommunityManager/CommunityAdapter.java
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -22,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import kr.go.seoul.seoultrail.Community;
 import kr.go.seoul.seoultrail.R;
 
 /**
@@ -60,7 +68,11 @@ public class CommunityAdapter extends RecyclerView.Adapter<ViewHolder> {
         holder.post_body.setText(item.getBodyText());
         if(item.getPictureYesOrNo()) {
             FirebaseStorage storage = FirebaseStorage.getInstance();
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/CommunityManager/CommunityAdapter.java
             StorageReference storageReference = storage.getReferenceFromUrl("gs://seoultrail-fc963.appspot.com/");
+=======
+            StorageReference storageReference = storage.getReference();
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/CommunityManager/CommunityAdapter.java
 
             String fileName = item.getName() + "_" + item.getBodyText() + ".jpg";
             StorageReference childRef = storageReference.child("image/image_" + fileName);

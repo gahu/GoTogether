@@ -54,4 +54,7 @@ public class Menu_Connection extends ActivityGroup {
         FirstTabHGroup.back();
         return ;
     }
+    public void test(){
+        FirstTabHGroup.back();
+    }
 }

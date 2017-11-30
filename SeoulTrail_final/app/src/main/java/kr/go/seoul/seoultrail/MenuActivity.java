@@ -1,6 +1,10 @@
 package kr.go.seoul.seoultrail;
 
 import android.content.Intent;
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
+=======
+import android.graphics.Typeface;
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -16,9 +20,7 @@ import kr.go.seoul.seoultrail.Common.PublicDefine;
 public class MenuActivity extends BaseActivity {
     private PagerSlidingTabStrip tabsStrip;
     private ViewPager viewPager;
-
     private int value;
-
     private void setValue(int value){
         this.value = value;
     }
@@ -46,6 +48,10 @@ public class MenuActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
+=======
+
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
                 PublicDefine.mainActivity.settingText(1);
                 Intent intent = new Intent(MenuActivity.this, GuideActivity.class);
                 view = Menu_Connection.FirstTabHGroup.getLocalActivityManager()
@@ -110,6 +116,10 @@ public class MenuActivity extends BaseActivity {
         });
 
         // modify 5. 공식 카페 부분
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
+=======
+
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
         final Button btn_cafe = (Button) findViewById(R.id.btn_cafe);
         btn_cafe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,16 +130,20 @@ public class MenuActivity extends BaseActivity {
                         .startActivity("FirstTab_3", intent
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
                 Menu_Connection.FirstTabHGroup.replaceView(view);
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
                 PublicDefine.mainActivity.tf = true;
                 PublicDefine.mainActivity.Main_Move();
+=======
+
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
             }
 
         });
 
         // modify 6.날씨 정보 부분
 
-        final Button btu_weather = (Button) findViewById(R.id.btn_weather);
-        btu_weather.setOnClickListener(new View.OnClickListener() {
+        final Button btn_weather = (Button) findViewById(R.id.btn_weather);
+        btn_weather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 PublicDefine.mainActivity.settingText(6);
@@ -138,7 +152,10 @@ public class MenuActivity extends BaseActivity {
                         .startActivity("FirstTab_3", intent
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)).getDecorView();
                 Menu_Connection.FirstTabHGroup.replaceView(view);
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
                 PublicDefine.mainActivity.tf = true;
+=======
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
 
             }
         });
@@ -167,6 +184,7 @@ public class MenuActivity extends BaseActivity {
         btn_faq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 PublicDefine.mainActivity.settingText(8);
                 Intent intent = new Intent(MenuActivity.this, FAQ.class);
                 view = Menu_Connection.FirstTabHGroup.getLocalActivityManager()
@@ -194,6 +212,23 @@ public class MenuActivity extends BaseActivity {
 
             }
         });
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
+=======
+            // 메뉴 부분 폰트 적용하기
+        Typeface typeFace = Typeface.createFromAsset(getAssets(), "arita_bold.ttf");  //asset > fonts 폴더 내 폰트파일 적용
+        btn_guide.setTypeface(typeFace);
+        btn_cafe.setTypeface(typeFace);
+        btn_etc.setTypeface(typeFace);
+        btn_history.setTypeface(typeFace);
+        btn_video.setTypeface(typeFace);
+        btn_stamp.setTypeface(typeFace);
+        btn_faq.setTypeface(typeFace);
+        btn_event.setTypeface(typeFace);
+        btn_weather.setTypeface(typeFace);
+
+
+    }
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
 
     }
     public void check(){
@@ -207,4 +242,15 @@ public class MenuActivity extends BaseActivity {
         view1.setVisibility(View.GONE);
     }
 */
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
+=======
+
+
+
+
+
+
+
+
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MenuActivity.java
 }

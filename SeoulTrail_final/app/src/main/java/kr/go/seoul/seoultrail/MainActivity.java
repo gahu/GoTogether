@@ -20,7 +20,6 @@ import android.support.v4.app.NotificationCompat;
 import android.text.Html;
 import android.text.SpannableString;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -28,7 +27,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
@@ -66,11 +64,14 @@ import kr.go.seoul.seoultrail.Common.PublicDefine;
 import kr.go.seoul.seoultrail.Common.StampLocation;
 import kr.go.seoul.seoultrail.GPS.GPSProvider;
 
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
 import static android.view.Gravity.BOTTOM;
 import static android.view.Gravity.CENTER;
 import static android.view.Gravity.LEFT;
 import static android.view.Gravity.TOP;
 
+=======
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
 public class MainActivity extends TabActivity {
 
     private TabHost tabHost;
@@ -88,8 +89,16 @@ public class MainActivity extends TabActivity {
     private int notiIDX = -1;
     int cnt = 0;
 
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
     boolean tf = false;
 
+=======
+    // 여기서부터는 17.10.24 수정 부분
+//    private CheckBox btnMore;
+//    private LinearLayout gpsBtnLayout;
+//    private TextView checkMyLocation;
+//    private TextView checkNMapMyLocation;
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
 
     private GPSProvider gps;
 
@@ -100,6 +109,7 @@ public class MainActivity extends TabActivity {
     private static CustomProgressDialog dialogLoading;
     private static AlertDialog alert = null;
 
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
     private int value;
     // modify 여기 부분이 메뉴부분에서 상태 확인해서 글자 바꾸는부분
 
@@ -447,6 +457,8 @@ public class MainActivity extends TabActivity {
                 break;
         }
     }
+=======
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
 
 
     @Override
@@ -486,7 +498,7 @@ public class MainActivity extends TabActivity {
         */
         initView();
         /*modify 여기 부분을 initGPS() 주석 처리하니까 처음실행될때 위치 정보를 가져오지 않는다
-        modify 지도에서 접근하였을 시에 GPS가 처리 되는것을 알 수 있다. 자기 정보를 눌렀을 경우
+          modify 지도에서 접근하였을 시에 GPS가 처리 되는것을 알 수 있다. 자기 정보를 눌렀을 경우
         */
         initGPS();
     }
@@ -510,14 +522,11 @@ public class MainActivity extends TabActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
     }
 
     @Override
     protected void onDestroy() {
-
         if (gps != null) {
             gps.removeUpdate();
         }
@@ -586,6 +595,7 @@ public class MainActivity extends TabActivity {
         PendingIntent contentIntent = PendingIntent.getActivity(this, id,
                 new Intent(this, IntroActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP),
                 PendingIntent.FLAG_UPDATE_CURRENT);
+
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
@@ -594,18 +604,22 @@ public class MainActivity extends TabActivity {
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(contentIntent);
+
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(id, notificationBuilder.build());
     }
+
     public void setCheckNMapMyLocation(NGeoPoint myLocation) {
         checkLocation(myLocation.getLatitude(), myLocation.getLongitude());
     }
-    public void initView() {
-        settingTab(1);            // 메인 글자 셋팅
+
+    private void initView() {
         header_image = (ImageView) findViewById(R.id.header_image);
+
         setupTabHost();
+
         tabHost.getTabWidget().setDividerDrawable(null);
         setupTab(MAIN);
         setupTab(COURSE);
@@ -614,15 +628,17 @@ public class MainActivity extends TabActivity {
         tabHost.setCurrentTab(0);           // MAIN 부분이 첫번째로 들어가기위함
         // 혹시나 setCurrentTab을 다른 탭으로 설정해버리면 제대로 된 값이 이벤트가 발생하지 않는다.
 
+
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tag) {
                 String loggingAction = "";
-                // modify 탭부분 들어가는 글자 이미지 변경
+
                 if (tag.equals(MAIN)) {
                     //header_image.setImageResource(R.drawable.bg01_main);
                     lastTabTag = MAIN;
                     loggingAction = "MAIN";
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
                     //increaseHeaderImage();
                     settingTab(1);
                     if(tf == true) {
@@ -630,11 +646,14 @@ public class MainActivity extends TabActivity {
                         tf = false;
                     }
 
+=======
+//                    increaseHeaderImage();
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
                 } else if (tag.equals(COURSE)) {
-                    settingTab(2);
                     //header_image.setImageResource(R.drawable.bg01_course);
                     lastTabTag = COURSE;
                     loggingAction = "COURSE";
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
                     //reduceHeaderImage()
                     if(tf == true) {
                         PublicDefine.menuActivty.check();
@@ -652,13 +671,26 @@ public class MainActivity extends TabActivity {
                         PublicDefine.menuActivty.check();
                         tf = false;
                     }
+=======
+//                    increaseHeaderImage();
+                } else if (tag.equals(COMMUNITY)) {
+                    //header_image.setImageResource(R.drawable.bg01_community);
+                    lastTabTag = COMMUNITY;
+                    loggingAction = "COMMUNITY";
+//                    increaseHeaderImage();
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
                 } else if (tag.equals(CAMERA)) {
-                    settingTab(4);
                     lastTabTag = CAMERA;
                     loggingAction = "CAMERA";
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
                     Main_Move();
 //                    increaseHeaderImage();
 
+=======
+                    tabHost.clearAllTabs();
+                    initView();
+//                    increaseHeaderImage();
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
                 }
 
                 try {
@@ -707,23 +739,18 @@ public class MainActivity extends TabActivity {
         tabHost.setup();
     }
 
-    public void Main_Move(){
-        tabHost.clearAllTabs();
-        initView();
-    }
-
     private void setupTab(final String tag) {
         View tabview = createTabView(tabHost.getContext(), tag);
 
         // TabSpec은 공개된 생성자가 없으므로 직접 생성할 수 없으며, TabHost의 newTabSpec메서드로 생성
         TabSpec setContent = tabHost.newTabSpec(tag).setIndicator(tabview);
 
+
         // 여기부분은탭 눌렀을경우 어떻게 동작할지 결정하는 부분이다. 그래서 MenuAcitivy로 넣어주었다.
         if (tag.equals(MAIN)) {
             setContent.setContent(new Intent(this, Menu_Connection.class));
         }
         else if (tag.equals(COURSE)) {
-
             setContent.setContent(new Intent(this, Course.class));
         }
         else if (tag.equals(COMMUNITY)) {
@@ -731,12 +758,17 @@ public class MainActivity extends TabActivity {
         }
         else if (tag.equals(CAMERA)) {
             Intent intent = new Intent(this, CameraActivity.class);
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+=======
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/MainActivity.java
             setContent.setContent(intent);
         }
         tabHost.addTab(setContent);
 
     }
+
 
     private static View createTabView(final Context context, final String text) {
         // layoutinflater를 이용해 xml 리소스를 읽어와 tabview를 생성
@@ -744,15 +776,14 @@ public class MainActivity extends TabActivity {
         ImageView img;
 
         img = (ImageView) view.findViewById(R.id.tabs_image);
-
         if (text.equals(MAIN)) {
-            img.setImageResource(R.drawable.selector_main);
+            img.setImageResource(R.drawable.btn01_main_on);
         } else if (text.equals(COURSE)) {
-            img.setImageResource(R.drawable.selector_course);
+            img.setImageResource(R.drawable.btn02_course_on);
         } else if (text.equals(COMMUNITY)) {
-            img.setImageResource(R.drawable.selector_comunity);
+            img.setImageResource(R.drawable.btn03_community_on);
         } else if (text.equals(CAMERA)) {
-            img.setImageResource(R.drawable.selector_camera);
+            img.setImageResource(R.drawable.btn04_camera_on);
         }
         return view;
     }
@@ -891,6 +922,7 @@ public class MainActivity extends TabActivity {
     public void showDetailInfo(NMapPOIitem item) {
         new ProcessNetworkPointDetailThread().execute(item.getTag().toString(), null, null);
     }
+
 
     public class ProcessNetworkImportantNoticeList extends AsyncTask<Void, Void, String> {
         protected String doInBackground(Void... arg0) {
@@ -1055,6 +1087,7 @@ public class MainActivity extends TabActivity {
                 return "";
             }
         }
+
     }
 
     // TODO 네트워크 세부적인 쓰레드 과정 구현 부분
@@ -1155,7 +1188,6 @@ public class MainActivity extends TabActivity {
         Uri uri = Uri.parse("http://gil.seoul.go.kr/m/course/dulae_gil_list.jsp?course=2000");
         intent.setData(uri);
         startActivity(intent);
-
     }
 
     public void showMain(View view) {
@@ -1163,4 +1195,7 @@ public class MainActivity extends TabActivity {
         //PublicDefine.information.setPager(0);
         // # 인포메이션 부분 없애기 위해서 주석 처리 하였음
     }
+
+
+
 }

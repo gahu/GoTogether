@@ -230,7 +230,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/res/layout/activity_main.xml
                 android:background="@drawable/xml_border"
+=======
+                android:background="#5d897d"
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/res/layout/activity_main.xml
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="notiDetail"
@@ -244,7 +248,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/res/layout/activity_main.xml
                 android:background="@drawable/xml_border"
+=======
+                android:background="#5d897d"
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/res/layout/activity_main.xml
                 android:clickable="true"
                 android:gravity="center"
                 android:onClick="notiConfirm"

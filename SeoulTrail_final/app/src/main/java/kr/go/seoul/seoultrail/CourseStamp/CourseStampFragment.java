@@ -258,6 +258,7 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
         for (int i = 0; i < stampImgView.length; i++) {
             if (view.getId() == stampImgView[i].getId()) {
                 ArrayList<StampHistory> arraylistStampHistoyList = DBHelper.getInstance(getActivity()).getCompleteStampHistory(i);
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/CourseStamp/CourseStampFragment.java
                 //showHistoryList(arraylistStampHistoyList);
                 SpannableString[] histoyList;
                 if (arraylistStampHistoyList.size() > 0) {
@@ -278,6 +279,9 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
                     histoyList = new SpannableString[]{FontUtils.getInstance(getActivity()).typeface("스탬프 이력이 없습니다.")};
                     Toast.makeText(getActivity(), "스탬프 이력이 없습니다", Toast.LENGTH_SHORT).show();
                 }
+=======
+                showHistoryList(arraylistStampHistoyList);
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/CourseStamp/CourseStampFragment.java
             }
         }
     }
@@ -316,7 +320,11 @@ public class CourseStampFragment extends Fragment implements View.OnClickListene
 
         alert.show();
 
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/CourseStamp/CourseStampFragment.java
     }*/
+=======
+    }
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/CourseStamp/CourseStampFragment.java
 
     public void setCourseNo(final int courseNo) {
         new Handler().post(new Runnable() {

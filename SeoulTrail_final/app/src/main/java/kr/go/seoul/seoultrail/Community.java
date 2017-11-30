@@ -29,7 +29,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/Community.java
 import com.firebase.ui.storage.images.FirebaseImageLoader;
+=======
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/Community.java
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -106,6 +109,11 @@ public class Community extends BaseActivity {
         // PublicDefine.mainActivity.settingTab(1);
     }
     @Override
+    public void onBackPressed() {
+        PublicDefine.mainActivity.Main_Move();
+        // PublicDefine.mainActivity.settingTab(1);
+    }
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -144,6 +152,7 @@ public class Community extends BaseActivity {
         setPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/Community.java
                 // 이름, 본문을 먼저 작성하도록 강제
                 AlertDialog.Builder dialog = null;
                 dialog = new AlertDialog.Builder(Community.this);
@@ -172,6 +181,21 @@ public class Community extends BaseActivity {
                         e.printStackTrace();
                     }
                 } else {
+=======
+                if(login && !writeText.getText().toString().equals("")) {
+                    postPicture(picture);
+                } else if(login && writeText.getText().toString().equals("")) {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(Community.this);
+                    dialog.setMessage("본문을 먼저 적어주세요.");
+
+                    dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/Community.java
                     dialog.show();
                 }
             }
@@ -214,6 +238,7 @@ public class Community extends BaseActivity {
         } else if(loginPref != null && !id.equals("")){
             login = true;
 
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/Community.java
             // 자동 로그인된 화면 설정
             if(iconYesOrNo) {
                 StorageReference childRef = storageReference.child("icon/icon_" + id + ".jpg");
@@ -222,6 +247,9 @@ public class Community extends BaseActivity {
                 userIcon.setImageResource(R.drawable.image_profile03);
             }
 
+=======
+            // 이름, placeholder, 버튼 설정
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/Community.java
             userName.setText(id);
             writeText.setHint(id + "님의 소식을 공유하세요.");
             setPicture.setImageResource(R.drawable.btn01_upload_off);
@@ -280,7 +308,12 @@ public class Community extends BaseActivity {
                         }
                     });
                 } else {
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/Community.java
                     hideKeyboard();
+=======
+
+
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/Community.java
                     writeBodyText();
                 }
 
@@ -292,6 +325,7 @@ public class Community extends BaseActivity {
             public void onClick(View view) {
                 // 닉네임을 먼저 적도록 강제함 => db에 icon 저장시 name활용해야하기 때문
                 if(login == false && !writeText.getText().toString().equals("")) {
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/Community.java
                     // 카메라 권한 설정
                     try {
                         postPicture(icon);
@@ -299,6 +333,10 @@ public class Community extends BaseActivity {
                         e.printStackTrace();
                     }
 
+=======
+                    System.out.println(writeText.getText().toString() + "이거다~~~~~~~~~~~~~~~~~~");
+                    postPicture(icon);
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/Community.java
                 } else if (login == false && writeText.getText().toString().equals("")) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Community.this);
                     dialog.setMessage("닉네임을 먼저 적어주세요");
@@ -311,6 +349,7 @@ public class Community extends BaseActivity {
                     });
 
                     dialog.show();
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/Community.java
                 }
             }
         });
@@ -321,6 +360,8 @@ public class Community extends BaseActivity {
                 if(!b) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+=======
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/Community.java
                 }
             }
         });
@@ -358,15 +399,23 @@ public class Community extends BaseActivity {
         long nowTime = new Date().getTime();
         String username = userName.getText().toString();
         String bodyText = writeText.getText().toString();
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/Community.java
         if (postedPicture.getVisibility() == View.GONE) {
+=======
+        if(postedPicture.getVisibility() == View.GONE) {
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/Community.java
             pictureYesOrNo = false;
         } else {
             pictureYesOrNo = true;
         }
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/Community.java
         if(bodyText.equals("") && !pictureYesOrNo) {
             Toast.makeText(this, "글을 입력해주세요.", Toast.LENGTH_LONG).show();
             return;
         }
+=======
+
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/Community.java
         Post post = new Post(iconYesOrNo, username, nowTime, bodyText, pictureYesOrNo);
         post.setWriteTime(post.getWriteTime());
         databaseReference.child("posts").push().setValue(post);
@@ -374,7 +423,10 @@ public class Community extends BaseActivity {
         // 글쓰기 화면 초기화
         writeText.setText("");
         postedPicture.setVisibility(View.GONE);
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/Community.java
         Toast.makeText(this, "글이 게시되었습니다.", Toast.LENGTH_LONG).show();
+=======
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/Community.java
     }
 
 
@@ -432,6 +484,7 @@ public class Community extends BaseActivity {
         switch(requestCode) {
             case SET_ICON_CAMERA: {
                 if(resultCode == RESULT_OK) {
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/Community.java
 
 
                     progressDialog.show();
@@ -453,6 +506,29 @@ public class Community extends BaseActivity {
                     iconYesOrNo = true;
 
 
+=======
+                    Uri uri = data.getData();
+
+                    if(uri != null) {
+                        progressDialog.show();
+
+                        // firebase 서버에 업로드
+                        String iconFileName = "icon_" + writeText.getText() + ".jpg";
+                        StorageReference childRef = storageReference.child("icon/" + iconFileName);
+                        UploadTask uploadTask = childRef.putFile(uri);
+
+                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                progressDialog.dismiss();
+                            }
+                        });
+
+                        userIcon.setImageURI(uri);
+
+                        iconYesOrNo = true;
+                    }
+
                 }
                 break;
             }
@@ -466,6 +542,45 @@ public class Community extends BaseActivity {
                         // firebase 서버에 업로드
                         String iconFileName = "icon_" + writeText.getText() + ".jpg";
                         StorageReference childRef = storageReference.child("icon/" + iconFileName);
+                        UploadTask uploadTask = childRef.putFile(uri);
+
+                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                progressDialog.dismiss();
+                            }
+                        });
+
+                        Bitmap bitmap = null;
+                        try {
+                            bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        userIcon.setImageBitmap(bitmap);
+                        iconYesOrNo = true;
+                    }
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/Community.java
+                }
+                break;
+            }
+            case SET_ICON_GALLERY: {
+                if(resultCode == RESULT_OK) {
+                    Uri uri = data.getData();
+
+                    if(uri != null) {
+                        progressDialog.show();
+
+                        // firebase 서버에 업로드
+<<<<<<< HEAD:SeoulTrail_final/app/src/main/java/kr/go/seoul/seoultrail/Community.java
+                        String iconFileName = "icon_" + writeText.getText() + ".jpg";
+                        StorageReference childRef = storageReference.child("icon/" + iconFileName);
+=======
+                        System.out.println("writeTExt는 ~~~~~~~~~~~~~~~~~~" +writeText.getText().toString());
+                        String fileName = userName.getText().toString() + "_" + writeText.getText().toString() + ".jpg";
+                        StorageReference childRef = storageReference.child("image/image_" + fileName);
+>>>>>>> ca4c9829395aed517e854978b33530427e00b35b:SeoulTrail/app/src/main/java/kr/go/seoul/seoultrail/Community.java
                         UploadTask uploadTask = childRef.putFile(uri);
 
                         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
