@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "818850224261",
+    "firebase_url": "https://seoultrail-fc963.firebaseio.com",
+    "project_id": "seoultrail-fc963",
+    "storage_bucket": "seoultrail-fc963.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818850224261:android:e67e1e2d274a86d6",
+        "android_client_info": {
+          "package_name": "kr.go.seoul.seoultrail"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "818850224261-053j6joe8klulejofigllbeb46gd1q7k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.go.seoul.seoultrail",
+            "certificate_hash": "3e1ad7fe0a2bd28a0e8287a3054c0eaf10a9266d"
+          }
+        },
+        {
+          "client_id": "818850224261-md8q4i5pcjtie80u49k0uqapbs0jafnv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.go.seoul.seoultrail",
+            "certificate_hash": "3d3b6bf3897d17b93d60829c5e4611950388560a"
+          }
+        },
+        {
+          "client_id": "818850224261-3ia4jpaa6lnagb35jh70c4vvhejpflgc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbrOMLwPmyTTHpKkPpOSF9yZtphC-1EwM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "818850224261-3ia4jpaa6lnagb35jh70c4vvhejpflgc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

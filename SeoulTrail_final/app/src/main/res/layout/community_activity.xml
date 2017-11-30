@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:paddingTop="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/border">
+            <ImageView
+                android:id="@+id/user_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/btn04_profile_off"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="5dp"/>
+            <LinearLayout
+                android:id="@+id/layout_posting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="5dp">
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="닉네임을 적어주세요"
+                    android:paddingTop="3dp"
+                    android:textSize="16sp"/>
+                <EditText
+                    android:id="@+id/write_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginLeft="-5dp"
+                    android:hint="설정한 닉네임으로 다른 사람들과 소통할 수 있어요"
+                    android:textSize="10sp"/>
+                <ImageView
+                    android:id="@+id/posted_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:visibility="gone"
+                    android:paddingBottom="5dp"
+                    android:scaleType="fitXY"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/border"
+            android:padding="5dp">
+            <ImageView
+                android:id="@+id/set_picture"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_gravity="start"
+                android:layout_weight="0.5"
+                android:src="@drawable/image_profile_setting"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/send_btn"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_weight="0.2"
+                android:background="@drawable/btn04_setting_off"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        app:layoutManager="LinearLayoutManager"
+        android:id="@+id/my_recycler_view"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</LinearLayout>

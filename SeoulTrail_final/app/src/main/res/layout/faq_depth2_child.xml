@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="20dp">
+    <RelativeLayout
+        android:id="@+id/depth2_description_title_layout"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#f0f0f0">
+        <ImageView
+            android:id="@+id/depth2_description_question_icon"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_question"/>
+        <TextView
+            android:id="@+id/depth2_description_title"
+            android:layout_toRightOf="@+id/depth2_description_question_icon"
+            android:paddingLeft="5dp"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/depth2_description_answer"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_below="@+id/depth2_description_title_layout"
+        android:layout_alignParentRight="true"
+        android:padding="10dp"
+        android:background="#f0f0f0"/>
+
+
+</RelativeLayout>

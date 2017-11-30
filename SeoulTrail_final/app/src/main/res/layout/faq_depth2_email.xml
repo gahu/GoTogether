@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/email_attention"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="gmail계정으로 문의하시는 것을 권장합니다."/>
+
+    <LinearLayout
+        android:id="@+id/email_layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/email_attention">
+
+        <TextView
+            android:id="@+id/email_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text="제목"/>
+
+        <EditText
+            android:id="@+id/email_title_write"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:ems="10"
+            android:hint="제목을 입력하세요" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/email_layout_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/email_layout_title">
+
+        <TextView
+            android:id="@+id/email_body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text="내용"/>
+
+        <EditText
+            android:id="@+id/email_body_write"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:ems="10"
+            android:hint="내용을 입력하세요" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/email_send_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email_layout_body"
+        android:layout_alignParentRight="true"
+        android:text="보내기"
+        android:onClick="sendEmail"/>
+</RelativeLayout>

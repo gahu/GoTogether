@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/current_weather"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="3">
+
+        <ImageView
+            android:id="@+id/bg_weather"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/weather_default" />
+
+        <LinearLayout
+            android:id="@+id/weather"
+            android:layout_width="280dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/icon_bg"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/icon_wf"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:id="@+id/icon_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0px"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/icon_lowhigh"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="17sp"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/icon_location"
+                        android:scaleType="fitCenter" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:text="서울 둘레길"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/weather_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1.2"
+                    android:textColor="#e5e5e5" />
+
+                <TextView
+                    android:id="@+id/weather_temp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="7"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="70sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="2"
+        android:paddingTop="50dip"
+        android:paddingBottom="50dip"
+        android:paddingRight="30dip"
+        android:paddingLeft="30dip">
+
+        <LinearLayout
+            android:id="@+id/midweather"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/plus_oneday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/img_oneday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="3"
+                    android:scaleType="fitCenter"
+                    android:padding="4dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/plus_twoday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/img_twoday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="3"
+                    android:scaleType="fitCenter"
+                    android:padding="4dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/plus_threeday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/img_threeday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="3"
+                    android:scaleType="fitCenter"
+                    android:padding="4dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/plus_fourday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/img_fourday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="3"
+                    android:scaleType="fitCenter"
+                    android:padding="4dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/plus_fiveday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/img_fiveday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="3"
+                    android:scaleType="fitCenter"
+                    android:padding="4dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/plus_sixday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/img_sixday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="3"
+                    android:scaleType="fitCenter"
+                    android:padding="4dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/plus_sevenday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="1"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/img_sevenday"
+                    android:layout_width="match_parent"
+                    android:layout_height="0px"
+                    android:layout_weight="3"
+                    android:scaleType="fitCenter"
+                    android:padding="4dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/test"
+
+        >
+
+        <TabHost
+            android:id="@android:id/tabhost"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+
+                <!-- TODO - main의 image 크기 안맞아서 일부러 맞춤 -->
+
+                <LinearLayout
+                    android:id="@+id/nav"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:orientation="vertical"
+                    >
+                    <TabWidget
+                        android:id="@android:id/tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+
+                        >
+                    </TabWidget>
+                    <!--<LinearLayout-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center">-->
+
+                    <!--<CheckBox-->
+                    <!--android:id="@+id/btn_more"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="25dp"-->
+                    <!--android:layout_marginBottom="-4dp"-->
+                    <!--android:background="@android:color/transparent"-->
+                    <!--android:button="@drawable/selector_bar_icon05" />-->
+                    <!--</LinearLayout>-->
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/header_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView
+                        android:id="@+id/header_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="128dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bg_main_noname"
+                        android:visibility="visible" />
+                    <!--정렬을 상하좌우 이미지뷰에 맞춘다.-->
+
+
+                    <TextView
+                        android:id="@+id/main_text_image1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/header_image"
+                        android:layout_alignLeft="@id/header_image"
+                        android:layout_alignRight="@id/header_image"
+                        android:layout_alignTop="@id/header_image"
+
+                        android:textColor="@color/white"
+
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/main_text_image2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/header_image"
+                        android:layout_alignLeft="@id/header_image"
+                        android:layout_alignRight="@id/header_image"
+                        android:layout_alignTop="@id/header_image"
+
+                        android:textColor="@color/white"
+
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/main_text_image3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/header_image"
+                        android:layout_alignLeft="@id/header_image"
+                        android:layout_alignRight="@id/header_image"
+                        android:layout_alignTop="@id/header_image"
+
+                        android:gravity="center|bottom"
+
+                        android:textColor="@color/white"
+
+                        android:visibility="invisible" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    >
+
+                    <FrameLayout
+                        android:id="@android:id/tabcontent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        >
+
+                        <!--<LinearLayout-->
+                        <!--android:id="@+id/tab1"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:orientation="vertical" />-->
+
+                        <!--<LinearLayout-->
+                        <!--android:id="@+id/tab2"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:orientation="vertical">-->
+
+                        <!--<com.nhn.android.maps.NMapView-->
+                        <!--android:id="@+id/naver_map"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent" />-->
+
+                        <!--</LinearLayout>-->
+
+                    </FrameLayout>
+
+                    <!--<LinearLayout-->
+                    <!--android:id="@+id/gps_btn_layout"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_alignParentBottom="true"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:layout_marginRight="10dp"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:visibility="gone">-->
+
+                    <!--<ImageButton-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/selector_check_current" />-->
+                    <!--</LinearLayout>-->
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/check_my_location"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="test" />-->
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/test_text"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@id/check_my_location"-->
+                    <!--android:text="vs" />-->
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/check_nmap_my_location"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@id/test_text"-->
+                    <!--android:text="test" />-->
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </TabHost>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/noti_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#70000000"
+        android:orientation="vertical"
+        android:paddingTop="50dp"
+        android:paddingBottom="60dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:visibility="visible">
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.65">
+
+        </WebView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/xml_border"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="notiDetail"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="상세보기"
+                android:textSize="30sp"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/xml_border"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="notiConfirm"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="확인"
+                android:textSize="30sp"
+                android:textColor="#000000"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
